@@ -1,0 +1,148 @@
+{% load static %}
+<style>
+body {
+ --l: 3.5em;
+}
+
+.wrapper {
+
+  background: #222;
+  position: sticky;
+  bottom: 10;
+}
+
+.triggerButton { display: none; }
+
+.triggerButton + label {
+  cursor: pointer;
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+  background-color: rgba(139, 92, 246,1);
+  height: var(--l);
+  width: var(--l);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.triggerButton + label:before, .triggerButton + label:after {
+  position: absolute;
+  content: '';
+  height: calc(var(--l) / 2 );
+  width: .5em;
+  background-color: #fff;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: .5em;
+  transition: all .25s;
+}
+
+.triggerButton + label:before {
+  height: calc(var(--l) / 2 );
+  width: .25em;
+}
+
+.triggerButton + label:after {
+  width: calc(var(--l) / 2 );
+  height: .25em;
+}
+
+.triggerButton:checked + label:before { transform: rotatez(-45deg); }
+
+.triggerButton:checked + label:after { transform: rotatez(-45deg); }
+
+.one, .two, .three, .four {
+  cursor: pointer;
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  opacity: 0;
+  z-index: 1;
+  transform: rotateZ(90deg);
+  font-size: 1em;
+  color: #fff;
+  transition-property: all;
+  transition-duration: .35s;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.triggerButton:checked ~ .one, .triggerButton:checked ~ .two, .triggerButton:checked ~ .three, .triggerButton:checked ~ .four { opacity: 1; }
+
+.triggerButton:checked ~ .one {
+  
+  transform: translateX(-5em);
+  transition-delay: .3s;
+}
+
+.triggerButton:checked ~ .two {
+  
+  transform: translateX(-3.5em) translateY(-3.5em);
+  transition-delay: .2s;
+}
+
+.triggerButton:checked ~ .three {
+  
+  transform: translateY(-5em);
+  transition-delay: .1s
+}
+
+.triggerButton:checked ~ .four {
+  
+  transform: translateY(-9em);
+}
+
+.triggerButton:checked ~.one:hover, .triggerButton:checked ~ .two:hover, .triggerButton:checked ~ .three:hover, .triggerButton:checked ~.four:hover { opacity: .9; }
+</style>
+
+<div class="wrapper fixed z-40 bottom-0 md:right-3/4 lg:right-3/4">
+  <input id="triggerButton" class="triggerButton" type="checkbox">
+  <label for="triggerButton"></label>
+   
+  <div class="one">
+      <a href="#"><img class="object-cover w-full h-full" alt="message" src="{% static 'images/utilities/email2.svg' %}"  srcset=""></a>
+{#      <a href="{% url 'chat' %}"><img class="object-cover w-full h-full" alt="message" src="{% static 'images/utilities/email2.svg' %}"  srcset=""></a>#}
+    </div>
+   
+    <div class="two">
+      <a href="{% url 'home' %}"><img class="object-cover w-full h-full" alt="job search" src="{% static 'images/utilities/job-search.svg' %}"  srcset=""></a>
+    </div>
+   
+    <div class="three">
+      <img class="object-cover w-full h-full" id='up-arrow' alt="arrow up" onclick="smoothscroll()"  src="{% static 'images/utilities/up-arrow.svg' %}"  srcset="">
+    </div>
+
+    {% if user.is_authenticated %}
+        <div class="four border-2 border-teal-400">
+          <a  href="{% url 'profile' request.user.get_profile %}"><img class=" object-cover w-full h-full rounded-full" alt="Profile" id='up-arrow' onclick="smoothscroll()"  src="https://images.unsplash.com/photo-1484399172022-72a90b12e3c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"  srcset=""></a>
+        </div>
+    {% else %}
+        <div class="four border-2 border-teal-400">
+          <a  href="{% url 'account_login'%}"><img class=" object-cover w-full h-full rounded-full" alt="Login" id='up-arrow' onclick="smoothscroll()"  src="{% static 'images/utilities/log-in.svg' %}"  srcset=""></a>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+
+document.getElementById("up-arrow").onclick = function() { 
+  smoothscroll() 
+};
+//(function smoothscroll(){
+  //window.scrollTo({ top: 100, left: 100, behavior: 'smooth' });
+//})(); 
+
+function smoothscroll() { 
+  window.scrollTo({ top: 50, left: 50, behavior: 'smooth' });
+} 
+
+
+</script>
+
+
+

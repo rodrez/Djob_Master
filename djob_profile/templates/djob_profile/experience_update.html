@@ -1,0 +1,184 @@
+{% extends '_base.html' %}
+{% load pages_filters %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+{% load widget_tweaks %}
+
+    <main class="flex-grow">
+        <section class="relative">
+            <div class="absolute inset-0 h-128 pt-16 box-content">
+                <div class="h-full w-full"></div>
+            </div>
+        </section>
+
+        {% include 'djob_profile/profile_components/display_profile.html' %}
+
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="pb-12 md:pb-20">
+                <div class="max-w-3xl mx-auto">
+
+                    {% comment %} Education Start {% endcomment %}
+
+                    {% include 'djob_profile/profile_components/display_edu.html' %}
+
+                    {% comment %} Education Ends {% endcomment %}
+
+                    {% comment %} Start Experiences {% endcomment %}
+
+                    <section class='mt-10'>
+
+                        <div class="max-w-4xl px-8 py-4 mx-auto bg-white rounded-lg shadow-lg dark:bg-gray-800">
+
+                            <div class="lg:w-full">
+
+                                <div class="flex mb-4 items-center">
+                                    <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-100" id="EXP">Experiences</h2>
+                                    <button class="hidden flex-no-shrink p-2 ml-4 mr-2">
+                                        <svg
+                                                class="h-10 w-10"
+                                                id="color" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                            <path d="m15.854 23.146c-1.313-1.313-1.353-2.586-1.354-2.649-.002-.275-.225-.497-.5-.497h-4.02c-.276 0-.5.227-.5.503 0 .054-.018 1.328-1.333 2.644-.143.143-.186.358-.108.545.076.186.259.308.461.308h7c.202 0 .385-.122.462-.309s.034-.401-.108-.545z"
+                                                  fill="#90a4ae"/>
+                                            <path d="m14.25 4c-.414 0-.75-.336-.75-.75v-1.5c0-.138-.112-.25-.25-.25h-2.5c-.138 0-.25.112-.25.25v1.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-1.5c0-.965.785-1.75 1.75-1.75h2.5c.965 0 1.75.785 1.75 1.75v1.5c0 .414-.336.75-.75.75z"
+                                                  fill="#64b5f6"/>
+                                            <path d="m16.25 10.5h-8.5c-.965 0-1.75-.785-1.75-1.75v-4.5c0-.965.785-1.75 1.75-1.75h8.5c.965 0 1.75.785 1.75 1.75v4.5c0 .965-.785 1.75-1.75 1.75z"
+                                                  fill="#2196f3"/>
+                                            <path d="m18 7h-12v-1.5h12z" fill="#64b5f6"/>
+                                            <path d="m12 8c-.414 0-.75-.336-.75-.75v-2c0-.414.336-.75.75-.75s.75.336.75.75v2c0 .414-.336.75-.75.75z"
+                                                  fill="#64b5f6"/>
+                                            <path d="m24 5.75v13.5c0 .96-.79 1.75-1.75 1.75h-20.5c-.96 0-1.75-.79-1.75-1.75v-13.5c0-.96.79-1.75 1.75-1.75h2.78l-.03.25v1.75h-2.5v11h20v-11h-2.5v-1.75l-.03-.25h2.78c.96 0 1.75.79 1.75 1.75z"
+                                                  fill="#607d8b"/>
+                                            <path d="m22 6v11h-20v-11h2.5v2.75c0 1.79 1.46 3.25 3.25 3.25h8.5c1.79 0 3.25-1.46 3.25-3.25v-2.75z"
+                                                  fill="#f5f5f5"/>
+                                            <path d="m12 21h-2.591c-.118.501-.431 1.315-1.262 2.146-.143.143-.186.358-.108.545.076.187.259.309.461.309h3.5z"
+                                                  fill="#7d8f97"/>
+                                            <path d="m12 0h-1.25c-.965 0-1.75.785-1.75 1.75v.75h1.5v-.75c0-.138.112-.25.25-.25h1.25z"
+                                                  fill="#579ed6"/>
+                                            <path d="m12 2.5h-1.5-1.5-1.25c-.965 0-1.75.785-1.75 1.75v4.5c0 .965.785 1.75 1.75 1.75h4.25v-2.5c-.414 0-.75-.336-.75-.75v-.25h-5.25v-1.5h5.25v-.25c0-.414.336-.75.75-.75z"
+                                                  fill="#1d83d4"/>
+                                            <path d="m11.25 5.5h-5.25v1.5h5.25z" fill="#579ed6"/>
+                                            <path d="m12 4.5c-.414 0-.75.336-.75.75v.25 1.5.25c0 .414.336.75.75.75z" fill="#579ed6"/>
+                                            <path d="m4.53 4h-2.78c-.96 0-1.75.79-1.75 1.75v13.5c0 .96.79 1.75 1.75 1.75h7.659 2.591v-4h-10v-11h2.5v-1.75z"
+                                                  fill="#546d79"/>
+                                            <path d="m4.5 6h-2.5v11h10v-5h-4.25c-1.79 0-3.25-1.46-3.25-3.25z" fill="#d5d5d5"/>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            <div >
+                                    <form  method="POST">
+
+                                    {% csrf_token %}
+                                            {% for foo in form %}
+                                                <div id="form_set">
+                                                {{ form.management_form }}
+                                                {% for f in foo %}
+                                                    {% if f.name == "DELETE" %}
+                                                        <p class="text-red-600 font-semibold">{{ f.label }}</p>
+                                                        {{ f|add_class:'flex-1 appearance-none border border-transparent mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none mt-3 focus:ring-violet-600 focus:border-transparent'}}
+                                                    {% elif f.name == 'id'%}
+                                                        {{ f|add_class:'hidden' }}
+                                                    {% elif f.name == 'user'%}
+                                                        {{ f|add_class:'' }}
+                                                    {% elif f.name == "job_description" %}
+                                                        <p>{{ f.label }}</p><br>
+                                                        {{ f|add_class:'flex-1 appearance-none border w-full border-transparent mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none mt-3 focus:ring-violet-600 focus:border-transparent'}}
+                                                    {% else %}
+                                                        <p>{{ f.label }}</p>
+                                                        {{ f|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent'}}
+                                                    {% endif %}
+                                                    <br>
+
+                                                {% endfor %}
+                                                <style>
+                                                    #id_form-{{ forloop.counter0 }}-job_description {
+                                                            width: 100%;
+                                                            word-wrap: break-word;
+                                                        }
+                                                </style>
+                                                <hr class="mt-4 mb-4">
+</div>
+                                            {% endfor %}
+
+
+
+                                    <div class="text-center py-2 rounded mt-4 bg-violet-500 w-full ">
+                                        <input class="bg-violet-500 font-semibold text-white" type="submit" value="Update"/>
+                                    </div>
+                                    </form>
+                            </div>
+                            <div class="text-center py-2 rounded mt-4 bg-lightBlue-400 w-full ">
+                                <input class="font-semibold bg-transparent text-white" id="add_more" type="submit" value="Add Experience"/>
+                            </div>
+
+
+                        </div>
+                        <div id="empty_form" style="display:none">
+                                        <table class='no_error'>
+                                            {% for f in form.empty_form %}
+                                                    {% if f.name == "DELETE" %}
+                                                        <p class="text-red-600 font-semibold">{{ f.label }}</p>
+                                                        {{ f|add_class:'flex-1 appearance-none border border-transparent mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none mt-3 focus:ring-violet-600 focus:border-transparent'}}
+                                                    {% elif f.name == 'id'%}
+                                                        {{ f|add_class:'hidden' }}
+                                                    {% elif f.name == 'user'%}
+                                                        {{ f|add_class:'' }}
+                                                    {% elif f.name == "job_description" %}
+                                                        <p>{{ f.label }}</p><br>
+                                                        {{ f|add_class:'flex-1 appearance-none border w-full border-transparent mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none mt-3 focus:ring-violet-600 focus:border-transparent'}}
+                                                    {% else %}
+                                                        <p>{{ f.label }}</p>
+                                                        {{ f|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent'}}
+                                                    {% endif %}
+                                                    <br>
+
+                                                {% endfor %}
+                                        </table>
+                                    </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+        <script>
+            {% comment %} AutoFills User based on request.user {% endcomment %}
+        // All the select elements
+        function assignUser(){
+            var selects = document.getElementsByTagName('select');
+
+            // Initializing z
+            var idx = 0;
+
+            // For loop to get all select options
+
+                for (idx; idx < selects.length; idx++){
+                {#console.log(selects[z].value)#}
+
+                // Assigns the options
+                selects[idx].selectedIndex = {{ request.user.id }}
+            }
+        }
+        {% comment %} AutoFills User based on request.user {% endcomment %}
+
+            $('#add_more').click(function() {
+            var form_idx = $('#id_form-TOTAL_FORMS').val();
+            $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+            $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+            assignUser();
+        });
+            function clearForm(e_id){
+                var elements = document.getElementById(e_id).elements;
+
+                for (var i = 0; i < elements.length; i++) {
+                    console.log(elements[i].value);
+                    }
+                }
+        </script>
+
+
+{% endblock content %}
