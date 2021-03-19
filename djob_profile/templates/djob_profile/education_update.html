@@ -1,0 +1,183 @@
+{% extends '_base.html' %}
+{% load pages_filters %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+{% load widget_tweaks %}
+
+    <main class="flex-grow">
+        <section class="relative">
+            <div class="absolute inset-0 h-128 pt-16 box-content">
+                <div class="h-full w-full"></div>
+                <!-- <div
+              class="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-900"
+              aria-hidden="true">
+              </div> -->
+            </div>
+        </section>
+
+        {% include 'djob_profile/profile_components/display_profile.html' %}
+
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="pb-12 md:pb-20">
+                <div class="max-w-3xl mx-auto">
+
+                    {% comment %} Education Start {% endcomment %}
+
+                    <section class=''>
+
+                        <div class="max-w-4xl px-8 py-4 mx-auto bg-white rounded-lg shadow-lg dark:bg-gray-800">
+
+                            <div class="lg:w-full">
+
+                                <div class="flex mb-4 items-center">
+                                    <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-100" id="EDU">Education</h2>
+                                    <button class="flex-no-shrink p-2 ml-4 mr-2">
+                                        <svg class="h-10 w-10"
+                                             id="color" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="m16 22h-2v-2h-4v2h-2c-.552 0-1 .448-1 1s.448 1 1 1h8c.553 0 1-.448 1-1s-.447-1-1-1z"
+                                                  fill="#90a4ae"/>
+                                            <path d="m22 6v12h-20v-12h2.6l.04.02.36.15v1.03c0 1.3.69 2.53 1.79 3.2 1.78 1.08 3.48 1.6 5.21 1.6s3.43-.52 5.21-1.6c1.1-.67 1.79-1.9 1.79-3.2v-1.03l.36-.15.04-.02z"
+                                                  fill="#fff"/>
+                                            <path d="m22.25 4h-1.3c-.16.87-.73 1.62-1.55 2h2.6v12h-20v-12h2.6c-.82-.38-1.39-1.13-1.55-2h-1.3c-.96 0-1.75.79-1.75 1.75v12.5c0 .96.79 1.75 1.75 1.75h20.5c.96 0 1.75-.79 1.75-1.75v-12.5c0-.96-.79-1.75-1.75-1.75z"
+                                                  fill="#607d8b"/>
+                                            <path d="m12 20h-2v2h-2c-.552 0-1 .448-1 1s.448 1 1 1h4z" fill="#7d8f97"/>
+                                            <path d="m3.05 4h-1.3c-.96 0-1.75.79-1.75 1.75v12.5c0 .96.79 1.75 1.75 1.75h10.25v-2h-10v-12h2.6c-.82-.38-1.39-1.13-1.55-2z"
+                                                  fill="#546d79"/>
+                                            <path d="m2 6h10v12h-10z" fill="#dedede"/>
+                                            <path d="m12 10.003c-1.363 0-2.727-.438-4.168-1.312-.513-.311-.832-.884-.832-1.495v-2.446c0-.414.336-.75.75-.75h8.5c.414 0 .75.336.75.75v2.446c0 .61-.319 1.184-.832 1.495-1.441.874-2.805 1.312-4.168 1.312z"
+                                                  fill="#1976d2"/>
+                                            <path d="m12 7c-.103 0-.206-.021-.302-.063l-6.25-2.75c-.272-.121-.448-.389-.448-.687s.176-.566.448-.687l6.25-2.75c.192-.084.412-.084.604 0l6.25 2.75c.272.121.448.389.448.687s-.176.566-.448.687l-6.25 2.75c-.096.042-.199.063-.302.063z"
+                                                  fill="#2196f3"/>
+                                            <path d="m7 4.869v2.327c0 .61.319 1.184.832 1.495 1.441.874 2.805 1.312 4.168 1.312v-3.003c-.103 0-.206-.021-.302-.063z"
+                                                  fill="#1667b7"/>
+                                            <path d="m12 0c-.103 0-.206.021-.302.063l-6.25 2.75c-.272.121-.448.389-.448.687s.176.566.448.687l1.552.682 4.698 2.067c.096.043.199.064.302.064z"
+                                                  fill="#1d83d4"/>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                                <div class="hidden grid grid-cols-2 gap-4">
+                                    <p class="w-full font-medium text-grey-darkest flex items-center justify-left">Degree Obtained</p>
+                                    <button class="ml-auto flex font-medium items-center justify-center"> Institution - Date</button>
+
+                                </div>
+                                <hr class="mt-4 mb-10">
+
+                                {% comment %} Education Loops {% endcomment %}
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    {{ form.management_form }}
+
+                                    {% for edu in form %}
+                                        <div id="form_set">
+                                        {% for f in edu %}
+{#                                            {{ f.id_for_label }}#}
+                                            {% if f.name == "DELETE" %}
+                                                {{ f.label }}
+                                                {{ f|add_class:'flex-1 appearance-none border border-transparent bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-violet-600 focus:border-transparent'}}
+                                            {% elif f.name == 'id'%}
+                                                {{ f|add_class:'hidden' }}
+                                            {% elif f.name == 'user'%}
+
+                                                {{ f|add_class:"hidden"}}
+                                            {% else %}
+                                                {{ f.label }}
+                                                {{ f|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent'}}
+
+                                            {% endif %}
+                                        <br> <br>
+                                            {% endfor %}
+                                        <hr class="mt-4 mb-4">
+                                        </div>
+                                    {% endfor %}
+                                    <div class="text-center py-2 rounded mt-4 bg-violet-500 w-full ">
+                                        <input class="bg-violet-500 font-semibold text-white" type="submit" value="Update"/>
+                                    </div>
+                                </form>
+                                <div class="text-center py-2 rounded mt-4 bg-lightBlue-400 w-full ">
+                                <input class="font-semibold bg-transparent text-white" id="add_more" type="submit" value="Add Experience"/>
+                            </div>
+                            <div id="empty_form" style="display:none">
+                                        <table class='no_error'>
+                                            {% for f in form.empty_form %}
+                                                {% if f.name == "DELETE" %}
+                                                    {{ f.label }}
+                                                    {{ f|add_class:'flex-1 appearance-none border border-transparent bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-violet-600 focus:border-transparent'}}
+                                                {% elif f.name == 'id'%}
+                                                    {{ f|add_class:'hidden' }}
+                                                {% elif f.name == 'user'%}
+
+                                                    {{ f|add_class:"hidden"}}
+                                                {% else %}
+                                                    {{ f.label }}
+                                                    {{ f|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent'}}
+
+                                            {% endif %}
+                                        <br> <br>
+
+                                                {% endfor %}
+                                        </table>
+                                    </div>
+
+                            </div>
+
+                        </div>
+                    </section>
+
+
+                    {% comment %} Start Experiences {% endcomment %}
+
+                        {% include 'djob_profile/profile_components/display_exp.html' %}
+
+                    {% comment %} End Experiences {% endcomment %}
+            </div>
+        </div>
+        </div>
+    </main>
+
+
+{% endblock content %}
+
+{% block js %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+          integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+          crossorigin="anonymous"></script>
+
+
+    <script>
+            {% comment %} AutoFills User based on request.user {% endcomment %}
+        // All the select elements
+        function assignUser(){
+            var selects = document.getElementsByTagName('select');
+
+            // Initializing z
+            var idx = 0;
+
+            // For loop to get all select options
+
+                for (idx; idx < selects.length; idx++){
+                {#console.log(selects[z].value)#}
+
+                // Assigns the options
+                selects[idx].selectedIndex = {{ request.user.id }}
+            }
+        }
+        {% comment %} AutoFills User based on request.user {% endcomment %}
+
+            $('#add_more').click(function() {
+            var form_idx = $('#id_form-TOTAL_FORMS').val();
+            $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+            $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+            assignUser();
+        });
+            function clearForm(e_id){
+                var elements = document.getElementById(e_id).elements;
+
+                for (var i = 0; i < elements.length; i++) {
+                    console.log(elements[i].value);
+                    }
+                }
+        </script>
+{% endblock js %}

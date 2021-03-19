@@ -1,0 +1,288 @@
+{% extends '_base.html' %}
+{% load pages_filters %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+{% load widget_tweaks %}
+
+    <main class="flex-grow">
+        <section class="relative">
+            <div class="absolute inset-0 h-128 pt-16 box-content">
+                <div class="h-full w-full"></div>
+            </div>
+        </section>
+
+            <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="pt-32 pb-12 md:pt-40 md:pb-20">
+                    <div class="max-w-3xl mx-auto">
+
+                        {% comment %} Content Start {% endcomment %}
+                        <form action="" method="POST">{% csrf_token %}
+                        <section class='mt-10'>
+
+
+
+                            <div class="max-w-4xl px-8 py-4 mx-auto bg-white rounded-lg shadow-lg dark:bg-gray-800">
+                                <div class="flex justify-center relative -mt-16 md:justify-end lg:justify-end xl:justify-end">
+                                    <img class="object-cover w-48 h-48 border-4 bg-violet-500 border-violet-500 rounded-full dark:border-indigo-400"
+                                         alt="Testimonial avatar"
+                                            {#                    {% comment %} src="{{ MEDIA_URL}}{% random_pf %}"> {% endcomment %}#}
+                                         src="https://images.unsplash.com/photo-1484399172022-72a90b12e3c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80">
+                                    <div class="h-5 w-5 ml-24 absolute my-1 border-4 border-white rounded-full bg-green-400 z-2"></div>
+                                </div>
+
+                                <div class="lg:w-full">
+
+
+                                    <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-100">Who am I?</h2>
+
+                                    <div class="mt-4 text-gray-500 dark:text-gray-400 max-w-full">
+    {#                                        Hi I am#}
+                                            <div>
+                                            <label for="">{{ user_form.first_name.label }}</label>
+                                            <span class="font-semibold">{{ user_form.first_name|attr:'placeholder:First Name'|add_class:'flex-1 appearance-none border border-transparent w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</span>
+                                            </div>
+
+                                        <div class="mt-4" >
+
+                                            <label for="">{{ user_form.last_name.label }}</label>
+                                            <span class="mt-4">{{ user_form.last_name|attr:'placeholder:Last Name'|add_class:'flex-1 appearance-none border border-transparent w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</span>
+                                        </div>
+                                        <div class="mt-4" >
+                                            <label for="">{{ user_form.summary.label }}</label>
+                                        <span class='p-4 w-full mx-auto'>{{ form.summary|add_class:'flex-1 mt-4 appearance-none border border-transparent w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }} </span>
+                                        </div>
+                                        </div>
+
+                                    <div class="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+                                        <h1 class="px-2 text-sm">{{ user_form.email|attr:'col:10'|attr:'placeholder:darth.vader@gmail.com'|add_class:'flex-1 mt-4 appearance-none border border-transparent w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</h1>
+                                    </div>
+
+                                    <div class="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+                                        <h1 class="px-2 text-sm">{{ form.current_job|attr:'placeholder:Software Engineer'|add_class:'flex-1 mt-4 appearance-none border border-transparent w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</h1>
+                                    </div>
+
+                                    <div class="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+                                        <h1 class="px-2 text-sm">{{ form.location|attr:'placeholder:Los Angeles, CA'|add_class:'flex-1 mt-4 appearance-none border border-transparent w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</h1>
+                                    </div>
+
+                                    <div class="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+                                        <div class="flex items-center text-gray-700 dark:text-gray-200">
+                                            <h1 class="px-2 text-sm">{{ form.phone|attr:'placeholder:777-777-777'|add_class:'flex-1 mt-4 appearance-none border border-transparent w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</h1>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <hr class="mt-4">
+
+                                <div class="flex items-center justify-center mt-6 -mx-2">
+                                    <a class="mx-4" href="#" aria-label="Twitter">
+                                        <svg class="w-10 h-10"
+                                             enable-background="new 0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="m21.552 7.749c0-.217-.008-.428-.018-.636.976-.693 1.797-1.558 2.466-2.554v-.001c-.893.391-1.843.651-2.835.777 1.02-.609 1.799-1.566 2.165-2.719-.951.567-2.001.967-3.12 1.191-.903-.962-2.19-1.557-3.594-1.557-2.724 0-4.917 2.211-4.917 4.921 0 .39.033.765.114 1.122-4.09-.2-7.71-2.16-10.142-5.147-.424.737-.674 1.58-.674 2.487 0 1.704.877 3.214 2.186 4.089-.791-.015-1.566-.245-2.223-.606v.054c0 2.391 1.705 4.377 3.942 4.835-.752.206-1.678.198-2.221.078.637 1.948 2.447 3.381 4.597 3.428-1.674 1.309-3.8 2.098-6.101 2.098-.403 0-.79-.018-1.177-.067 2.18 1.405 4.762 2.208 7.548 2.208 9.054 0 14.004-7.5 14.004-14.001z"
+                                                  fill="#55acee"/>
+                                        </svg>
+
+
+                                    </a>
+
+                                    <a class="mx-4" href="#" aria-label="Facebook">
+                                        <svg class="w-10 h-10"
+                                             enable-background="new 0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="m21 0h-18c-1.655 0-3 1.345-3 3v18c0 1.654 1.345 3 3 3h18c1.654 0 3-1.346 3-3v-18c0-1.655-1.346-3-3-3z"
+                                                  fill="#3b5999"/>
+                                            <path d="m16.5 12v-3c0-.828.672-.75 1.5-.75h1.5v-3.75h-3c-2.486 0-4.5 2.014-4.5 4.5v3h-3v3.75h3v8.25h4.5v-8.25h2.25l1.5-3.75z"
+                                                  fill="#fff"/>
+                                        </svg>
+
+
+                                    </a>
+
+                                    <a class="mx-4" href="#" aria-label="Linkden">
+                                        <svg class="w-10 h-10"
+                                             enable-background="new 0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <g fill="#0077b5">
+                                                <path d="m23.994 24v-.001h.006v-8.802c0-4.306-.927-7.623-5.961-7.623-2.42 0-4.044 1.328-4.707 2.587h-.07v-2.185h-4.773v16.023h4.97v-7.934c0-2.089.396-4.109 2.983-4.109 2.549 0 2.587 2.384 2.587 4.243v7.801z"/>
+                                                <path d="m.396 7.977h4.976v16.023h-4.976z"/>
+                                                <path d="m2.882 0c-1.591 0-2.882 1.291-2.882 2.882s1.291 2.909 2.882 2.909 2.882-1.318 2.882-2.909c-.001-1.591-1.292-2.882-2.882-2.882z"/>
+                                            </g>
+                                        </svg>
+
+
+                                        {% comment %}
+                                            <svg class="w-5 h-5 text-gray-700 fill-current dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
+                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                <path d="M417.2 64H96.8C79.3 64 64 76.6 64 93.9V415c0 17.4 15.3 32.9 32.8 32.9h320.3c17.6 0 30.8-15.6 30.8-32.9V93.9C448 76.6 434.7 64 417.2 64zM183 384h-55V213h55v171zm-25.6-197h-.4c-17.6 0-29-13.1-29-29.5 0-16.7 11.7-29.5 29.7-29.5s29 12.7 29.4 29.5c0 16.4-11.4 29.5-29.7 29.5zM384 384h-55v-93.5c0-22.4-8-37.7-27.9-37.7-15.2 0-24.2 10.3-28.2 20.3-1.5 3.6-1.9 8.5-1.9 13.5V384h-55V213h55v23.8c8-11.4 20.5-27.8 49.6-27.8 36.1 0 63.4 23.8 63.4 75.1V384z"/>
+                                            </svg> {% endcomment %}
+                                    </a>
+
+                                    <a class="mx-4" href="#" aria-label="Github">
+                                        <svg class="w-10 h-10 dark:text-gray-200 bg-black rounded-full hover:animate-ping hover:text-gray-600 dark:hover:text-gray-400"
+                                             enable-background="new 0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"
+                                                  fill="#fff"/>
+                                        </svg>
+
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </section>
+
+            <div class="relative max-w-6xl mx-auto ">
+                <div class="pb-12 md:pb-20">
+                    <div class="max-w-3xl mx-auto">
+
+                        {% comment %} Content Start {% endcomment %}
+
+                        <section class='mt-12'>
+
+                            <div class="max-w-4xl px-8 py-4 mx-auto bg-white rounded-lg shadow-lg dark:bg-gray-800">
+
+                                <div class="lg:w-full">
+                                    <div class="flex mb-4 items-center">
+                                        <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-100">Dream Job</h2>
+                                        <button class="flex-no-shrink p-2 ml-4 mr-2">
+                                            <svg class="h-10 w-10"
+                                                 id="color" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path d="m18.673 7.927c-1.312-2.399-3.884-3.927-6.673-3.927-3.545 0-6.62 2.465-7.397 5.829-2.584.272-4.603 2.442-4.603 5.071 0 2.812 2.312 5.1 5.152 5.1h12.718c3.38 0 6.13-2.722 6.13-6.067 0-3.066-2.307-5.625-5.327-6.006z"
+                                                      fill="#2196f3"/>
+                                                <path d="m12 4c-3.545 0-6.62 2.465-7.397 5.829-2.584.272-4.603 2.442-4.603 5.071 0 2.812 2.312 5.1 5.152 5.1h6.848z"
+                                                      fill="#1d83d4"/>
+                                                <g fill="#fff">
+                                                    <path d="m7.25 17h-1.5c-.414 0-.75-.336-.75-.75s.336-.75.75-.75h1.5c.138 0 .25-.112.25-.25v-3.5c0-.414.336-.75.75-.75s.75.336.75.75v3.5c0 .965-.785 1.75-1.75 1.75z"/>
+                                                    <path d="m12.25 17h-.5c-.965 0-1.75-.785-1.75-1.75v-2.5c0-.965.785-1.75 1.75-1.75h.5c.965 0 1.75.785 1.75 1.75v2.5c0 .965-.785 1.75-1.75 1.75zm-.5-4.5c-.138 0-.25.112-.25.25v2.5c0 .138.112.25.25.25h.5c.138 0 .25-.112.25-.25v-2.5c0-.138-.112-.25-.25-.25z"/>
+                                                    <path d="m19 12.87c0-1.031-.839-1.87-1.87-1.87h-1.38c-.414 0-.75.336-.75.75v4.5c0 .414.336.75.75.75h1.38c1.031 0 1.87-.839 1.87-1.88 0-.422-.146-.808-.383-1.121.237-.315.383-.703.383-1.129zm-1.5.01c0 .204-.166.37-.37.37h-.63v-.75h.63c.204 0 .37.166.37.38zm-.37 2.62h-.63v-.75h.63c.204 0 .37.166.37.38 0 .204-.166.37-.37.37z"/>
+                                                </g>
+                                                <path d="m9 14h-1.5v1.25c0 .138-.112.25-.25.25h-1.5c-.414 0-.75.336-.75.75s.336.75.75.75h1.5c.965 0 1.75-.785 1.75-1.75z"
+                                                      fill="#dedede"/>
+                                                <path d="m14 14h-1.5v1.25c0 .138-.112.25-.25.25h-.5c-.138 0-.25-.112-.25-.25v-1.25h-1.5v1.25c0 .965.785 1.75 1.75 1.75h.5c.965 0 1.75-.785 1.75-1.75z"
+                                                      fill="#dedede"/>
+                                                <path d="m16.5 15.5v-.75h.63c.204 0 .37.166.37.38 0 .204-.166.37-.37.37zm2.118-1.5h-3.618v2.25c0 .414.336.75.75.75h1.38c1.031 0 1.87-.839 1.87-1.88 0-.422-.146-.807-.382-1.12z"
+                                                      fill="#dedede"/>
+                                            </svg>
+                                        </button>
+
+                                    </div>
+
+
+                                    <article class="text-gray-600 leading-6">
+                                        <dl class="transition-opacity duration-1500 delay-500 flex flex-wrap divide-y divide-gray-200 border-b border-gray-200">
+
+                                            <div class="w-full flex-none flex items-baseline py-4">
+                                                <dt class="w-2/5 sm:w-1/3 dark:text-white flex-none uppercase text-xs sm:text-sm font-semibold tracking-wide">
+                                                    Availability
+                                                </dt>
+                                                <dd class="text-black dark:text-gray-200 font-medium  text-sm sm:text-base ml-auto">
+                                                    As soon as possible
+                                                </dd>
+                                            </div>
+                                            <div class="w-full flex items-center py-4">
+                                                <p class="w-2/5 sm:w-1/3 flex-none dark:text-white uppercase text-xs sm:text-sm font-semibold">
+                                                    Minimum Salary
+                                                </p>
+
+                                                <p class="text-black dark:text-gray-200 text-sm font-medium sm:text-base ml-auto">
+                                                    {{ form.minimum_salary|add_class:'flex-1 appearance-none border ml-2 border-transparent w-40 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent'  }}
+                                                </p>
+                                            </div>
+                                            <div class="w-full flex-none flex items-center py-4">
+                                                <p class="w-2/5 sm:w-1/3 flex-none dark:text-white uppercase text-xs sm:text-sm font-semibold ">
+                                                    Employment Type
+                                                </p>
+                                                <p class="text-black dark:text-gray-200 font-medium text-sm sm:text-base ml-auto">
+
+                                                    {{ form.employment_type|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}
+
+                                                </p>
+                                            </div>
+                                            <div class="w-full flex-none flex items-center py-4">
+                                                <p class="w-2/5 sm:w-1/3 flex-none dark:text-white uppercase text-xs sm:text-sm font-semibold ">
+                                                    Work Auth.
+                                                </p>
+                                                <p class="text-sm text-black dark:text-gray-200 sm:text-base font-medium ml-auto">
+
+                                                    {{ form.work_authorization|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}
+                                                </p>
+                                            </div>
+                                            <div class="w-full flex-none flex items-center py-4">
+                                                <p class="w-2/5 sm:w-1/3 flex-none uppercase dark:text-white text-xs sm:text-sm font-semibold ">
+                                                    Relocate
+                                                </p>
+                                                <p class="text-sm sm:text-base font-medium ml-auto">
+
+                                                    {{ form.relocate }}
+
+
+                                                </p>
+
+                                            </div>
+
+                                            <div class="w-full flex-none flex items-center py-4">
+                                                <p class="w-2/5 sm:w-1/3 dark:text-white flex-none uppercase text-xs sm:text-sm font-semibold">
+                                                    Travel
+                                                </p>
+                                                <p class="text-sm sm:text-base font-medium ml-auto">
+
+                                                    {{ form.travel }}
+
+
+                                                </p>
+
+                                            </div>
+                                        </dl>
+                                    <div class="text-center py-2 rounded mt-4 bg-violet-500 w-full ">
+                                        <input class="bg-violet-500 font-semibold text-white" type="submit" value="Update"/>
+                                    </div>
+                                    </article>
+
+                                </div>
+
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+            <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="pb-12 md:pb-20">
+                    <div class="max-w-3xl mx-auto">
+
+                        {% comment %} Education Start {% endcomment %}
+
+                    {% include 'djob_profile/profile_components/display_edu.html' %}
+
+                    {% comment %} Education Start {% endcomment %}
+
+                        {% comment %} Education Start {% endcomment %}
+
+                    {% include 'djob_profile/profile_components/display_exp.html' %}
+
+                    {% comment %} Education Start {% endcomment %}
+
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+
+    <script>
+        function scrollToTop() {
+
+            window.scrollTo({top: 0, behavior: 'smooth'});
+
+        }
+    </script>
+{% endblock content %}

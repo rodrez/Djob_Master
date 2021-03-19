@@ -1,0 +1,54 @@
+{% extends '_base.html' %}
+{% load pages_filters %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+    <main class="flex-grow">
+        <section class="relative">
+            <div class="absolute inset-0 h-128 pt-16 box-content">
+                <div class="h-full w-full"></div>
+                <!-- <div
+              class="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-900"
+              aria-hidden="true">
+              </div> -->
+            </div>
+        </section>
+
+        {% comment %} Profile Start {% endcomment %}
+        {% include 'djob_profile/profile_components/display_profile.html' %}
+        {% comment %} Profile Ends {% endcomment %}
+
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="pb-12 md:pb-20">
+                <div class="max-w-3xl mx-auto">
+
+                    {% comment %} Education Start {% endcomment %}
+
+                    {% include 'djob_profile/profile_components/display_edu.html' %}
+
+                    {% comment %} Education Ends {% endcomment %}
+
+                    {% comment %} Start Experiences {% endcomment %}
+
+                        {% include 'djob_profile/profile_components/display_exp.html' %}
+
+                    {% comment %} End Experiences {% endcomment %}
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+    <script>
+        function scrollToTop() {
+
+            window.scrollTo({top: 0, behavior: 'smooth'});
+
+        }
+    </script>
+{% endblock content %}

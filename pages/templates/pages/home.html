@@ -1,0 +1,426 @@
+{% extends '_base.html' %} {% load static %} {% load pages_filters %} 
+{% block content %}
+
+<div class="flex flex-col min-h-screen mx-auto">
+  <div class="flex-grow">
+    <div
+      class="relative max-w-6xl mx-auto h-0 pointer-events-none -z-1"
+      aria-hidden="true"
+    >
+    </div>
+
+    {% comment %} Main Section {% endcomment %}
+    <section class="relative ">
+{#      <div#}
+{#        class="absolute mx-auto inset-0 bg-gradient-to-t from-gray-100 to-white pointer-events-none dark:hidden"#}
+{#        aria-hidden="true"#}
+{#      ></div>#}
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="pt-32 pb-12 md:pt-40 md:pb-20">
+          <div class="max-w-3xl mx-auto text-center">
+            <h1 class="h1 font-red-hat-display mb-4" data-aos="fade-down">
+              Ready for a new job or career change?
+            </h1>
+            <p
+              class="text-xl text-gray-600 dark:text-gray-400"
+              data-aos="fade-down"
+              data-aos-delay="150"
+            >
+              Relevant jobs in the palm of your hand.
+            </p>
+            <div class="max-w-2xl mx-auto md:px-4">
+              <form
+                class="relative flex items-center mt-8"
+                data-aos="fade-down"
+                data-aos-delay="300"
+              >
+                <input
+                  type="search"
+                  class="form-input w-full pl-12"
+                  placeholder="Enter your Dream Job..."
+                  aria-label="Enter your Dream Job..."
+                />
+
+                <button
+                  type="submit"
+                  class="absolute inset-0 right-auto"
+                  aria-label="Search"
+                >
+                  <i class="fas fa-search flex-shrink-0 ml-4 mr-3"></i>
+                </button>
+              </form>
+              <form
+                class="relative flex items-center mt-4 "
+                data-aos="fade-down"
+                data-aos-delay="300"
+              >
+                <input
+                  type="search"
+                  class="form-input w-full pl-12 "
+                  placeholder="Enter the perfect location"
+                  aria-label="Enter the perfect location"
+                />
+
+                <button
+                  type="submit"
+                  class="absolute inset-0 right-auto"
+                  aria-label="Search"
+                >
+                  <i class="fas fa-map-marker-alt flex-shrink-0 ml-4 mr-3"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="relative border-t border-transparent dark:border-gray-800">
+      <div
+        class="absolute inset-0 opacity-25 bg-gradient-to-b from-gray-800 to-gray-900 pointer-events-none hidden dark:block"
+        aria-hidden="true"
+      ></div>
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="py-12 md:py-20">
+          <div
+            x-data="{ category: '' }"
+            data-aos="fade-up"
+            data-aos-delay="450"
+          >
+            <div class="mb-10">
+              <div class="flex flex-wrap justify-center -m-1">
+                <button
+                  style="border-radius: 0.375rem"
+                  class="font-medium px-4 py-2 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 shadow transition duration-150 ease-in-out rounded-lg inline-flex items-center justify-center m-1"
+                  @click="category = ''"
+                >
+                  <svg
+                    class="w-4 h-4 flex-shrink-0 mr-2"
+                    viewBox="0 0 16 16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      class="fill-current text-gray-400"
+                      d="M11 7H1a1 1 0 000 2h10v3l5-4-5-4v3zM8 3H1a1 1 0 010-2h7a1 1 0 010 2zM8 15H1a1 1 0 010-2h7a1 1 0 010 2z"
+                    />
+                  </svg>
+                  <span
+                    class="text-gray-600 dark:text-gray-300 transition duration-150 ease-in-out"
+                    >View All</span
+                  >
+                </button>
+                <button
+                  style="border-radius: 0.375rem"
+                  class="font-medium px-4 py-2 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 shadow transition duration-150 ease-in-out rounded-lg inline-flex items-center justify-center m-1"
+                  :class="{ 'bg-teal-500 hover:bg-teal-500 dark:bg-teal-600 dark:hover:bg-teal-600 dark:bg-opacity-25 dark:hover:bg-opacity-25': category === '1' }"
+                  @click="category = '1'"
+                >
+                  <i
+                    class="fas fa-code w-4 h-4 flex-shrink-0 mr-2 text-teal-400"
+                  ></i>
+
+                  <span
+                    class="transition duration-150 ease-in-out"
+                    :class="category === '1' ? 'text-white dark:text-teal-400' : 'text-gray-600 dark:text-gray-300'"
+                    >Programming</span
+                  >
+                </button>
+                <button
+                  style="border-radius: 0.375rem"
+                  class="font-medium px-4 py-2 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 shadow transition duration-150 ease-in-out rounded-lg inline-flex items-center justify-center m-1"
+                  :class="{ 'bg-purple-500 hover:bg-purple-500 dark:bg-purple-600 dark:hover:bg-purple-600 dark:bg-opacity-25 dark:hover:bg-opacity-25': category === '2' }"
+                  @click="category = '2'"
+                >
+                  <svg
+                    class="w-4 h-4 flex-shrink-0 mr-2"
+                    viewBox="0 0 16 16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      class="fill-current"
+                      :class="category === '2' ? 'text-purple-200 dark:text-purple-400' : 'text-purple-500'"
+                      d="M12.071 0L15 2.929v4.142L12.071 10H12V7.101L7.9 3H5v-.071L7.929 0h4.142zm-5 5L10 7.929v4.142L7.071 15H2.929L0 12.071V7.929L2.929 5h4.142z"
+                    />
+                  </svg>
+                  <span
+                    class="transition duration-150 ease-in-out"
+                    :class="category === '2' ? 'text-white dark:text-purple-400' : 'text-gray-600 dark:text-gray-300'"
+                    >Science</span
+                  >
+                </button>
+                <button
+                  style="border-radius: 0.375rem"
+                  class="font-medium px-4 py-2 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 shadow transition duration-150 ease-in-out rounded-lg inline-flex items-center justify-center m-1"
+                  :class="{ 'bg-indigo-500 hover:bg-indigo-500 dark:bg-indigo-600 dark:hover:bg-indigo-600 dark:bg-opacity-25 dark:hover:bg-opacity-25': category === '3' }"
+                  @click="category = '3'"
+                >
+                  <svg
+                    class="w-4 h-4 flex-shrink-0 mr-2"
+                    viewBox="0 0 16 16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      class="fill-current"
+                      :class="category === '3' ? 'text-indigo-200 dark:text-indigo-400' : 'text-indigo-500'"
+                      d="M1 0h8a1 1 0 011 1v10a1 1 0 01-1 1H1a1 1 0 01-1-1V1a1 1 0 011-1zm14.124 4.085v-.001a1 1 0 01.868 1.116l-1.243 9.932a1 1 0 01-1.117.868l-7.938-1 .248-1.988 6.946.871.995-7.938-2.007-.251.248-1.984 3 .375z"
+                    />
+                  </svg>
+                  <span
+                    class="transition duration-150 ease-in-out"
+                    :class="category === '3' ? 'text-white dark:text-indigo-400' : 'text-gray-600 dark:text-gray-300'"
+                    >Sales</span
+                  >
+                </button>
+                <button
+                  style="border-radius: 0.375rem"
+                  class="font-medium px-4 py-2 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 shadow transition duration-150 ease-in-out rounded-lg inline-flex items-center justify-center m-1"
+                  :class="{ 'bg-pink-500 hover:bg-pink-500 dark:bg-pink-600 dark:hover:bg-pink-600 dark:bg-opacity-25 dark:hover:bg-opacity-25': category === '4' }"
+                  @click="category = '4'"
+                >
+                  <svg
+                    class="w-4 h-4 flex-shrink-0 mr-2"
+                    viewBox="0 0 16 16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      class="fill-current"
+                      :class="category === '4' ? 'text-pink-200 dark:text-pink-400' : 'text-pink-500'"
+                      d="M13.172 5.178l-2.39-2.39 2.39-2.39C12.674.1 12.076 0 11.479 0a4.462 4.462 0 00-4.481 4.48c0 .499.1.897.199 1.395l-6.572 4.88c-.797.597-.797 1.692-.2 2.389l2.291 2.39c.697.697 1.792.597 2.39-.2l4.88-6.571c.497.1.995.199 1.493.199 2.49 0 4.48-1.992 4.48-4.481 0-.598-.099-1.195-.298-1.693l-2.49 2.39z"
+                    />
+                  </svg>
+                  <span
+                    class="transition duration-150 ease-in-out"
+                    :class="category === '4' ? 'text-white dark:text-pink-400' : 'text-gray-600 dark:text-gray-300'"
+                    >Technical</span
+                  >
+                </button>
+              </div>
+            </div>
+
+            {% comment %} Main Content Starts {% endcomment %}
+            {% include "djob_jobs/jobs_comp.html" %}
+            {% comment %} Main Content Ends {% endcomment %}
+
+
+            {% comment %}Pagination Starts{% endcomment %}
+            <nav class="flex justify-center sm:justify-between mt-12">
+
+              {% if is_paginated %}
+              {% if page_obj.has_previous%}
+              <a
+                class="hidden sm:inline-flex items-center font-medium text-teal-500 hover:underline"
+                href="?page={{ page_obj.previous_page_number }}"
+                ><svg
+                  class="w-3 h-3 flex-shrink-0 mt-px mr-2"
+                  viewBox="0 0 12 12"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    class="fill-current"
+                    d="M5.091 11L0 5.909 5.091.818l.875.875-3.602 3.591h9.329v1.25H2.364l3.602 3.602z"
+                  />
+                </svg>
+                <span>Previous</span></a>
+              {% else %}
+
+              <span
+                class="hidden sm:inline-flex items-center font-medium text-gray-400 dark:text-gray-500"
+                href="#0"
+                ><svg
+                  class="w-3 h-3 flex-shrink-0 mt-px mr-2"
+                  viewBox="0 0 12 12"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    class="fill-current"
+                    d="M5.091 11L0 5.909 5.091.818l.875.875-3.602 3.591h9.329v1.25H2.364l3.602 3.602z"
+                  />
+                </svg>
+                <span>Previous</span></span
+              >
+              {% endif %}
+              <ul class="flex">
+               {% for p in paginator.page_range %}
+                  {% if page_obj.number == p %}
+                <li class="mx-1">
+                  <a
+                    class="inline-flex text-teal-500 px-1 border-b border-teal-500 transition duration-150 ease-in-out"
+                    href="#0"
+                    >{{ p }}</a
+                  >
+                </li>
+                {% else %}
+                <li class="mx-1">
+                  <a
+                    class="inline-flex text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 px-1 transition duration-150 ease-in-out"
+                    href="?page={{ p }}"
+                    >{{ p }}</a
+                  >
+                </li>
+                {% endif %}
+                {% endfor %}
+
+              </ul>
+              {% if page_obj.has_next %}
+              <a
+                class="hidden sm:inline-flex items-center font-medium text-teal-500 hover:underline"
+                href="?page={{ page_obj.next_page_number }}"><span>Next</span>
+                <svg
+                  class="w-3 h-3 flex-shrink-0 mt-px ml-2"
+                  viewBox="0 0 12 12"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    class="fill-current"
+                    d="M6.602 11l-.875-.864L9.33 6.534H0v-1.25h9.33L5.727 1.693l.875-.875 5.091 5.091z"/></svg>
+                    </a>
+              {% else %}
+              <span
+                class="hidden sm:inline-flex items-center font-medium text-teal-500 hover:underline"
+                href="#0"
+                ><span>Next</span>
+                <svg
+                  class="w-3 h-3 flex-shrink-0 mt-px ml-2"
+                  viewBox="0 0 12 12"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    class="fill-current"
+                    d="M6.602 11l-.875-.864L9.33 6.534H0v-1.25h9.33L5.727 1.693l.875-.875 5.091 5.091z"/></svg>
+                    </span>
+            {% endif %}
+
+              {% endif %}
+            </nav>
+          </div>
+        </div>
+        {% comment %} Pagination Ends{% endcomment %}
+      </div>
+    </section>
+
+    {% comment %} Cant find? {% endcomment %}
+    <section class="relative border-t border-gray-200 dark:border-gray-800">
+      <div class="relative max-w-6xl mx-auto">
+        <div class="py-12 md:py-20">
+          <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+            <h2 class="h2 font-red-hat-display">
+              Can't find what you’re looking for?
+            </h2>
+          </div>
+          <div
+            class="max-w-xs sm:max-w-none mx-auto md:max-w-none lg:max-w-none grid gap-4 md:gap-6 sm:grid-cols-2 md:grid-cols-3"
+            data-aos-id-rellinks
+          >
+            <a
+              class="flex flex-col items-center text-center p-5 text-white group bg-gradient-to-tr from-teal-500 to-teal-400 dark:to-teal-500 shadow-2xl"
+              href="#0"
+              data-aos="fade-down"
+              data-aos-anchor="[data-aos-id-rellinks]"
+              ><svg
+                class="w-8 h-8 mb-3"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  class="fill-current"
+                  d="M11.586 23l-3-3L10 18.586 15.414 24 10 29.414 8.586 28l3-3H3v-8h2v6h6.586zm8.828-14l3 3L22 13.414 16.586 8 22 2.586 23.414 4l-3 3H29v8h-2V9h-6.586zM7 14A7 7 0 117 0a7 7 0 010 14zm0-2A5 5 0 107 2a5 5 0 000 10zm18 20a7 7 0 110-14 7 7 0 010 14zm0-2a5 5 0 100-10 5 5 0 000 10z"
+                  fill="#FFF"
+                  fill-rule="nonzero"
+                />
+              </svg>
+              <div
+                class="font-red-hat-display text-xl font-extrabold tracking-tighter mb-1"
+              >
+                Community Forum
+              </div>
+              <div class="flex-grow opacity-80 mb-3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </div>
+              <svg
+                class="w-4 h-4 mb-1 transform group-hover:rotate-45 transition duration-150 ease-in-out"
+                viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  class="fill-current"
+                  d="M14 1H6v2h5.586L1.293 13.293l1.414 1.414L13 4.414V10h2V2a1 1 0 00-1-1z"
+                />
+              </svg> </a
+            ><a
+              class="flex flex-col items-center text-center p-5 text-white group bg-gradient-to-tr from-purple-500 to-purple-400 dark:to-purple-500 shadow-2xl"
+              href="#0"
+              data-aos="fade-down"
+              data-aos-anchor="[data-aos-id-rellinks]"
+              data-aos-delay="150"
+              ><svg
+                class="w-8 h-8 mb-3"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  class="fill-current"
+                  d="M25.324 21H22v-2h3.324a6 6 0 014.992 2.671l1.206 1.81-1.16.451-15.167 5.9a7 7 0 01-6.3-.619L0 23.55V13h3c2.994 0 5.922 1.078 7.5 3H15a6 6 0 016 6v1H8v-2h10.874A4.002 4.002 0 0015 18H9.466l-.297-.443C8.123 15.995 5.612 15 3 15H2v7.451l7.97 5.075a5 5 0 004.5.442l13.996-5.444A4 4 0 0025.324 21zM25.6 8.439L19 15.27l-.72-.744-5.884-6.092a5.046 5.046 0 010-6.968A4.74 4.74 0 0119 1.223a4.738 4.738 0 016.603.243A5.046 5.046 0 0125.6 8.44zm-1.442-1.385a3.045 3.045 0 00-.001-4.206 2.738 2.738 0 00-4.307.445l-.849 1.371-.85-1.37a2.74 2.74 0 00-4.309-.447 3.045 3.045 0 00-.004 4.202L19 12.392l5.158-5.338z"
+                  fill="#FFF"
+                  fill-rule="nonzero"
+                />
+              </svg>
+              <div
+                class="font-red-hat-display text-xl font-extrabold tracking-tighter mb-1"
+              >
+                FAQs
+              </div>
+              <div class="flex-grow opacity-80 mb-3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </div>
+              <svg
+                class="w-4 h-4 mb-1 transform group-hover:rotate-45 transition duration-150 ease-in-out"
+                viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  class="fill-current"
+                  d="M14 1H6v2h5.586L1.293 13.293l1.414 1.414L13 4.414V10h2V2a1 1 0 00-1-1z"
+                />
+              </svg> </a
+            ><a
+              class="flex flex-col items-center text-center p-5 text-white group bg-gradient-to-tr from-indigo-500 to-indigo-400 dark:to-indigo-500 shadow-2xl sm:col-span-2 md:col-auto"
+              href="#0"
+              data-aos="fade-down"
+              data-aos-anchor="[data-aos-id-rellinks]"
+              data-aos-delay="300"
+              ><svg
+                class="w-8 h-8 mb-3"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  class="fill-current"
+                  d="M11.697 9.254l-4.3-4.3a14.14 14.14 0 00-2.443 2.442l4.3 4.3a8.03 8.03 0 012.443-2.442zm1.932-.896a8.036 8.036 0 014.742 0l4.538-4.538a14.027 14.027 0 00-13.818 0l4.538 4.538zm6.674.896a8.03 8.03 0 012.443 2.443l4.3-4.3a14.14 14.14 0 00-2.443-2.443l-4.3 4.3zm3.339 4.375a8.036 8.036 0 010 4.742l4.538 4.538a14.027 14.027 0 000-13.818l-4.538 4.538zm-.896 6.674a8.029 8.029 0 01-2.443 2.443l4.3 4.3a14.14 14.14 0 002.443-2.443l-4.3-4.3zm-4.375 3.34a8.036 8.036 0 01-4.742 0L9.091 28.18a14.027 14.027 0 0013.818 0l-4.538-4.538zm-6.674-.897a8.029 8.029 0 01-2.443-2.443l-4.3 4.3a14.14 14.14 0 002.443 2.443l4.3-4.3zm-3.34-4.375a8.036 8.036 0 010-4.742L3.82 9.09a14.027 14.027 0 000 13.818l4.538-4.538zm18.956 8.943c-6.248 6.248-16.378 6.248-22.627 0-6.248-6.249-6.248-16.38 0-22.628 6.249-6.248 16.38-6.248 22.627 0 6.249 6.249 6.249 16.38 0 22.628zm-7.07-7.071a6 6 0 10-8.486-8.486 6 6 0 008.485 8.486z"
+                />
+              </svg>
+              <div
+                class="font-red-hat-display text-xl font-extrabold tracking-tighter mb-1"
+              >
+                Contact Support
+              </div>
+              <div class="flex-grow opacity-80 mb-3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </div>
+              <svg
+                class="w-4 h-4 mb-1 transform group-hover:rotate-45 transition duration-150 ease-in-out"
+                viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  class="fill-current"
+                  d="M14 1H6v2h5.586L1.293 13.293l1.414 1.414L13 4.414V10h2V2a1 1 0 00-1-1z"
+                /></svg
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% comment %} Cant Find Ends {% endcomment %}
+  </div>
+
+  {% comment %} Footer Starts {% endcomment %}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,73 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head>
+    <meta charset="utf-8" />
+    <title>DJob</title>
+    <script>
+      if (
+        localStorage.getItem("dark-mode") == "true" ||
+        !("dark-mode" in localStorage)
+      ) {
+        document.querySelector("html").classList.add("dark");
+      } else {
+        document.querySelector("html").classList.remove("dark");
+      }
+    </script>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/float-label-css/1.0.2/float-label.min.css" integrity="sha512-do6mlRTj3wXyR+NteKUQe+lYsAbWeaKBF8G2xcojpoww7KrRvd4kLkqjjCP0WXj/ekjqUcYX8ZiZjEHDHJ4e9A==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static "images/favicons/favicon-16x16.png"%}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static "images/favicons/favicon-32x32.png" %}"
+    />
+    <link rel="manifest" href="images/favicons/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#fff" />
+    <meta name="application-name" content="appy-html" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="{% static "images/favicons/apple-touch-icon.png"%}"
+    />
+    <link rel="shortcut icon" href="images/favicons/favicon.ico" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="appy-html" />
+{#    <link href="https://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">#}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="{% static 'css/style.765e4214432aa61abd32.css'  %}" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+  </head>
+  <body
+    class="font-inter antialiased bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 tracking-tight"
+  >
+{% include "nav.html" %}
+  {% block content %}
+
+  {% endblock content %}
+  
+  {% include "footer.html"%}
+  {% include "action_btn.html"%}
+
+  
+{% block js %}
+   <script src="{% static "js/main.359b69d78b88793dabac.js" %}"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+          integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+          crossorigin="anonymous"></script>
+  {% endblock js %}
+  </body>
+</html>
