@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, CreateView, UpdateView
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView
 
 from .forms import JobForm
 from .models import Job
@@ -23,7 +23,7 @@ class JobPostView(LoginRequiredMixin, CreateView):
         return super(JobPostView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('profile', args=[self.request.user.id])
+        return reverse_lazy('jobs')
 
 
 class JobEditView(LoginRequiredMixin, UpdateView):
@@ -38,6 +38,20 @@ class JobEditView(LoginRequiredMixin, UpdateView):
         return super(JobEditView, self).form_valid(form)
 
 
-class JobDeleteView(LoginRequiredMixin, DetailView):
+class JobDeleteView(LoginRequiredMixin, DeleteView):
     model = Job
-    success_url = "/"
+
+    def get_success_url(self):
+        return reverse_lazy('jobs')
+
+class JobListView(LoginRequiredMixin, ListView):
+    model = Job
+    template_name = 'djob_jobs/job_list.html'
+    context_object_name = 'jobs'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(JobListView, self).get_context_data(**kwargs)
+
+        context['jobs'] = Job.objects.filter(user_id=self.request.user.id)
+
+        return context

@@ -2,24 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ad34eb7-c9bb-4011-ba75-48eec992edeb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/media/company_logos/default.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/extra_comps/delete_modal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Djob_Master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Djob_Master.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/related_jobs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/extra_comps/signout_modal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Djob_Master/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Djob_Master/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Djob_Master/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Djob_Master/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/djob_jobs/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/djob_jobs/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/extra_comps/editor.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extra_comps/editor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/extra_comps/delete_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extra_comps/delete_modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nav.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +44,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/media/company_logos" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/extra_comps" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -63,11 +55,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/extra_comps" />
       <recent name="$PROJECT_DIR$/media/company_logos" />
       <recent name="$PROJECT_DIR$/users/templates/users" />
       <recent name="$PROJECT_DIR$/static" />
       <recent name="$PROJECT_DIR$/djob_jobs" />
-      <recent name="$PROJECT_DIR$/templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -121,7 +113,7 @@
       <option name="presentableId" value="Default" />
       <updated>1616105350125</updated>
       <workItem from="1616105364287" duration="10561000" />
-      <workItem from="1616181657629" duration="8787000" />
+      <workItem from="1616181657629" duration="18245000" />
     </task>
     <servers />
   </component>

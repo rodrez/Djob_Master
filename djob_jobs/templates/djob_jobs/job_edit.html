@@ -13,12 +13,6 @@
         <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
             <div class="pt-32 pb-12 md:pt-40 md:pb-20">
                 <div class="max-w-3xl mx-auto">
-
-                    <form id='person-delete' method="POST" action="{% url 'job-delete' job.pk %}">
-                        {% csrf_token %}
-                        <a href="{% url 'job-delete' job.pk %}">
-                        <button class="bg-red-600 px-3 py-1 font-semibold text-white" onClick="deleteFunction('person-delete')">Delete</button></a>
-                    </form>
                     {% comment %} Content Start {% endcomment %}
                     <form action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
