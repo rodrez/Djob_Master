@@ -24,9 +24,6 @@
                     <div class="max-w-3xl mx-auto">
                         <article>
                             <header class="mb-8">
-
-                            <!-- TODO: Stylize the edit job post button -->
-
                                 <div class="md:text-left">
                                     <h1 class="h1 font-red-hat-display dark:text-gray-200 text-gray-600 mb-4"
                                             data-aos="fade-down">
@@ -83,16 +80,21 @@
                                     <br>
                                     <p class="font-semibold"><span class="dark:text-gray-200">Salary Range: </span>{{ job.salary_range }}</p><br>
                                     <div id="djob_job_summary">
-                                    <p><span class="font-semibold dark:text-gray-200">Job Summary:</span><br> {{ job.job_summary|safe }}</p><br>
+                                        <p><span class="font-semibold dark:text-gray-200">Job Summary:</span><br> {{ job.job_summary|safe }}</p><br>
                                     </div>
-                                    <p><span class="font-semibold dark:text-gray-200">Minimum Requirements:</span><br>{{ job.minimum_requirements|safe }}</p>
-                                    <br>
-                                    <p><span class="font-semibold dark:text-gray-200">Preferred Requirements:</span><br>{{ job.preferred_requirements|safe }}
-                                    </p><br>
-                                    <p><span class="font-semibold dark:text-gray-200">Benefits:</span><br>{{ job.benefits|safe }}</p><br>
+                                    <div id="djob_job_min_reqs">
+                                        <p><span class="font-semibold dark:text-gray-200">Minimum Requirements:</span><br>{{ job.minimum_requirements|safe }}</p>
+                                    </div>
+                                        <br>
+                                    <div id="djob_job_pref_reqs">
+                                        <p><span class="font-semibold dark:text-gray-200">Preferred Requirements:</span><br>{{ job.preferred_requirements|safe }}</p>
+                                    </div>
+                                        <br>
+                                    <div id="djob_job_benefits">
+                                        <p><span class="font-semibold dark:text-gray-200">Benefits:</span><br>{{ job.benefits|safe }}</p><br>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="">
+                                <div class="">
                                 <div class="mt-4 text-center justify-center ">
                                     <a class="p-2 px-8 bg-violet-500 rounded-md font-medium text-gray-100" href="{{ job.apply }}">
                                         Apply Now
@@ -100,18 +102,17 @@
                                 </div>
                                 <br/>
                             </div>
+                            </div>
+
                             <footer>
                                 <div
                                         class="dark bg-gray-800 py-8 px-8 md:py-12 md:px-12 text-center text-gray-100"
-                                        data-aos="fade-down"
-                                >
+                                        data-aos="fade-down">
                                     <div class="text-xl font-medium mb-6">
                                         Sign up to our newsletter for more articles like this.
                                     </div>
                                     <form>
-                                        <div
-                                                class="relative flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-sm sm:px-4"
-                                        >
+                                        <div class="relative flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-sm sm:px-4">
                                             <input
                                                     type="email"
                                                     class="form-input w-full px-4 py-2 mb-2 sm:mb-0 sm:mr-2"
@@ -151,16 +152,22 @@
     {% include  'djob_jobs/related_jobs.html' %}
     </main>
 
-
 <script>
 
     var job_summ = document.getElementById('djob_job_summary').getElementsByTagName('ul')[0];
-    console.log(job_summ)
-    job_summ.classList.add("list-disc");
-    job_summ.classList.add("list-inside");
+    var job_min_reqs = document.getElementById('djob_job_min_reqs').getElementsByTagName('ul')[0];
+    var job_pref_reqs = document.getElementById('djob_job_pref_reqs').getElementsByTagName('ul')[0];
+    var job_benefits = document.getElementById('djob_job_benefits').getElementsByTagName('ul')[0];
 
+    var arr = [job_summ, job_min_reqs, job_pref_reqs, job_benefits];
+    console.log(arr)
+    for (var i=0; i < arr.length; i++){
+        if (arr[i]){
+            arr[i].classList.add("list-disc");
+            arr[i].classList.add("list-inside");
+        }
+    }
 
-
-    </script>
+</script>
 
 {% endblock content %}

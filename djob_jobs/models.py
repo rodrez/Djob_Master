@@ -27,9 +27,9 @@ class Job(models.Model):
         default="1",
     )
     job_summary = RichTextField(default="Enter job description.")
-    minimum_requirements = models.TextField(default="Enter minimum requirements.")
-    preferred_requirements = models.TextField(default="Enter minimum requirements.", blank=True, null=True)
-    benefits = models.TextField(blank=True, null=True)
+    minimum_requirements = RichTextField(default="Enter minimum requirements.")
+    preferred_requirements = RichTextField(default="Enter minimum requirements.", blank=True, null=True)
+    benefits = RichTextField(blank=True, null=True)
     salary_range = models.CharField(blank=True, null=True, max_length=30)
     days_posted = models.DateField(default=datetime.date.today().strftime("%m/%d/%Y"))
     company_logo = models.ImageField(upload_to="company_logos",
@@ -41,6 +41,6 @@ class Job(models.Model):
     class Meta:
         ordering = ["-days_posted"]
 
-        permissions = [
-            ('employer', 'Can post new jobs'),
-        ]
+        # permissions = [
+        #     ('employer', 'Can post new jobs'),
+        # ]
