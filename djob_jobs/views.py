@@ -36,3 +36,8 @@ class JobEditView(LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         return super(JobEditView, self).form_valid(form)
+
+
+class JobDeleteView(LoginRequiredMixin, DetailView):
+    model = Job
+    success_url = "/"

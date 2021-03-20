@@ -14,6 +14,11 @@
             <div class="pt-32 pb-12 md:pt-40 md:pb-20">
                 <div class="max-w-3xl mx-auto">
 
+                    <form id='person-delete' method="POST" action="{% url 'job-delete' job.pk %}">
+                        {% csrf_token %}
+                        <a href="{% url 'job-delete' job.pk %}">
+                        <button class="bg-red-600 px-3 py-1 font-semibold text-white" onClick="deleteFunction('person-delete')">Delete</button></a>
+                    </form>
                     {% comment %} Content Start {% endcomment %}
                     <form action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -70,7 +75,7 @@
 
                         <input class="bg-violet-500 text-white mt-4 p-1 px-3 rounded font-semibold" type="submit" name="Update" value="Update" id="">
                          {% else %}
-                         {% include '403.html' %}
+                         {% include 'pages/403.html' %}
                         {% endif %}
                     </form>
 
@@ -81,3 +86,24 @@
         </div>
     </main>
 {% endblock content %}
+
+{% block js %}
+    <script>
+        var delete_form = 'person-delete'
+        function deleteFunction() {
+            if(!confirm("Are you sure you want to delete?")){
+                document.getElementById(delete_form).preventDefault();
+            }else{
+             document.getElementById("person-delete").submit();
+            }
+        }
+
+        var editors = document.getElementsByClassName("django-ckeditor-widget");
+        console.log(editors)
+        for (var i=0; i < editors.length; i++){
+            editors[i].classList.add("w-full")
+        }
+    </script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{% endblock %}

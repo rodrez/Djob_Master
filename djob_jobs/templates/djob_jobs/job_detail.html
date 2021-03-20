@@ -33,7 +33,7 @@
                                         {{ job.job_title }}
                                     </h1>
                                     {% if request.user == job.user %}
-                                    <a class="bg-blue-500 py-1 px-3 rounded shadow" href="{% url 'job-edit' pk=job.id %}">Edit</a>
+                                    <a class="bg-blue-500 text-white font-semibold py-1 px-3 rounded shadow" href="{% url 'job-edit' pk=job.id %}">Edit</a>
 
                                 {% endif %}
                                     <div class="flex items-center justify-left"
@@ -52,7 +52,7 @@
                                                 src="{{ job.company_logo.url }}"
                                                 width="36"
                                                 height="36"
-                                                alt="Author 04"/>
+                                                alt="{{ job.company }}"/>
                                         </a>
                                     </div>
                                 </div>
@@ -89,7 +89,9 @@
                                 <div>
                                     <br>
                                     <p class="font-semibold"><span class="dark:text-gray-200">Salary Range: </span>{{ job.salary_range }}</p><br>
+                                    <div id="djob_job_summary">
                                     <p><span class="font-semibold dark:text-gray-200">Job Summary:</span><br> {{ job.job_summary|safe }}</p><br>
+                                    </div>
                                     <p><span class="font-semibold dark:text-gray-200">Minimum Requirements:</span><br>{{ job.minimum_requirements|safe }}</p>
                                     <br>
                                     <p><span class="font-semibold dark:text-gray-200">Preferred Requirements:</span><br>{{ job.preferred_requirements|safe }}
@@ -221,7 +223,7 @@
                                 <figure>
                                     <img
                                             class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-75 transition duration-700 ease-out"
-                                            src="{% static "images/related-post-02.jpg" %}""
+                                            src="{% static "images/related-post-02.jpg" %}"
                                     width="372"
                                     height="182"
                                     alt="Related post 02"
@@ -271,5 +273,15 @@
     </main>
 
 
+<script>
+
+    var job_summ = document.getElementById('djob_job_summary').getElementsByTagName('ul')[0];
+    console.log(job_summ)
+    job_summ.classList.add("list-disc");
+    job_summ.classList.add("list-inside");
+
+
+
+    </script>
 
 {% endblock content %}

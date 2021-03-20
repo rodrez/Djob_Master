@@ -1,5 +1,8 @@
+import os
+
 from django.db import models
 import datetime
+from ckeditor.fields import RichTextField
 
 from Djob_Master import settings
 
@@ -23,13 +26,14 @@ class Job(models.Model):
         choices=JOB_TAGS,
         default="1",
     )
-    job_summary = models.TextField(default="Enter job description.")
+    job_summary = RichTextField(default="Enter job description.")
     minimum_requirements = models.TextField(default="Enter minimum requirements.")
     preferred_requirements = models.TextField(default="Enter minimum requirements.", blank=True, null=True)
     benefits = models.TextField(blank=True, null=True)
     salary_range = models.CharField(blank=True, null=True, max_length=30)
     days_posted = models.DateField(default=datetime.date.today().strftime("%m/%d/%Y"))
-    company_logo = models.ImageField(upload_to="company_logos", default="/company_logos/default.png")
+    company_logo = models.ImageField(upload_to="company_logos",
+                                     default='images/company_logos/default.png')
 
     def __str__(self):
         return self.job_title

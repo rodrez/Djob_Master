@@ -2,17 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ad34eb7-c9bb-4011-ba75-48eec992edeb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/media/company_logos/default.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/extra_comps/delete_modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Djob_Master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Djob_Master.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Djob_Master/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Djob_Master/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Djob_Master/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Djob_Master/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_jobs/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_jobs/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_jobs/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/extra_comps/editor.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extra_comps/editor.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -27,26 +48,69 @@
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/media/company_logos" />
+    <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/media/company_logos" />
       <recent name="$PROJECT_DIR$/users/templates/users" />
       <recent name="$PROJECT_DIR$/static" />
       <recent name="$PROJECT_DIR$/djob_jobs" />
       <recent name="$PROJECT_DIR$/templates" />
-      <recent name="$PROJECT_DIR$/djob_jobs/templates/djob_jobs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Djob_Master" />
       <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$/djob_profile/templates/djob_profile" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Djob" type="Python.DjangoServer" factoryName="Django server">
+      <module name="Djob_Master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="Djob_Master.settings" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/.local/share/virtualenvs/Djob_Master-hAL5Me-P/bin/python" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="http://127.0.0.1:8000/" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -57,6 +121,7 @@
       <option name="presentableId" value="Default" />
       <updated>1616105350125</updated>
       <workItem from="1616105364287" duration="10561000" />
+      <workItem from="1616181657629" duration="8787000" />
     </task>
     <servers />
   </component>
@@ -73,5 +138,11 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/main" />
+    </ignored-roots>
   </component>
 </project>

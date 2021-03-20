@@ -11,6 +11,7 @@
                 <div class="max-w-3xl mx-auto">
 
                     {% comment %} Content Start {% endcomment %}
+
                     <form action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="text-center justify-center">
@@ -46,7 +47,7 @@
                         <p>{{ form.location|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
                         <p class="font-semibold" >{{ form.apply.label }}</p>
                         <p>{{ form.apply|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.job_summary.label }}</p>
+                        <p class="font-semibold" id="djob_job_summary">{{ form.job_summary.label }}</p>
                         <p>{{ form.job_summary|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
                         <p class="font-semibold" >{{ form.minimum_requirements.label }}</p>
                         <p>{{ form.minimum_requirements|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
@@ -62,9 +63,9 @@
                         <p class="font-semibold" >{{ form.company_logo.label }}</p>
                         <p>{{ form.company_logo|add_class:'flex-1 h-10 py-2 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
 
-                        {% include "extra_comps/editor.html" %}
+{#                        {% include "extra_comps/editor.html" %}#}
 
-                        <input class="bg-violet-500 text-white mt-4 p-1 px-3 rounded font-semibold" type="submit" name="Update" value="Update" id="">
+                        <input class="bg-violet-500 text-white mt-4 p-1 px-3 rounded font-semibold" type="submit" name="Update" value="Update" onclick="" id="">
                     </form>
 
                     {% comment %} Content Ends {% endcomment %}
@@ -74,3 +75,20 @@
         </div>
     </main>
 {% endblock content %}
+
+{% block js %}
+    <script>
+
+    var editors = document.getElementsByClassName("django-ckeditor-widget");
+    console.log(editors)
+    for (var i=0; i < editors.length; i++){
+        editors[i].classList.add("w-full");
+    }
+
+    function assignData(e) {
+        
+    }
+    </script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{% endblock js %}

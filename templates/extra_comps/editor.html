@@ -48,15 +48,6 @@
                 <button class="outline-none focus:outline-none border-r border-gray-200 w-10 h-10 mr-1 hover:text-indigo-500 active:bg-gray-50" @click="format('insertOrderedList')">
                     <i class="mdi mdi-format-list-numbered"></i>
                 </button>
-{#                <button class="outline-none focus:outline-none border-l border-r border-gray-200 w-10 h-10 hover:text-indigo-500 active:bg-gray-50" @click="format('justifyLeft')">#}
-{#                    <i class="mdi mdi-format-align-left"></i>#}
-{#                </button>#}
-{#                <button class="outline-none focus:outline-none border-r border-gray-200 w-10 h-10 hover:text-indigo-500 active:bg-gray-50" @click="format('justifyCenter')">#}
-{#                    <i class="mdi mdi-format-align-center"></i>#}
-{#                </button>#}
-{#                <button class="outline-none focus:outline-none border-r border-gray-200 w-10 h-10 hover:text-indigo-500 active:bg-gray-50" @click="format('justifyRight')">#}
-{#                    <i class="mdi mdi-format-align-right"></i>#}
-{#                </button>#}
             </div>
             <div class="w-full">
                 <iframe x-ref="wysiwyg" class="w-full h-96 overflow-y-auto"></iframe>
@@ -76,7 +67,7 @@ function app() {
             this.wysiwyg.contentDocument.querySelector('head').innerHTML += `<style>
             *, ::after, ::before {box-sizing: border-box;}
             :root {tab-size: 4;}
-            html {line-height: 1.15;text-size-adjust: 100%;}
+            html {line-height: 1.15; text-size-adjust: 100%;}
             body {margin: 0px; padding: 1rem 0.5rem;}
             body {font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";}
             </style>`;
