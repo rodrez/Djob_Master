@@ -20,7 +20,7 @@
                                 {% for job in jobs %}
                                     <div class="shadow p-2 mb-4 rounded flex">
                                     <div class="max-w-8/12">
-                                        <p class="font-bold h4">{{ job.job_title }}</p>
+                                        <p class="font-bold h4 text-violet-500">{{ job.job_title }}</p>
                                           <span class="font-medium text-sm">Posted - {{ job.days_posted }}</span>
                                         <p class="mx-2 mr-2 flex-auto">{{ job.job_summary|truncatechars:100 |safe }}</p>
                                     </div>
