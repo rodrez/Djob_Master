@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',  # Static Files
     'django.contrib.staticfiles',
     'django.contrib.sites',  # All Auth
     'django.contrib.humanize',
@@ -57,6 +58,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Static
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -157,7 +159,7 @@ SITE_ID = 1
 # CKEditor Settings
 CKEDITOR_CONFIGS = {
     'default': {
-        'skin': 'minimalist',
+        # 'skin': 'minimalist',
         'uiColor': '#ffffff',
         'width': '100%',
         'toolbar': 'Custom',

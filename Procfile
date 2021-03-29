@@ -1,0 +1,1 @@
+web: gunicorn Djob_Master.wsgi --log-file -

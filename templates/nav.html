@@ -15,20 +15,20 @@
                 <ul class="flex flex-grow flex-wrap items-center font-medium">
                     <li class="uppercase">
                         {% if user.is_authenticated %}
-                        <button type="button" class="flex font-bold uppercase text-gray-100 px-2 rounded bg-red-600 hover:bg-red-700 hover:text-gray-400 dark:text-white dark:hover:text-gray-200 py-2"
+                        <button type="button" class="flex font-semibold uppercase text-white px-2 rounded bg-red-600 hover:bg-red-700 hover:text-gray-100 dark:text-white dark:hover:text-gray-200 py-1"
                            onclick="displayModal('signoutModal')">
                             Logout
                         </button>
                     </li>
                             <li>
-                                <a class="text-gray-600 font-bold uppercase hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 px-5 py-2 flex items-center transition duration-150 ease-in-out"
+                                <a class="text-gray-600 font-semibold uppercase hover:text-violet-500 dark:text-white dark:hover:text-violet-500 px-5 py-2 flex items-center transition duration-150 ease-in-out"
                                 href="{% url 'job-post' %}">
                                 Job
                                 <span class="font-bold"> +</span></a>
                             </li>
 
                         {% else %}
-                        <a class="flex uppercase font-bold text-white hover:text-gray-900 dark:text-white dark:hover:text-gray-400 bg-violet-500 px-3 rounded py-2"
+                        <a class="flex uppercase font-semibold text-white hover:text-gray-900 dark:text-white dark:hover:text-gray-400 bg-violet-500 px-3 rounded py-2"
                            href="{% url 'account_login' %}">
                             Login
                         </a>
@@ -36,7 +36,7 @@
                     {% if user.is_authenticated %}
                     <li>
 
-                        <a class="text-gray-600 uppercase font-bold ml-auto hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 px-5 py-2 flex items-center transition duration-150 ease-in-out"
+                        <a class="text-gray-600 uppercase font-semibold ml-auto hover:text-violet-500 dark:text-white dark:hover:text-violet-500 px-5 py-2 flex items-center transition duration-150 ease-in-out"
                                 href="{% url 'jobs' %}">
                             My Jobs
                         </a>
@@ -45,7 +45,7 @@
 
                         <li>
 
-                        <a class="text-gray-600 uppercase border-b-4 border-green-400 font-bold ml-auto hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 px-5 py-2 flex items-center transition duration-150 ease-in-out"
+                        <a class="text-gray-600 uppercase border-b-4 border-green-400 font-semibold ml-auto hover:text-violet-500 dark:text-white dark:hover:text-violet-500 px-5 py-2 flex items-center transition duration-150 ease-in-out"
                                 href="{% url 'profile' request.user.get_profile %}">
                             {{ request.user.username }}
                         </a>
@@ -224,9 +224,18 @@
                             {% endif %}
                         {% if user.is_authenticated %}
                             <li>
+
+                        <a class="text-gray-600 uppercase font-bold ml-auto hover:text-violet-500 dark:text-white dark:hover:text-violet-500 px-5 py-2 flex items-center transition duration-150 ease-in-out"
+                                href="{% url 'jobs' %}">
+                            My Jobs
+                        </a>
+
+                    </li>
+                            <li>
                                 <a class="font-medium w-full font-semibold inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 rounded text-white bg-violet-500 hover:bg-violet-400 transition duration-150 ease-in-out"
                                         href="{% url 'job-post' %}">Add Job +</a>
                             </li>
+
                             <li>
                                 <button type="button" class="font-medium inline-flex items-center justify-center w-full text-white px-2 rounded bg-red-600 hover:bg-red-700 hover:text-gray-400 dark:text-gray-300 dark:hover:text-gray-100 py-2"
                                    onclick="displayModal('signoutModal')">
