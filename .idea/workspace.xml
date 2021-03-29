@@ -3,9 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="7ad34eb7-c9bb-4011-ba75-48eec992edeb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Djob_Master/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Djob_Master/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/djob_jobs/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/jobs_comp.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/jobs_comp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_profile/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_profile/templates/djob_profile/experience_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/templates/djob_profile/experience_update.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_profile/templates/djob_profile/profile_components/display_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/templates/djob_profile/profile_components/display_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_profile/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/extra_comps/delete_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extra_comps/delete_modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/extra_comps/signout_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extra_comps/signout_modal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nav.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +117,10 @@
       <option name="presentableId" value="Default" />
       <updated>1616105350125</updated>
       <workItem from="1616105364287" duration="10561000" />
-      <workItem from="1616181657629" duration="20218000" />
+      <workItem from="1616181657629" duration="20375000" />
+      <workItem from="1616293201721" duration="931000" />
+      <workItem from="1616332349597" duration="4366000" />
+      <workItem from="1616982088503" duration="1026000" />
     </task>
     <servers />
   </component>

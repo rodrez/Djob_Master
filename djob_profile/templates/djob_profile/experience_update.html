@@ -178,7 +178,20 @@
                     console.log(elements[i].value);
                     }
                 }
+
+
         </script>
+    <script>
+    var editors = document.getElementsByClassName("django-ckeditor-widget");
+            console.log(editors)
+            for (var i=0; i < editors.length; i++){
+                editors[i].classList.add("w-full");
+            }
+    </script>
+
+
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 
 
 {% endblock content %}

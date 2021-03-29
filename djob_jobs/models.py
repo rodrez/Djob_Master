@@ -33,7 +33,7 @@ class Job(models.Model):
     salary_range = models.CharField(blank=True, null=True, max_length=30)
     days_posted = models.DateField(default=datetime.date.today().strftime("%m/%d/%Y"))
     company_logo = models.ImageField(upload_to="company_logos",
-                                     default='images/company_logos/default.png')
+                                     default='company_logos/default.png')
 
     def __str__(self):
         return self.job_title

@@ -13,37 +13,45 @@
 
             <nav class="hidden md:flex md:flex-grow">
                 <ul class="flex flex-grow flex-wrap items-center font-medium">
-                    <li>
+                    <li class="uppercase">
                         {% if user.is_authenticated %}
-                        <button type="button" class="flex text-gray-100 px-2 rounded bg-red-600 hover:bg-red-700 hover:text-gray-400 dark:text-gray-300 dark:hover:text-gray-100 py-2"
+                        <button type="button" class="flex font-bold uppercase text-gray-100 px-2 rounded bg-red-600 hover:bg-red-700 hover:text-gray-400 dark:text-white dark:hover:text-gray-200 py-2"
                            onclick="displayModal('signoutModal')">
                             Logout
                         </button>
                     </li>
                             <li>
-                        <a
-                                class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 px-5 py-2 flex items-center transition duration-150 ease-in-out"
-                                href="{% url 'job-post' %}"
-                        >Job <span class="font-bold">+</span></a
-                        >
-                    </li>
+                                <a class="text-gray-600 font-bold uppercase hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 px-5 py-2 flex items-center transition duration-150 ease-in-out"
+                                href="{% url 'job-post' %}">
+                                Job
+                                <span class="font-bold"> +</span></a>
+                            </li>
 
                         {% else %}
-
-                        <a
-                                        class="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2"
-                                        href="{% url 'account_login' %}"
-                                >Login</a>
+                        <a class="flex uppercase font-bold text-white hover:text-gray-900 dark:text-white dark:hover:text-gray-400 bg-violet-500 px-3 rounded py-2"
+                           href="{% url 'account_login' %}">
+                            Login
+                        </a>
                         {% endif %}
+                    {% if user.is_authenticated %}
                     <li>
-                        {% if user.is_authenticated %}
-                        <a
-                                class="text-gray-600 uppercase border-b-4 border-green-400 font-bold ml-auto hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 px-5 py-2 flex items-center transition duration-150 ease-in-out"
-                                href="{% url 'profile' request.user.get_profile %}"
-                        >{{ request.user.username }}</a
-                        >
-                        {% endif %}
+
+                        <a class="text-gray-600 uppercase font-bold ml-auto hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 px-5 py-2 flex items-center transition duration-150 ease-in-out"
+                                href="{% url 'jobs' %}">
+                            My Jobs
+                        </a>
+
                     </li>
+
+                        <li>
+
+                        <a class="text-gray-600 uppercase border-b-4 border-green-400 font-bold ml-auto hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 px-5 py-2 flex items-center transition duration-150 ease-in-out"
+                                href="{% url 'profile' request.user.get_profile %}">
+                            {{ request.user.username }}
+                        </a>
+
+                    </li>
+                {% endif %}
                     <li
                             class="relative"
                             x-data="{ open: false }"

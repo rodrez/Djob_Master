@@ -94,7 +94,6 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         return context
 
 
-# TODO: Auto populate the user
 class EducationFormView(LoginRequiredMixin, FormView):
     template_name = 'djob_profile/education_update.html'
     form_class = EducationFormSet

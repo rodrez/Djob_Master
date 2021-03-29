@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 from Djob_Master import settings
 
@@ -5,7 +6,7 @@ from Djob_Master import settings
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profiles')
-    summary = models.TextField(default="Enter something awesome about yourself.")
+    summary = RichTextField(default="Enter something awesome about yourself.")
     phone = models.CharField(max_length=15, blank=True, help_text='Contact phone number')
     zipcode = models.CharField(max_length=255, default='17055')
     location = models.CharField(max_length=300, null=True, blank=True)
@@ -62,7 +63,7 @@ class Experience(models.Model):
     job_title = models.CharField(default='Default - Engineer', max_length=150, null=True, blank=True)
     time_at_job = models.CharField(default='Default - 1 year', max_length=150, null=True, blank=True)
     job_location = models.CharField(default='Default - Los Angeles', max_length=150, null=True, blank=True)
-    job_description = models.TextField(default="Analyze the needs of the user \n" \
+    job_description = RichTextField(default="Analyze the needs of the user \n" \
                                                "Design, test and develop the software to meet those needs \n"
                                                "Recommend upgrades for existing systems and programs \n" \
                                                "Develop separate elements of a software that work well in the program as a whole\n" \

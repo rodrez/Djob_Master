@@ -157,6 +157,8 @@ SITE_ID = 1
 # CKEditor Settings
 CKEDITOR_CONFIGS = {
     'default': {
+        'skin': 'minimalist',
+        'uiColor': '#ffffff',
         'width': '100%',
         'toolbar': 'Custom',
         'toolbar_Custom': [
