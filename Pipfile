@@ -10,6 +10,8 @@ pillow = "*"
 django-widget-tweaks = "*"
 python-dotenv = "*"
 django-ckeditor = "*"
+whitenoise = "*"
+gunicorn = "*"
 
 [dev-packages]
 
