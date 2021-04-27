@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'widget_tweaks',
     'ckeditor',
+    'livereload',
 ]
 
 MIDDLEWARE = [

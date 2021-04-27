@@ -12,6 +12,7 @@ python-dotenv = "*"
 django-ckeditor = "*"
 whitenoise = "*"
 gunicorn = "*"
+django-livereload-server = "*"
 
 [dev-packages]
 
