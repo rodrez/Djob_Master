@@ -7,6 +7,11 @@ register = template.Library()
 @register.filter
 @stringfilter
 def upto(value, delimiter=None):
+    """
+    Args:
+        value:
+        delimiter:
+    """
     return value.split(delimiter)[0]
 upto.is_safe = True
 

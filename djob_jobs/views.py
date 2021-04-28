@@ -19,6 +19,10 @@ class JobPostView(LoginRequiredMixin, CreateView):
     context_object_name = 'job_post'
 
     def form_valid(self, form):
+        """
+        Args:
+            form:
+        """
         form.instance.user = self.request.user
         return super(JobPostView, self).form_valid(form)
 
@@ -35,6 +39,10 @@ class JobEditView(LoginRequiredMixin, UpdateView):
         return reverse_lazy('job-detail', args=[self.object.id])
 
     def form_valid(self, form):
+        """
+        Args:
+            form:
+        """
         return super(JobEditView, self).form_valid(form)
 
 
@@ -50,6 +58,11 @@ class JobListView(LoginRequiredMixin, ListView):
     context_object_name = 'jobs'
 
     def get_context_data(self, *, object_list=None, **kwargs):
+        """
+        Args:
+            object_list:
+            **kwargs:
+        """
         context = super(JobListView, self).get_context_data(**kwargs)
 
         context['jobs'] = Job.objects.filter(user_id=self.request.user.id)

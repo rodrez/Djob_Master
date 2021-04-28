@@ -48,6 +48,10 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
 
+        """
+        Args:
+            form:
+        """
         if self.request.method == 'POST':
 
             self.object.maker = Profile.objects.get(pk=self.request.user.pk)
@@ -71,12 +75,20 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
             return redirect(self.get_success_url())
 
     def form_invalid(self, **kwargs):
+        """
+        Args:
+            **kwargs:
+        """
         return self.render_to_response(self.get_context_data(**kwargs))
 
     def get_success_url(self):
         return reverse_lazy('profile', args=[self.object.id])
 
     def get_context_data(self, **kwargs):
+        """
+        Args:
+            **kwargs:
+        """
         context = super(ProfileUpdateView, self).get_context_data(**kwargs)
 
         # Gets the data from the current user
@@ -102,6 +114,10 @@ class EducationFormView(LoginRequiredMixin, FormView):
         return reverse_lazy('profile', args=[self.request.user.id])
 
     def get_context_data(self, **kwargs):
+        """
+        Args:
+            **kwargs:
+        """
         context = super(EducationFormView, self).get_context_data(**kwargs)
 
         context['profile'] = Profile.objects.get(id=self.request.user.pk)
@@ -116,6 +132,10 @@ class EducationFormView(LoginRequiredMixin, FormView):
 
     def form_valid(self, form):
 
+        """
+        Args:
+            form:
+        """
         print(form.model)
 
         if form.is_valid():
@@ -134,6 +154,10 @@ class ExperienceFormView(LoginRequiredMixin, FormView):
         return reverse_lazy('profile', args=[self.request.user.id])
 
     def get_context_data(self, **kwargs):
+        """
+        Args:
+            **kwargs:
+        """
         context = super(ExperienceFormView, self).get_context_data(**kwargs)
 
         context['profile'] = Profile.objects.get(id=self.request.user.get_profile())
@@ -146,6 +170,10 @@ class ExperienceFormView(LoginRequiredMixin, FormView):
         return context
 
     def form_valid(self, form):
+        """
+        Args:
+            form:
+        """
         if form.is_valid():
             form.save()
         return super(ExperienceFormView, self).form_valid(form)

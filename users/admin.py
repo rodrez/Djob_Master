@@ -4,6 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 from djob_profile.models import Profile, Education, Experience
 from .models import User
 
+
 # Register your models here.
 class ProfileInline(admin.StackedInline):
     model = Profile
@@ -28,8 +29,12 @@ class ExperienceInline(admin.StackedInline):
 class CustomUserAdmin(UserAdmin):
     inlines = (ProfileInline, EducationInline, ExperienceInline )
 
-
     def get_inline_instances(self, request, obj=None):
+        """
+        Args:
+            request:
+            obj:
+        """
         if not obj:
             return list()
         return super(CustomUserAdmin, self).get_inline_instances(request, obj)

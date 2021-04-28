@@ -1,58 +1,64 @@
 {% load static %}
 <style>
-body {
- --l: 3.5em;
-}
+    body {
+        --l: 2.75em;
+    }
 
-.wrapper {
+    .wrapper {
 
-  background: #222;
-  position: sticky;
-  bottom: 10;
-}
+        background: #222;
+        position: sticky;
+        bottom: 10;
+    }
 
-.triggerButton { display: none; }
+    .triggerButton {
+        display: none;
+    }
 
-.triggerButton + label {
-  cursor: pointer;
-  position: absolute;
-  right: 1em;
-  bottom: 1em;
-  background-color: rgba(139, 92, 246,1);
-  height: var(--l);
-  width: var(--l);
-  border-radius: 50%;
-  z-index: 2;
-}
+    .triggerButton + label {
+        cursor: pointer;
+        position: absolute;
+        right: 1em;
+        bottom: 1em;
+        background-color: rgba(139, 92, 246, 1);
+        height: var(--l);
+        width: var(--l);
+        border-radius: 10%;
+        z-index: 2;
+    }
 
-.triggerButton + label:before, .triggerButton + label:after {
-  position: absolute;
-  content: '';
-  height: calc(var(--l) / 2 );
-  width: .5em;
-  background-color: #fff;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  border-radius: .5em;
-  transition: all .25s;
-}
+    .triggerButton + label:before, .triggerButton + label:after {
+        position: absolute;
+        content: '';
+        height: calc(var(--l) / 2);
+        width: .5em;
+        background-color: #fff;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-radius: .5em;
+        transition: all .25s;
+    }
 
-.triggerButton + label:before {
-  height: calc(var(--l) / 2 );
-  width: .25em;
-}
+    .triggerButton + label:before {
+        height: calc(var(--l) / 2);
+        width: .20em;
+    }
 
-.triggerButton + label:after {
-  width: calc(var(--l) / 2 );
-  height: .25em;
-}
+    .triggerButton + label:after {
+        width: calc(var(--l) / 2);
+        height: .25em;
+    }
 
-.triggerButton:checked + label:before { transform: rotatez(-45deg); }
+    .triggerButton:checked + label:before {
+        transform: rotatez(-45deg);
+    }
 
-.triggerButton:checked + label:after { transform: rotatez(-45deg); }
+    .triggerButton:checked + label:after {
+        transform: rotatez(-45deg);
+    }
 
 .one, .two, .three, .four {
   cursor: pointer;
@@ -92,20 +98,22 @@ body {
   transition-delay: .1s
 }
 
-.triggerButton:checked ~ .four {
-  
-  transform: translateY(-9em);
-}
+    .triggerButton:checked ~ .four {
 
-.triggerButton:checked ~.one:hover, .triggerButton:checked ~ .two:hover, .triggerButton:checked ~ .three:hover, .triggerButton:checked ~.four:hover { opacity: .9; }
+        transform: translateY(-9em);
+    }
+
+    .triggerButton:checked ~ .one:hover, .triggerButton:checked ~ .two:hover, .triggerButton:checked ~ .three:hover, .triggerButton:checked ~ .four:hover {
+        opacity: .9;
+    }
 </style>
 
 <div class="wrapper fixed z-40 bottom-0 md:right-3/4 lg:right-3/4">
-  <input id="triggerButton" class="triggerButton" type="checkbox">
-  <label for="triggerButton"></label>
-   
-  <div class="one">
-      <a href="#"><img class="object-cover w-full h-full" alt="message" src="{% static 'images/utilities/email2.svg' %}"  srcset=""></a>
+    <input id="triggerButton" class="triggerButton" type="checkbox">
+    <label class="h-12" for="triggerButton"></label>
+
+    <div class="one">
+        <a href="#"><img class="object-cover w-full h-full" alt="message" src="{% static 'images/utilities/email2.svg' %}"  srcset=""></a>
 {#      <a href="{% url 'chat' %}"><img class="object-cover w-full h-full" alt="message" src="{% static 'images/utilities/email2.svg' %}"  srcset=""></a>#}
     </div>
    

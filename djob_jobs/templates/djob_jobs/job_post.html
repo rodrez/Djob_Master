@@ -35,39 +35,40 @@
                                 {% endfor %}
                             {% endif %}
 
-                            </div>
-                            </div>
-                        <p class="font-semibold" >{{ form.user.label }}</p>
-                        <p>{{ form.user|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.job_title.label }}</p>
-                        <p>{{ form.job_title|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.tag.label }}</p>
-                        <p>{{ form.tag|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.company.label }}</p>
-                        <p>{{ form.company|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.location.label }}</p>
-                        <p>{{ form.location|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.apply.label }}</p>
-                        <p>{{ form.apply|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
+                        </div>
+                        </div>
+                        <p class="font-semibold">{{ form.user.label }}</p>
+                        <p>{{ form.user|add_class:'border-2 border-gray-200 rounded hover:border-gray-300 shadow focus:outline-none focus:border-blue-500 transition-colors' }}</p>
+                        <p class="font-semibold">{{ form.job_title.label }}</p>
+                        <p>{{ form.job_title|add_class:'w-full border-2 border-gray-200 rounded hover:border-gray-300 shadow focus:outline-none focus:border-blue-500 transition-colors' }}</p>
+                        <p class="font-semibold">{{ form.tag.label }}</p>
+                        <p>{{ form.tag|add_class:'w-full border-2 border-gray-200 rounded hover:border-gray-300 shadow focus:outline-none focus:border-blue-500 transition-colors' }}</p>
+                        <p class="font-semibold">{{ form.company.label }}</p>
+                        <p>{{ form.company|add_class:'w-full border-2 border-gray-200 rounded hover:border-gray-300 shadow focus:outline-none focus:border-blue-500 transition-colors' }}</p>
+                        <p class="font-semibold">{{ form.location.label }}</p>
+                        <p>{{ form.location|add_class:'w-full border-2 border-gray-200 rounded hover:border-gray-300 shadow focus:outline-none focus:border-blue-500 transition-colors' }}</p>
+                        <p class="font-semibold">{{ form.apply.label }}</p>
+                        <p>{{ form.apply|add_class:'w-full border-2 border-gray-200 rounded hover:border-gray-300 shadow focus:outline-none focus:border-blue-500 transition-colors' }}</p>
                         <p class="font-semibold" id="djob_job_summary">{{ form.job_summary.label }}</p>
-                        <p>{{ form.job_summary|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.minimum_requirements.label }}</p>
-                        <p>{{ form.minimum_requirements|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.preferred_requirements.label }}</p>
-                        <p>{{ form.preferred_requirements|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.benefits.label }}</p>
-                        <p>{{ form.benefits|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.salary_range.label }}</p>
+                        <p>{{ form.job_summary|add_class:'w-full border-2 border-gray-200 rounded hover:border-gray-300 shadow focus:outline-none focus:border-blue-500 transition-colors' }}</p>
+                        <p class="font-semibold">{{ form.minimum_requirements.label }}</p>
+                        <p>{{ form.minimum_requirements|add_class:'w-full border-2 border-gray-200 rounded hover:border-gray-300 shadow focus:outline-none focus:border-blue-500 transition-colors' }}</p>
+                        <p class="font-semibold">{{ form.preferred_requirements.label }}</p>
+                        <p>{{ form.preferred_requirements|add_class:'w-full border-2 border-gray-200 rounded hover:border-gray-300 shadow focus:outline-none focus:border-blue-500 transition-colors' }}</p>
+                        <p class="font-semibold">{{ form.benefits.label }}</p>
+                        <p>{{ form.benefits|add_class:'w-full border-2 border-gray-200 rounded hover:border-gray-300 shadow focus:outline-none focus:border-blue-500 transition-colors' }}</p>
+                        <p class="font-semibold">{{ form.salary_range.label }}</p>
 
-                        <p>{{ form.salary_range|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.days_posted.label }}</p>
-                        <p>{{ form.days_posted|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.company_logo.label }}</p>
-                        <p>{{ form.company_logo|add_class:'flex-1 h-10 py-2 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
+                        <p>{{ form.salary_range|add_class:'w-full border-2 border-gray-200 rounded hover:border-gray-300 shadow focus:outline-none focus:border-blue-500 transition-colors' }}</p>
+                        <p class="font-semibold">{{ form.days_posted.label }}</p>
+                        <p>{{ form.days_posted|add_class:'w-full border-2 border-gray-200 rounded hover:border-gray-300 shadow focus:outline-none focus:border-blue-500 transition-colors' }}</p>
+                        <p class="font-semibold mt-2">{{ form.company_logo.label }}</p>
+                        <p>{{ form.company_logo|add_class:'rounded hover:border-gray-300 focus:outline-none focus:border-blue-500 transition-colors' }}</p>
 
-{#                        {% include "extra_comps/editor.html" %}#}
+                        {#                        {% include "extra_comps/editor.html" %}#}
 
-                        <input class="bg-violet-500 text-white mt-4 p-1 px-3 rounded font-semibold" type="submit" name="Update" value="Update" onclick="" id="">
+                        <input class="bg-violet-500 text-white mt-4 px-10 py-2 rounded font-semibold" type="submit"
+                               name="Update" value="Post" onclick="" id="">
                     </form>
 
                     {% comment %} Content Ends {% endcomment %}
@@ -79,6 +80,7 @@
 {% endblock content %}
 
 {% block js %}
+
     <script>
 
     var editors = document.getElementsByClassName("django-ckeditor-widget");
@@ -93,4 +95,6 @@
     </script>
     <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
     <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+
+
 {% endblock js %}
