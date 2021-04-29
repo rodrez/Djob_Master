@@ -14,7 +14,7 @@
 
                         <div>
                             <p class="h2 text-center mb-8"> Jobs Posted by <span
-                                    class="uppercase border-b-4 border-green-400 text-violet-500">{{ request.user }}</span>
+                                    class="uppercase border-b-4 border-green-400 text-purple-600">{{ request.user }}</span>
                             </p>
                         </div>
 
@@ -22,7 +22,7 @@
                             {% for job in jobs %}
                                 <div class="shadow p-2 mb-4 rounded flex">
                                     <div class="max-w-8/12">
-                                        <p class="font-bold h4 text-violet-500">{{ job.job_title }}</p>
+                                        <p class="font-bold h4 text-purple-600">{{ job.job_title }}</p>
                                         <span class="font-medium text-sm">Posted &dash; {{ job.days_posted }}</span>
                                         <p class="mx-2 mr-2 flex-auto">{{ job.job_summary|truncatechars:100 |safe }}</p>
                                     </div>
@@ -74,11 +74,7 @@
             </div>
         </div>
     </div>
-
-{% endblock %}
-
-{% block js %}
-    <script>
+<script>
 
         function displayModal(e) {
             var el = document.getElementById(e)
@@ -90,5 +86,4 @@
         }
 
     </script>
-
 {% endblock %}

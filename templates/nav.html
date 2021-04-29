@@ -12,7 +12,7 @@
             {% include 'extra_comps/signout_modal.html' %}
 
             <nav class="hidden md:flex md:flex-grow">
-                <ul class="flex flex-grow flex-wrap items-center font-medium">
+                <ul class="flex flex-wrap items-center font-medium mx-auto">
                     <li class="uppercase">
                         {% if user.is_authenticated %}
                             <button type="button"
@@ -22,14 +22,14 @@
                             </button>
                             </li>
                             <li>
-                                <a class="ml-3 font-medium w-full font-semibold inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 rounded text-white bg-violet-500 hover:bg-violet-400 transition duration-150 ease-in-out"
+                                <a class="ml-3 font-medium w-full font-semibold inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 rounded hover:border-b-4 border-green-400 transition duration-150 ease-in-out"
                                    href="{% url 'job-post' %}">
                                     Add Job
                                     <span class="font-bold"> +</span></a>
                             </li>
 
                         {% else %}
-                            <a class="flex uppercase font-semibold text-white hover:text-gray-900 dark:text-white dark:hover:text-gray-400 bg-violet-500 px-3 rounded py-2"
+                            <a class="flex uppercase font-semibold text-white transform hover:scale-105 hover:text-gray-100 dark:text-white dark:hover:text-gray-400 bg-purple-600 px-3 rounded py-2"
                                href="{% url 'account_login' %}">
                                 Login
                             </a>
@@ -78,7 +78,7 @@
                 </ul>
                 <div class="form-switch focus-within:outline-blue flex flex-col justify-center ml-3">
                     <input type="checkbox" name="light-switch" id="light-switch-desktop" class="light-switch sr-only"/>
-                    <label class="relative bg-indigo-500" for="light-switch-desktop"><span
+                    <label class="relative bg-purple-600" for="light-switch-desktop"><span
                             class="relative bg-gradient-to-t from-gray-100 to-white dark:from-gray-800 dark:to-gray-700 shadow-sm z-10"
                             aria-hidden="true"></span>
                         <svg class="absolute inset-0" width="44" height="24" viewBox="0 0 44 24"
@@ -164,7 +164,7 @@
 
                                 </li>
                                 <li>
-                                    <a class="font-medium w-full font-semibold inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 rounded text-white bg-violet-500 hover:bg-violet-400 transition duration-150 ease-in-out"
+                                    <a class="font-medium w-full font-semibold inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 rounded text-white bg-purple-600 hover:bg-violet-400 transition duration-150 ease-in-out"
                                        href="{% url 'job-post' %}">Add Job +</a>
                                 </li>
 
@@ -177,7 +177,7 @@
                                 </li>
                             {% else %}
                                 <li>
-                                    <a class="font-medium mt-8 w-full font-semibold inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 rounded text-white bg-violet-500 hover:bg-violet-400 transition duration-150 ease-in-out"
+                                    <a class="font-medium mt-8 w-full font-semibold inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 rounded text-white bg-purple-600 hover:bg-violet-400 transition duration-150 ease-in-out"
                                        href="{% url 'account_login' %}">Login</a>
                                 </li>
                             {% endif %}

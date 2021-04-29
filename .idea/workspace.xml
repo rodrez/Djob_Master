@@ -1,38 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7ad34eb7-c9bb-4011-ba75-48eec992edeb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/djob_data/auto_titles.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/static/auto_complete.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/static/auto_complete.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/templates/pages/auto_complete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/data/cities.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Djob_Master/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Djob_Master/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/jobs_comp.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/jobs_comp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/related_jobs.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/related_jobs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/templatetags/pages_filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templatetags/pages_filters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_profile/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/signals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_profile/templates/djob_profile/education_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/templates/djob_profile/education_update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_profile/templates/djob_profile/experience_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/templates/djob_profile/experience_update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_profile/templates/djob_profile/profile_components/display_edu.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/templates/djob_profile/profile_components/display_edu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_profile/templates/djob_profile/profile_components/display_exp.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/templates/djob_profile/profile_components/display_exp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_profile/templates/djob_profile/profile_components/display_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/templates/djob_profile/profile_components/display_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_profile/templates/djob_profile/profile_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/templates/djob_profile/profile_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_profile/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/templates/pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/templates/pages/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staticfiles/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/staticfiles/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staticfiles/css/styles.f5309edaa9b2.css" beforeDir="false" afterPath="$PROJECT_DIR$/staticfiles/css/styles.f5309edaa9b2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/password_reset.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/password_reset.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/action_btn.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/action_btn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/extra_comps/delete_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extra_comps/delete_modal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/extra_comps/editor.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extra_comps/editor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/extra_comps/signout_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extra_comps/signout_modal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/footer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nav.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/admin.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,13 +34,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -75,6 +67,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -98,7 +91,29 @@
       <recent name="$PROJECT_DIR$/djob_profile/templates/djob_profile" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Django Server.Djob">
+    <configuration name="auto_titles" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Djob_Master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/djob_data" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/djob_data/auto_titles.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Djob" type="Python.DjangoServer" factoryName="Django server">
       <module name="Djob_Master" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -133,6 +148,11 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.auto_titles" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -157,12 +177,29 @@
       <workItem from="1619551863804" duration="293000" />
       <workItem from="1619552201509" duration="2822000" />
       <workItem from="1619557540864" duration="1067000" />
-      <workItem from="1619558669199" duration="9989000" />
+      <workItem from="1619558669199" duration="10314000" />
+      <workItem from="1619639513790" duration="5081000" />
+      <workItem from="1619666533667" duration="2028000" />
+      <workItem from="1619668671874" duration="2403000" />
+      <workItem from="1619700516423" duration="27000" />
+      <workItem from="1619725672559" duration="4170000" />
+      <workItem from="1619733948381" duration="3706000" />
     </task>
+    <task id="LOCAL-00001" summary="Updated signout forms and delete modal">
+      <created>1619581963911</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1619581963911</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UpdateCopyrightCheckinHandler">
+    <option name="UPDATE_COPYRIGHT" value="true" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -177,8 +214,17 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/main" />
     </ignored-roots>
+    <MESSAGE value="Updated signout forms and delete modal" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated signout forms and delete modal" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Djob_Master$auto_titles.coverage" NAME="auto_titles Coverage Results" MODIFIED="1619728572907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/djob_data" />
   </component>
 </project>

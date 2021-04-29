@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'djob_profile.apps.DjobProfileConfig',
     'pages.apps.PagesConfig',
     'djob_jobs.apps.DjobJobsConfig',
+    'djob_data.apps.DjobDataConfig',
 
     # Third Party Apps
     'allauth',

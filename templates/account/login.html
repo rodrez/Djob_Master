@@ -44,58 +44,58 @@
                 {% endfor %}
 
                 </div>
-                    <div class="mx-auto">
-                        <p class="dark:text-gray-400 ">{{ form.login.label }}</p>
-                        <p class="dark:text-gray-500 ">{{ form.login|add_class:"w-72 appearance-none border border-transparent py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent"|attr:"placeholder:" }}</p>
+                    <div class="sm:px-32">
+                        <p class="font-bold dark:text-gray-400 ">{{ form.login.label }}</p>
+                        <p class="dark:text-gray-500 ">{{ form.login|add_class:"w-full border border-gray-200 rounded hover:border-gray-300 shadow focus:outline-none focus:border-blue-500 transition-colors"|attr:"placeholder:" }}</p>
                     </div>
-                    <div class="mx-auto mt-4">
-                        <p class="dark:text-gray-400 ">{{ form.password.label }}</p>
-                        <p class="dark:text-gray-500">{{ form.password|add_class:"w-72 h-10 border appearance-none border border-transparent py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent"|attr:"placeholder:" }}</p>
+                    <div class="sm:px-32 mt-4">
+                        <p class="font-bold  dark:text-gray-400 ">{{ form.password.label }}</p>
+                        <p class="dark:text-gray-500">{{ form.password|add_class:"w-full border border-gray-200 rounded hover:border-gray-300 shadow focus:outline-none focus:border-blue-500 transition-colors"|attr:"placeholder:" }}</p>
 
                     </div>
 
-                    <button class="bg-violet-500 text-white rounded px-3 shadow-md w-72 h-10 font-semibold py-1 mx-auto mt-4"
+                    <button class="bg-purple-600 text-white rounded px-3 shadow-md w-72 h-10 font-semibold py-1 mx-auto mt-4"
                             type="submit">{% trans "Sign In" %}</button>
 
                     {% if redirect_field_value %}
                         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
                     {% endif %}
-                    <div class="mx-auto">
-
-                        <br>
+                    <div class="mx-auto mt-2">
                         <a class="button secondaryAction text-sm text-purple-500 font-medium"
                            href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
                     </div>
 
-                    <div class="flex mt-7 items-center text-center">
+                    <div class="flex mt-4 items-center text-center sm:px-32">
                         <hr class="border-gray-300 border-1 w-full rounded-md">
                         <label class="block dark:text-gray-100 font-medium text-sm text-gray-700 w-2/6">
                             OR
                         </label>
                         <hr class="border-gray-300 border-1 w-full rounded-md">
                     </div>
-                <div class="text-center">
+
+
+                <div class="sm:px-32 flex gap-4 item-center mt-4">
+        <button type="button" class="py-2 px-4 flex justify-center items-center  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+            <svg width="20" height="20" fill="currentColor" class="mr-2" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z">
+                </path>
+            </svg>
+            Facebook
+        </button>
+        <button type="button" class="py-2 px-4 flex justify-center items-center  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+            <svg width="20" height="20" fill="currentColor" class="mr-2" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                <path d="M896 786h725q12 67 12 128 0 217-91 387.5t-259.5 266.5-386.5 96q-157 0-299-60.5t-245-163.5-163.5-245-60.5-299 60.5-299 163.5-245 245-163.5 299-60.5q300 0 515 201l-209 201q-123-119-306-119-129 0-238.5 65t-173.5 176.5-64 243.5 64 243.5 173.5 176.5 238.5 65q87 0 160-24t120-60 82-82 51.5-87 22.5-78h-436v-264z">
+                </path>
+            </svg>
+            Google
+        </button>
+    </div>
+                </form>
+            <div class="text-center mt-6">
                     <p>
                         Don't have an account? <a class="text-violet-500 font-semibold" href="{% url "account_signup" %}">Sign Up</a>
                     </p>
                 </div>
-                <div class="flex flex-row mt-7 items-center text-center rounded w-72 h-10 mx-auto shadow-md" style="background: #4A6EA8">
-                    <div class="h-10 w-10 rounded-tl rounded-bl p-1" style="background: #3B5998">
-                    <img class="h-8 w-8 mx-auto" src="{% static "images/company_logos/facebook.png" %}" alt="Facebook">
-                    </div>
-                    <a class="button secondaryAction ml-6 font-medium text-gray-100"
-                           href="{% url 'account_reset_password' %}">&nbsp; Sign Up with Facebook</a>
-                    </div>
-
-                <div class="flex border flex-row mt-7 items-center text-center bg-white rounded w-72 h-10 mx-auto shadow-md">
-                    <div class="h-10 w-10 border-r rounded-tl rounded-bl py-2 px-1">
-                        <img class="h-6 w-6 mx-auto" src="{% static "images/company_logos/google.png" %}" alt="Facebook">
-                    </div>
-                    <a class="button  secondaryAction ml-6 font-medium text-gray-600"
-                           href="{% url 'account_reset_password' %}">&nbsp; Sign Up with Google</a>
-                    </div>
-
-                </form>
 
             </div>
         </div>

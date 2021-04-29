@@ -1,0 +1,81 @@
+{%  load static %}
+
+<form autocomplete="off"
+      class="relative flex flex-col items-center mt-8"
+      data-aos="fade-down"
+      data-aos-delay="300">
+    <div class="relative w-full autocomplete">
+        <input type="text" id="auto_search"
+               class="w-full text-black pl-3 pr-10 border-2 border-gray-200 rounded hover:border-gray-300 focus:outline-none focus:border-blue-500 transition-colors"
+               placeholder="Dream Job...">
+        <button class="block w-7 h-7 text-center text-xl leading-0 absolute top-2 right-2 text-purple-600 focus:outline-none hover:text-purple-900 transition-colors">
+            <i class="fas fa-search "></i>
+        </button>
+    </div>
+    <div class="relative w-full autocomplete mt-4">
+        <input type="text" id="cities_auto_search"
+               class="w-full text-black pl-3 pr-10 border-2 border-gray-200 rounded hover:border-gray-300 focus:outline-none focus:border-blue-500 transition-colors"
+               placeholder="Dream Location...">
+        <button class="block w-7 h-7 text-center text-xl leading-0 absolute top-2 right-2 text-purple-600 focus:outline-none hover:text-purple-900 transition-colors">
+            <i class="fas fa-map-marker-alt "></i>
+        </button>
+        <div id="autocomplete"> </div>
+    </div>
+</form>
+
+
+<link rel="stylesheet" href="{% static 'auto_complete.css' %}">
+<script type="application/javascript" src="{% static 'auto_complete.js' %}"></script>
+<script>
+    var ops_names = `{{ job_titles }}`.replace(/&#x27;/g, '"').replace(/&quot;/g, '"')
+    var parsed_names = JSON.parse(ops_names)
+    autocomplete(document.getElementById("auto_search"), parsed_names)
+
+     function dataCleaner(query) {
+        var names = query.replace(/&quot;/g, '"')
+        var arr = names.split(", ")
+        for (i = 0; i < arr.length; i++) {
+            arr[i] = arr[i].replace(/[^\w\s]/gi, '')
+        }
+        return arr
+    }
+    {#var cities;#}
+    {##}
+    {#fetch('/static/data/cities.json')#}
+    {#  .then(res => res.json())#}
+    {#  .then(<data></data> => cities = data)#}
+    {#  .then(() => console.log(cities))#}
+    {#autocomplete(document.getElementById("cities_auto_search"), cities)#}
+
+</script>
+<script>
+    const search = document.getElementById('cities_auto_search')
+    const container = document.getElementById('autocomplete')
+
+    const searchCities = async searchText => {
+        const res = await fetch('/static/data/cities.json')
+        const cities = await res.json()
+
+        let matches = cities.filter(the_city => {
+            const regex = new RegExp(`^${searchText}`, 'gi')
+            return the_city.zip_code.toString().match(regex) || the_city.city.match(regex)
+        })
+        if (searchText.length === 0){
+            matches = []
+            container.innerHTML = ''
+        }
+        outputHtml(matches)
+    }
+    const outputHtml = matches => {
+            if (matches.length > 0){
+                const html = matches.map(match => `
+                <div>
+                    <p><span class="text-purple-600 font-semibold">
+                        ${match.city}</span> ${match.state}, ${match.zip_code} </p>
+                </div>
+                `).join('')
+                container.innerHTML = html
+            }
+        }
+    search.addEventListener('input', () => searchCities(search.value))
+</script>
