@@ -5,23 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ad34eb7-c9bb-4011-ba75-48eec992edeb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/djob_data/auto_titles.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/static/auto_complete.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/static/auto_complete.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/templates/pages/auto_complete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/data/cities.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Djob_Master/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Djob_Master/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/jobs_comp.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/jobs_comp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/templates/pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/templates/pages/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_data/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_data/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_data/auto_titles.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_data/auto_titles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djob_data/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_data/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/static/auto_complete.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/static/auto_complete.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/templates/pages/auto_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/templates/pages/auto_complete.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/password_reset.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/password_reset.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/action_btn.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/action_btn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nav.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +174,8 @@
       <workItem from="1619668671874" duration="2403000" />
       <workItem from="1619700516423" duration="27000" />
       <workItem from="1619725672559" duration="4170000" />
-      <workItem from="1619733948381" duration="3706000" />
+      <workItem from="1619733948381" duration="3815000" />
+      <workItem from="1619745810985" duration="5679000" />
     </task>
     <task id="LOCAL-00001" summary="Updated signout forms and delete modal">
       <created>1619581963911</created>
@@ -225,6 +217,6 @@
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Djob_Master$auto_titles.coverage" NAME="auto_titles Coverage Results" MODIFIED="1619728572907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/djob_data" />
+    <SUITE FILE_PATH="coverage/Djob_Master$auto_titles.coverage" NAME="auto_titles Coverage Results" MODIFIED="1619748516630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/djob_data" />
   </component>
 </project>
