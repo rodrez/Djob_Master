@@ -1,4 +1,5 @@
 {% load pages_filters %}
+{% load thumbnail %}
 
 <div class="">
     {% for job in job_list %}
@@ -73,6 +74,9 @@
                                         </a>
                                     </div>
                                     <a href="#0">
+{#                                        {% thumbnail item.image "36x36" crop="center" as im %}#}
+{#                                            <img src="{{ job.company_logo.url }}" width="{{ im.width }}" height="{{ im.height }}">#}
+{#                                        {% endthumbnail %}#}
                                         <img class="rounded-full flex-shrink-0 ml-2 bg-contain"
                                              src="{{ job.company_logo.url }}"
                                              width="36"

@@ -3,7 +3,7 @@
 {% block content %}
 
     <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="pt-32 pb-12 md:pt-40 md:pb-20">
+        <div class="pb-12">
             <div class="max-w-3xl mx-auto">
 
                 {% comment %} Content Start {% endcomment %}
@@ -20,10 +20,10 @@
 
                         <div class="flex flex-col">
                             {% for job in jobs %}
-                                <div class="shadow p-2 mb-4 rounded flex">
+                                <div class="shadow-lg p-3 mb-4 rounded flex">
                                     <div class="max-w-8/12">
                                         <p class="font-bold h4 text-purple-600">{{ job.job_title }}</p>
-                                        <span class="font-medium text-sm">Posted &dash; {{ job.days_posted }}</span>
+                                        <span class="font-medium text-sm">Posted &bull; {{ job.days_posted }}</span>
                                         <p class="mx-2 mr-2 flex-auto">{{ job.job_summary|truncatechars:100 |safe }}</p>
                                     </div>
                                     <div class="ml-auto my-auto min-72 flex-none">

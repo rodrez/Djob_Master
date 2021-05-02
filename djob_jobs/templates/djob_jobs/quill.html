@@ -1,0 +1,39 @@
+<style>
+   .ql-container.ql-snow, .ql-toolbar.ql-snow  {
+        border: 2px solid rgba(55, 65, 81,1);
+    }
+    .ql-toolbar .ql-stroke {
+    fill: none;
+    stroke: #fff;
+}
+.ql-snow.ql-toolbar .ql-picker-label:hover{
+    color: mediumpurple;
+}
+.ql-toolbar .ql-fill {
+    fill: #fff;
+    stroke: none;
+}
+
+.ql-toolbar .ql-picker {
+    color: #fff;
+}
+.ql-editor.ql-blank::before {
+    color: #fff;
+}
+
+</style>
+<div id="toolbar" class="rounded-t border-2 border-gray-200">
+  <!-- Add font size dropdown -->
+  <select class="ql-size">
+    <option value="small" class="text-white"></option>
+    <!-- Note a missing, thus falsy value, is used to reset to default -->
+    <option selected ></option>
+    <option value="large" ></option>
+    <option value="huge" ></option>
+  </select>
+  <!-- Add a bold button -->
+  <button class="ql-bold "></button>
+  <!-- Add subscript and superscript buttons -->
+  <button class="ql-script" value="sub"></button>
+  <button class="ql-script" value="super"></button>
+</div>

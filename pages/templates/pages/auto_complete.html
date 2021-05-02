@@ -1,5 +1,11 @@
 {%  load static %}
 
+<style>
+    .max-h-56 {
+  max-height: 14rem;
+}
+</style>
+
 <form autocomplete="off"
       class="relative flex flex-col items-center mt-8"
       data-aos="fade-down"
@@ -14,7 +20,7 @@
     </div>
     <div class="relative w-full autocomplete mt-4" >
         <input type="text" id="cities_auto_search"
-               class="w-full text-black pl-3 dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700  pr-10 border-2 border-gray-200 rounded hover:border-gray-300 focus:outline-none focus:border-purple-600 transition-colors"
+               class="w-full text-black dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700  pr-10 border-2 border-gray-200 rounded hover:border-gray-300 focus:outline-none focus:border-purple-600 transition-colors"
                placeholder="Dream Location...">
         <button class="block w-7 h-7 text-center text-xl leading-0 absolute top-2 right-2 text-purple-600 focus:outline-none hover:text-purple-900 transition-colors">
             <i class="fas fa-map-marker-alt "></i>
@@ -39,20 +45,20 @@
         return arr
     }
 
-
     var cities = `{{ city }}`.replace(/&#x27;/g, '"').replace(/&quot;/g, '"')
-    var new_cities = JSON.parse(cities)
-    autocomplete(document.getElementById("cities_auto_search"), cities)
+    {#var zips = `{{ zipcode }}`.replace(/&#x27;/g, '"').replace(/&quot;/g, '"')#}
+    {#var states = `{{ state }}`.replace(/&#x27;/g, '"').replace(/&quot;/g, '"')#}
 
-    var auto_items = document.getElementsByClassName('auto_items')
-    for (i = 0; i < auto_items.length; i++){
-        if (i === 0 ){
-            auto_items[i].classList.add("rounded-t")
-        }
-        if (i === auto_items.length - 1 ){
-            auto_items[i].classList.add("rounded-b border-b-0 ")
-        }
-    }
+    {#for (i = 0; i < zips.length; i++){#}
+    {#    if #}
+    {# }#}
+    {#console.log(cities)#}
+    {#cities = [{city:'Mechanicsburg'}, {city:'Carlsile'}, {city:'Philadelphia'}, {city:'Harrisburg'}]#}
+    var new_cities = JSON.parse(cities)
+    console.log(new_cities)
+    autocomplete(document.getElementById("cities_auto_search"), new_cities)
+
+
 
 </script>
 {#<script>#}

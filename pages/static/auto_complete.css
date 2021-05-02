@@ -9,8 +9,6 @@ body {
 }
 
 .autocomplete-items {
-  padding-left: 3px;
-  padding-right: 3px;
   position: absolute;
   z-index: 99;
   /*position the autocomplete items to be the same width as the container:*/

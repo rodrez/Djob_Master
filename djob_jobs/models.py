@@ -1,4 +1,4 @@
-import os
+
 
 from django.db import models
 import datetime
@@ -26,7 +26,7 @@ class Job(models.Model):
         choices=JOB_TAGS,
         default="1",
     )
-    job_summary = RichTextField(default="Enter job description.")
+    job_summary = models.TextField(default="Enter job description.")
     minimum_requirements = RichTextField(default="Enter minimum requirements.")
     preferred_requirements = RichTextField(default="Enter minimum requirements.", blank=True, null=True)
     benefits = RichTextField(blank=True, null=True)
