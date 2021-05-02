@@ -22,7 +22,7 @@
                             </button>
                             </li>
                             <li>
-                                <a class="ml-3 font-medium w-full font-semibold inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 rounded hover:border-b-4 border-green-400 transition duration-150 ease-in-out"
+                                <a class="ml-3 font-medium w-full font-semibold inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 rounded hover:border-b-4 hover:border-green-400 transition duration-150 ease-in-out"
                                    href="{% url 'job-post' %}">
                                     Add Job
                                     <span class="font-bold"> +</span></a>
@@ -37,7 +37,7 @@
                     {% if user.is_authenticated %}
                         <li>
 
-                            <a class="text-gray-600 uppercase font-semibold ml-auto hover:text-violet-500 dark:text-white dark:hover:text-violet-500 px-5 py-2 flex items-center transition duration-150 ease-in-out"
+                            <a class="text-gray-600 font-medium ml-auto hover:text-violet-500 dark:text-white dark:hover:text-violet-500 px-5 py-2 flex items-center transition duration-150 ease-in-out"
                                href="{% url 'jobs' %}">
                                 My Jobs
                             </a>
@@ -46,7 +46,7 @@
 
                         <li>
 
-                            <a class="text-gray-600 uppercase border-b-4 border-green-400 font-semibold ml-auto hover:text-violet-500 dark:text-white dark:hover:text-violet-500 px-5 py-2 flex items-center transition duration-150 ease-in-out"
+                            <a class="text-gray-600 uppercase border-b-4 border-green-400 font-medium ml-auto hover:text-violet-500 dark:text-white dark:hover:text-violet-500 px-5 py-2 flex items-center transition duration-150 ease-in-out"
                                href="{% url 'profile' request.user.get_profile %}">
                                 {{ request.user.username }}
                             </a>

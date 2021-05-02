@@ -13,6 +13,7 @@ django-ckeditor = "*"
 whitenoise = "*"
 gunicorn = "*"
 django-livereload-server = "*"
+django-jazzmin = "*"
 
 [dev-packages]
 
