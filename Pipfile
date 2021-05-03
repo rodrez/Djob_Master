@@ -15,6 +15,9 @@ gunicorn = "*"
 django-livereload-server = "*"
 django-jazzmin = "*"
 sorl-thumbnail = "*"
+django-debug-toolbar = "*"
+psycopg2-binary = "*"
+dj-database-url = "*"
 
 [dev-packages]
 

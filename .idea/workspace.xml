@@ -5,21 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ad34eb7-c9bb-4011-ba75-48eec992edeb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Djob_Master/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Djob_Master/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Djob_Master/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Djob_Master/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/jobs_comp.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/jobs_comp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/static/auto_complete.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/static/auto_complete.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/static/auto_complete.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/static/auto_complete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/templates/pages/auto_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/templates/pages/auto_complete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/extra_comps/editor.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extra_comps/editor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nav.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todos.py" beforeDir="false" afterPath="$PROJECT_DIR$/todos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +63,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -183,6 +174,8 @@
       <workItem from="1619725672559" duration="4170000" />
       <workItem from="1619733948381" duration="3815000" />
       <workItem from="1619745810985" duration="5679000" />
+      <workItem from="1620007443781" duration="49000" />
+      <workItem from="1620080511370" duration="790000" />
     </task>
     <task id="LOCAL-00001" summary="Updated signout forms and delete modal">
       <created>1619581963911</created>
