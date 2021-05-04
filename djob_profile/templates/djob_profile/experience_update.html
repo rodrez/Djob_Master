@@ -100,22 +100,20 @@
                                                             word-wrap: break-word;
                                                         }
                                                 </style>
-                                                <hr class="mt-4 mb-4">
-</div>
+                                                <hr class="mt-4 mb-4"></div>
                                             {% endfor %}
 
 
 
-                                    <div class="text-center py-2 rounded mt-4 bg-violet-500 w-full ">
-                                        <input class="bg-violet-500 font-semibold text-white" type="submit" value="Update"/>
-                                    </div>
+
+                                        <button class="cursor-pointer font-semibold text-white text-center py-2 rounded mt-4 bg-violet-500 w-full" type="submit" value="Update">
+                                            Update
+                                        </button>
                                     </form>
                             </div>
-                            <div class="text-center py-2 rounded mt-4 bg-lightBlue-400 w-full ">
-                                <input class="font-semibold bg-transparent text-white" id="add_more" type="submit" value="Add Experience"/>
-                            </div>
-
-
+                                <button class="font-semibold cursor-pointer bg-transparent text-white text-center py-2 rounded mt-4 bg-lightBlue-400 w-full " id="add_more_exp" type="submit" value="Add Experience">
+                                    Add Experience
+                                </button>
                         </div>
                         <div id="empty_form" style="display:none">
                                         <table class='no_error'>
@@ -126,7 +124,7 @@
                                                     {% elif f.name == 'id'%}
                                                         {{ f|add_class:'hidden' }}
                                                     {% elif f.name == 'user'%}
-                                                        {{ f|add_class:'' }}
+                                                        {{ f|add_class:'hidden' }}
                                                     {% elif f.name == "job_description" %}
                                                         <p>{{ f.label }}</p><br>
                                                         {{ f|add_class:'flex-1 appearance-none border w-full border-transparent mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none mt-3 focus:ring-violet-600 focus:border-transparent'}}
@@ -146,7 +144,9 @@
         </div>
     </main>
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+          integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+          crossorigin="anonymous"></script>
         <script>
             {% comment %} AutoFills User based on request.user {% endcomment %}
         // All the select elements
@@ -167,7 +167,7 @@
         }
         {% comment %} AutoFills User based on request.user {% endcomment %}
 
-            $('#add_more').click(function() {
+            $('#add_more_exp').click(function() {
             var form_idx = $('#id_form-TOTAL_FORMS').val();
             $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
             $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
@@ -180,8 +180,6 @@
                     console.log(elements[i].value);
                     }
                 }
-
-
         </script>
     <script>
     var editors = document.getElementsByClassName("django-ckeditor-widget");
