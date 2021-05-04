@@ -7,12 +7,7 @@
     <list default="true" id="7ad34eb7-c9bb-4011-ba75-48eec992edeb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_jobs/templates/djob_jobs/job_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_profile/templates/djob_profile/education_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/templates/djob_profile/education_update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_profile/templates/djob_profile/experience_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/templates/djob_profile/experience_update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/extra_comps/signout_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extra_comps/signout_modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/signup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +172,8 @@
       <workItem from="1619733948381" duration="3815000" />
       <workItem from="1619745810985" duration="5679000" />
       <workItem from="1620007443781" duration="49000" />
-      <workItem from="1620080511370" duration="6246000" />
+      <workItem from="1620080511370" duration="6313000" />
+      <workItem from="1620134283024" duration="8254000" />
     </task>
     <task id="LOCAL-00001" summary="Updated signout forms and delete modal">
       <created>1619581963911</created>

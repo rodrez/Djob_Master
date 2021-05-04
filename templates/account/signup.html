@@ -1,4 +1,3 @@
-
 {% extends "_base.html" %}
 
 {% load i18n %}
@@ -8,51 +7,161 @@
 
 {% block content %}
 
-<div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
         <div class="pt-32 pb-12 md:pt-40 md:pb-20">
             <div class="max-w-3xl mx-auto">
 
-            <div class="mx-auto text-center">
-                <h1 class="h2">{% trans "Sign Up" %}</h1>
-            </div>
-
-
-                <form class="signup flex flex-col mt-6" id="signup_form" method="post" action="{% url 'account_signup' %}">
-                  {% csrf_token %}
-
-                <div class="text-center">
-                {% for field, errors in form.errors.items %}
-                    {% for error in errors %}
-                        <p class="bg-red-600 px-3 py-1 font-medium text-white rounded">{{ error }}</p>
-                    {% endfor %}
-                {% endfor %}
-
+                <div class="mx-auto text-center">
+                    <h1 class="h2">{% trans "Sign Up" %}</h1>
                 </div>
-                  <div class="mx-auto">
-                    <p class="dark:text-gray-400 ">{{ form.username.label }}</p>
-                    <p class="dark:text-gray-500 ">{{ form.username|add_class:"important w-72 appearance-none border border-transparent py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent"|attr:"placeholder:" }}</p>
-                  </div>
-                  <div class="mx-auto mt-4">
-                    <p class="dark:text-gray-400 ">{{ form.email.label }}</p>
-                    <p class="dark:text-gray-500">{{ form.email|add_class:"w-72 h-10 border appearance-none border border-transparent py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent"|attr:"placeholder:" }}</p>
-                  </div>
-                  <div class="mx-auto mt-4">
-                    <p class="dark:text-gray-400 ">{{ form.password1.label }}</p>
-                    <p class="dark:text-gray-500">{{ form.password1|add_class:"w-72 h-10 border appearance-none border border-transparent py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent"|attr:"placeholder:" }}</p>
-                  </div>
-                  <div class="mx-auto mt-4">
-                    <p class="dark:text-gray-400 ">Confirm Password</p>
-                    <p class="dark:text-gray-500">{{ form.password2|add_class:"w-72 h-10 border appearance-none border border-transparent py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent"|attr:"placeholder:" }}</p>
-                  </div>
+
+
+                <form class="signup flex flex-col mt-6" id="signup_form" method="post"
+                      action="{% url 'account_signup' %}">
+                    {% csrf_token %}
+
+                    <div class="text-center">
+                        {% for field, errors in form.errors.items %}
+                            {% for error in errors %}
+                                <p class="bg-red-600 px-3 py-1 font-medium text-white rounded">{{ error }}</p>
+                            {% endfor %}
+                        {% endfor %}
+
+                    </div>
+                    <div class="mx-auto">
+                        <p class="dark:text-gray-400 ">{{ form.username.label }}</p>
+                        <p class="dark:text-gray-500 ">{{ form.username|add_class:"important w-72 appearance-none border border-transparent py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700"|attr:"placeholder:" }}</p>
+                    </div>
+                    <div class="mx-auto mt-4">
+                        <p class="dark:text-gray-400 ">Email</p>
+                        <p class="dark:text-gray-500">{{ form.email|add_class:"dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 w-72 h-10 border appearance-none border border-transparent py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent"|attr:"placeholder:" }}</p>
+                    </div>
+                    <div class="mx-auto mt-4">
+                        <p class="dark:text-gray-400 ">{{ form.password1.label }}</p>
+                        <p class="dark:text-gray-500">{{ form.password1|add_class:"dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 w-72 h-10 border appearance-none border border-transparent py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent"|attr:"placeholder:" }}</p>
+                        <div id="pw-cont" class="flex flex-row ">
+                            <i id="i-pw" class="hidden fas fa-exclamation-triangle"></i>
+                        <p id="pw-validation-msg" class="text-sm text-yellow-600 ">
+
+                        </p>
+                            </div>
+                    </div>
+                    <div class="mx-auto mt-4">
+                        <p class="dark:text-gray-400 ">Confirm Password</p>
+                        <p class="dark:text-gray-500">{{ form.password2|add_class:"dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 w-72 h-10 border appearance-none border border-transparent py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent"|attr:"placeholder:" }}</p>
+                        <p id="pw2"></p>
+                    </div>
 
                     {% if redirect_field_value %}
-                  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                  {% endif %}
-                  <button class="bg-violet-500 text-white rounded px-3 shadow-md w-72 h-10 font-semibold py-1 mx-auto mt-4"
-                          type="submit">{% trans "Sign Up" %} &raquo;</button>
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                    {% endif %}
+                    <button class="bg-violet-500 text-white rounded px-3 shadow-md w-72 h-10 font-semibold py-1 mx-auto mt-4"
+                            type="submit">{% trans "Sign Up" %} &raquo;
+                    </button>
                 </form>
-                <p class="mt-4 text-center">{% blocktrans %}Already have an account? Then please <a class="font-semibold text-violet-500" href="{{ login_url }}">Sign In</a>.{% endblocktrans %}</p>
+                <p class="mt-4 text-center">{% blocktrans %}Already have an account? Then please
+                    <a class="font-semibold text-violet-500" href="{{ login_url }}">Sign In</a>.{% endblocktrans %}</p>
             </div>
         </div>
-</div>
+    </div>
+    <script>
+
+
+        var pw = document.getElementById("id_password1")
+        var pw2 = document.getElementById("id_password2")
+        pw.addEventListener('keyup', () => validatePassword(pw))
+
+        var pw_cont = document.getElementById('pw-cont')
+
+        var validation_msg = document.getElementById("pw-validation-msg")
+
+        var icon = document.getElementById('i-pw')
+        var icon_warn = 'fas fa-exclamation-triangle mt-1'
+        var icon_good = 'fas fa-check-circle mt-1'
+
+
+        function validatePassword(pw) {
+            var issue_cls = "dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 w-72 h-10 border appearance-none border border-transparent py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent"
+            var normal_cls = "dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 w-72 h-10 border appearance-none border border-transparent py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+
+            if (pw.value === "") {
+                pw.className = issue_cls
+                validation_msg.innerText = "Password cannot be empty."
+                validation_msg.className = 'ml-2'
+                pw_cont.className = 'flex flex-row w-72 text-sm text-yellow-600'
+
+                icon.className = icon_warn
+                return false;
+
+            } else if (pw.value.length < 7) {
+                pw.className = issue_cls
+                validation_msg.innerText = "The password is less than 8 characters."
+                validation_msg.className = 'ml-2'
+                pw_cont.className = 'flex flex-row w-72 text-sm text-yellow-600'
+                icon.className = icon_warn
+                return false;
+            } else if (pw.value.length > 15) {
+                pw.className = issue_cls
+                validation_msg.innerText = "The password is more than 15 characters."
+                validation_msg.className = 'ml-2'
+                pw_cont.className = 'flex flex-row w-72 text-sm text-yellow-600'
+                icon.className = icon_warn
+                return false;
+            } else if (pw.value.search(/[a-z]+/) === -1) {
+                pw.className = issue_cls
+                validation_msg.innerText = "The password must contain at least one lowercase letter."
+                validation_msg.className = 'ml-2'
+                pw_cont.className = 'flex flex-row w-72 text-sm text-yellow-600'
+                icon.className = icon_warn
+                return false;
+            } else if (pw.value.search(/[A-Z]+/) === -1) {
+                pw.className = issue_cls
+                validation_msg.innerText = "The password must contain at least one capital letter."
+                validation_msg.className = 'ml-2'
+                pw_cont.className = 'flex flex-row w-72 text-sm text-yellow-600'
+                icon.className = icon_warn
+                return false;
+
+            } else if (pw.value.search(/[0-9]+/) === -1) {
+                pw.className = issue_cls
+                validation_msg.innerText = "The password must contain at least one number."
+                validation_msg.className = 'ml-2'
+                pw_cont.className = 'flex flex-row w-72 text-sm text-yellow-600'
+                icon.className = icon_warn
+                return false;
+            } else if (pw.value.search(/[!@#$%^&*]+/) === -1) {
+                pw.className = issue_cls
+                validation_msg.innerText = "The password must contain at least one special character."
+                validation_msg.className = 'ml-2'
+                pw_cont.className = 'flex flex-row w-72 text-sm text-yellow-600'
+                icon.className = icon_warn
+                return false;
+
+            } else {
+                pw.className = normal_cls
+                pw_cont.className = 'flex flex-row w-72 text-sm text-green-500'
+                validation_msg.innerText = "That's a good password!"
+                validation_msg.className = 'ml-2'
+                icon.className = icon_good
+            }
+            return true;
+        }
+        function passwordMatch(){
+
+            var pw2_helper = document.getElementById('pw2')
+
+            if(pw.value !== pw2.value){
+                pw2.className = 'dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 w-72 h-10 border appearance-none border border-transparent py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent'
+                pw2_helper.innerText = "Password does not match"
+                pw2_helper.className = 'text-sm text-yellow-600'
+            }else {
+                pw2.className = 'dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 w-72 h-10 border appearance-none border border-transparent py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent'
+                pw2_helper.innerText = "Yup, that's a perfect match!"
+                pw2_helper.className = 'text-sm text-green-500'
+            }
+        }
+        pw2.addEventListener('keyup', () => passwordMatch())
+
+    </script>
+
 {% endblock %}
