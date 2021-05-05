@@ -59,7 +59,7 @@
                             type="submit">{% trans "Sign Up" %} &raquo;
                     </button>
                 </form>
-                <p class="mt-4 text-center">{% blocktrans %}Already have an account? Then please
+                <p class="mt-4 text-center">{% blocktrans %}Already have an account? Please
                     <a class="font-semibold text-violet-500" href="{{ login_url }}">Sign In</a>.{% endblocktrans %}</p>
             </div>
         </div>
@@ -93,7 +93,7 @@
                 icon.className = icon_warn
                 return false;
 
-            } else if (pw.value.length < 7) {
+            } else if (pw.value.length < 9) {
                 pw.className = issue_cls
                 validation_msg.innerText = "The password is less than 8 characters."
                 validation_msg.className = 'ml-2'

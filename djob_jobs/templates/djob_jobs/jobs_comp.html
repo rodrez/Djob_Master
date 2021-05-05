@@ -1,12 +1,11 @@
 {% load pages_filters %}
-{% load thumbnail %}
 
 <div class="">
     {% for job in job_list %}
 
         <article class="mt-4"
                  x-show="['', '{{ job.tag }}'].includes(category)">
-            <div class="flex pr-6 py-5 bg-white dark:bg-gray-800 divide-x divide-gray-200 dark:divide-gray-700 shadow-lg z-10">
+            <div class="flex pr-6 py-5 bg-white dark:bg-gray-800 divide-x divide-gray-200 dark:divide-gray-700 rounded shadow-lg z-10">
                 <div class="flex items-center px-4 sm:px-8">
                     {% if job.tag == "1" %}
                         <span class="text-xs">

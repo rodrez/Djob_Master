@@ -18,6 +18,9 @@ sorl-thumbnail = "*"
 django-debug-toolbar = "*"
 psycopg2-binary = "*"
 dj-database-url = "*"
+beautifulsoup4 = "*"
+requests = "*"
+lxml = "*"
 
 [dev-packages]
 

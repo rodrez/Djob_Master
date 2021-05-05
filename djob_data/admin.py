@@ -4,7 +4,7 @@ from django.contrib import admin
 from djob_data.models import JobTitle, City
 
 class CiyAdmin(admin.ModelAdmin):
-    search_fields = ('city',)
+    search_fields = ('title','category')
 
 models = [JobTitle, City]
 
