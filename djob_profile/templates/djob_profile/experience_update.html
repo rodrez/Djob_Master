@@ -4,6 +4,7 @@
 {% load humanize %}
 {% block content %}
 {% load widget_tweaks %}
+<link rel="stylesheet" href="//cdn.quilljs.com/1.3.6/quill.bubble.css">
 
     <main class="flex-grow">
         <section class="relative">
@@ -70,7 +71,7 @@
 
                                 </div>
                             <div >
-                                    <form  method="POST">
+                                    <form method="POST">
 
                                     {% csrf_token %}
                                             {% for foo in form %}
@@ -83,16 +84,17 @@
                                                     {% elif f.name == 'id'%}
                                                         {{ f|add_class:'hidden' }}
                                                     {% elif f.name == 'user'%}
-                                                        {{ f|add_class:'' }}
+                                                        {{ f|add_class:'opacity-0' }}
                                                     {% elif f.name == "job_description" %}
                                                         <p>{{ f.label }}</p><br>
-                                                        {{ f|add_class:'flex-1 appearance-none border w-full border-transparent mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none mt-3 focus:ring-violet-600 focus:border-transparent'}}
+                                                       <div id="editor" class="job-summ w-full rounded shadow-lg dark:text-white border border-gray-200 dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700">
+                                                        </div>
+                                                        {{ f|add_class:'model-field hidden w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors' }}
                                                     {% else %}
                                                         <p>{{ f.label }}</p>
-                                                        {{ f|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent'}}
+                                                        {{ f|add_class:'w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors' }}
                                                     {% endif %}
                                                     <br>
-
                                                 {% endfor %}
                                                 <style>
                                                     #id_form-{{ forloop.counter0 }}-job_description {
@@ -102,9 +104,6 @@
                                                 </style>
                                                 <hr class="mt-4 mb-4"></div>
                                             {% endfor %}
-
-
-
 
                                         <button class="cursor-pointer font-semibold text-white text-center py-2 rounded mt-4 bg-violet-500 w-full" type="submit" value="Update">
                                             Update
@@ -116,27 +115,29 @@
                                 </button>
                         </div>
                         <div id="empty_form" style="display:none">
-                                        <table class='no_error'>
-                                            {% for f in form.empty_form %}
-                                                    {% if f.name == "DELETE" %}
-                                                        <p class="text-red-600 font-semibold">{{ f.label }}</p>
-                                                        {{ f|add_class:'flex-1 appearance-none border border-transparent mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none mt-3 focus:ring-violet-600 focus:border-transparent'}}
-                                                    {% elif f.name == 'id'%}
-                                                        {{ f|add_class:'hidden' }}
-                                                    {% elif f.name == 'user'%}
-                                                        {{ f|add_class:'hidden' }}
-                                                    {% elif f.name == "job_description" %}
-                                                        <p>{{ f.label }}</p><br>
-                                                        {{ f|add_class:'flex-1 appearance-none border w-full border-transparent mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none mt-3 focus:ring-violet-600 focus:border-transparent'}}
-                                                    {% else %}
-                                                        <p>{{ f.label }}</p>
-                                                        {{ f|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent'}}
-                                                    {% endif %}
-                                                    <br>
+                            <table class='no_error'>
+                                {% for f in form.empty_form %}
+                                        {% if f.name == "DELETE" %}
+                                            <p class="text-red-600 font-semibold">{{ f.label }}</p>
+                                            {{ f|add_class:'flex-1 appearance-none border border-transparent mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none mt-3 focus:ring-violet-600 focus:border-transparent'}}
+                                        {% elif f.name == 'id'%}
+                                            {{ f|add_class:'hidden' }}
+                                        {% elif f.name == 'user'%}
+                                            {{ f|add_class:'' }}
+                                        {% elif f.name == "job_description" %}
 
-                                                {% endfor %}
-                                        </table>
-                                    </div>
+                                            <p>{{ f.label }}</p>
+                                            <div id="editor" class="job-summ w-full p-3 rounded shadow-lg dark:text-white border border-gray-200 dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700">
+                                            </div>
+                                            {{ f|add_class:'model-field hidden w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors' }}
+                                        {% else %}
+                                            <p>{{ f.label }}</p>
+                                            {{ f|add_class:'style-field w-full rounded shadow-lg dark:text-white border border-gray-200 dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700'}}
+                                        {% endif %}
+                                        <br>
+                                    {% endfor %}
+                            </table>
+                        </div>
                         </div>
                     </section>
                 </div>
@@ -144,17 +145,34 @@
         </div>
     </main>
 
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
           integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
           crossorigin="anonymous"></script>
+
+    <script>
+
+    let job_elements = document.getElementsByClassName('job-summ')
+    let prev_summary = document.getElementsByClassName('model-field')
+
+    for (let i=0; i<job_elements.length; i++){
+        job_elements[i].textContent = prev_summary[i].value
+    }
+
+    job_summary[3].addEventListener('blur', function() {
+        element = document.getElementById("id_benefits")
+        element.value = job_summary[3].innerHTML
+     })
+    </script>
+
         <script>
             {% comment %} AutoFills User based on request.user {% endcomment %}
         // All the select elements
         function assignUser(){
-            var selects = document.getElementsByTagName('select');
+            let selects = document.getElementsByTagName('select');
 
             // Initializing z
-            var idx = 0;
+            let idx = 0;
 
             // For loop to get all select options
 
@@ -168,30 +186,106 @@
         {% comment %} AutoFills User based on request.user {% endcomment %}
 
             $('#add_more_exp').click(function() {
-            var form_idx = $('#id_form-TOTAL_FORMS').val();
+            let form_idx = $('#id_form-TOTAL_FORMS').val();
             $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
             $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
             assignUser();
         });
             function clearForm(e_id){
-                var elements = document.getElementById(e_id).elements;
+                let elements = document.getElementById(e_id).elements;
 
-                for (var i = 0; i < elements.length; i++) {
+                for (let i = 0; i < elements.length; i++) {
                     console.log(elements[i].value);
                     }
                 }
-        </script>
-    <script>
-    var editors = document.getElementsByClassName("django-ckeditor-widget");
-            console.log(editors)
-            for (var i=0; i < editors.length; i++){
-                editors[i].classList.add("w-full");
-            }
+    {#let editors = document.getElementsByClassName("django-ckeditor-widget");#}
+    {#        console.log(editors)#}
+    {#        for (let i=0; i < editors.length; i++){#}
+    {#            editors[i].classList.add("w-full");#}
+    {#        }#}
+    {#let#}
     </script>
 
 
-    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
-    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{#    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>#}
+{#    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>#}
+<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+let toolbarOptions = [
+  ['bold', 'italic', 'underline'],        // toggled buttons
+  ['blockquote', 'code-block'],
 
+  [{ 'header': 1 }, { 'header': 2 }, { 'header': 3 }],               // custom button values
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+
+  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+  ['clean']                                         // remove formatting button
+];
+
+let quill1 = new Quill('#editor', {
+  theme: 'bubble',
+    modules: {
+    toolbar: toolbarOptions
+  },// Specify theme in configuration
+});
+let quill2 = new Quill('#editor2', {
+  theme: 'bubble',
+    modules: {
+    toolbar: toolbarOptions
+  },// Specify theme in configuration
+});
+let quill3 = new Quill('#editor3', {
+  theme: 'bubble',
+    modules: {
+    toolbar: toolbarOptions
+  },// Specify theme in configuration
+});
+let quill4 = new Quill('#editor4', {
+  theme: 'bubble',
+    modules: {
+    toolbar: toolbarOptions
+  },// Specify theme in configuration
+});
+</script>
+    <script>
+
+    const job_summary = document.querySelectorAll(".ql-editor")
+    job_summary[0].classList.add("text-base")
+    job_summary[1].classList.add("text-base")
+    job_summary[2].classList.add("text-base")
+    job_summary[3].classList.add("text-base")
+
+    job_summary[0].classList.add("font-iter")
+    job_summary[1].classList.add("font-iter")
+    job_summary[2].classList.add("font-iter")
+    job_summary[3].classList.add("font-iter")
+
+
+
+    job_summary[0].addEventListener('blur', function() {
+        element = document.getElementById("id_job_summary")
+        element.value = job_summary[0].innerHTML
+    })
+
+    job_summary[1].addEventListener('blur', function() {
+        element = document.getElementById("id_minimum_requirements")
+        element.value = job_summary[1].innerHTML
+     })
+
+    job_summary[2].addEventListener('blur', function() {
+        element = document.getElementById("id_preferred_requirements")
+        element.value = job_summary[2].innerHTML
+     })
+
+    job_summary[3].addEventListener('blur', function() {
+        element = document.getElementById("id_benefits")
+        element.value = job_summary[3].innerHTML
+     })
+
+    </script>
 
 {% endblock content %}

@@ -1,5 +1,3 @@
-
-
 from django.db import models
 import datetime
 from ckeditor.fields import RichTextField
@@ -10,6 +8,7 @@ from Djob_Master import settings
 # Create your models here.
 class Job(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # TODO: Work on dynamically adding more tags
     JOB_TAGS = [
         ("1", "Programming"),
         ("2", "Science"),
@@ -26,7 +25,7 @@ class Job(models.Model):
         choices=JOB_TAGS,
         default="1",
     )
-    job_summary = models.TextField(default="Enter job description.")
+    job_summary = RichTextField(default="Enter job description.")
     minimum_requirements = RichTextField(default="Enter minimum requirements.")
     preferred_requirements = RichTextField(default="Enter minimum requirements.", blank=True, null=True)
     benefits = RichTextField(blank=True, null=True)

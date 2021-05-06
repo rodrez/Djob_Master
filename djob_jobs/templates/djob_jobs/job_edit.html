@@ -4,10 +4,7 @@
 {% load humanize %}
 {% block content %}
 {% load widget_tweaks %}
-
-
-
-
+<link rel="stylesheet" href="//cdn.quilljs.com/1.3.6/quill.bubble.css">
 
     <main class="flex-grow">
         <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
@@ -45,30 +42,44 @@
                         </div>
                             </div>
                        <p class="font-semibold" >{{ form.job_title.label }}:</p>
-                        <p>{{ form.job_title|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
+                        <p>{{ form.job_title|add_class:'w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors' }}</p>
                         <p class="font-semibold" >{{ form.tag.label }}:</p>
-                        <p>{{ form.tag|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
+                        <p>{{ form.tag|add_class:'w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors' }}</p>
                         <p class="font-semibold" >{{ form.company.label }}:</p>
-                        <p>{{ form.company|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
+                        <p>{{ form.company|add_class:'w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors' }}</p>
                         <p class="font-semibold" >{{ form.location.label }}:</p>
-                        <p>{{ form.location|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
+                        <p>{{ form.location|add_class:'w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors' }}</p>
                         <p class="font-semibold" >{{ form.apply.label }}:</p>
-                        <p>{{ form.apply|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.job_summary.label }}:</p>
-                        <p>{{ form.job_summary|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.minimum_requirements.label }}:</p>
-                        <p>{{ form.minimum_requirements|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.preferred_requirements.label }}:</p>
-                        <p>{{ form.preferred_requirements|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.benefits.label }}:</p>
-                        <p>{{ form.benefits|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
-                        <p class="font-semibold" >{{ form.salary_range.label }}:</p>
+                        <p>{{ form.apply|add_class:'w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors' }}</p>
 
-                        <p>{{ form.salary_range|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
+                         <p class="font-semibold mt-6" id="djob_job_summary">{{ form.job_summary.label }}</p>
+                        <div id="editor" class="job-summ w-full rounded shadow-lg dark:text-white border border-gray-200 dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700">
+                        </div>
+                        <p>{{ form.job_summary|add_class:'hidden' }}</p>
+
+
+                        <p class="font-semibold mt-6">{{ form.minimum_requirements.label }}</p>
+                        <div id="editor2" class="job-summ w-full rounded shadow-lg dark:text-white border border-gray-200 dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700">
+                        </div>
+                        <p>{{ form.minimum_requirements|add_class:'hidden' }}</p>
+
+                        <p class="font-semibold mt-2">{{ form.preferred_requirements.label }}</p>
+                        <div id="editor3" class="job-summ w-full rounded shadow-lg dark:text-white border border-gray-200 dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700">
+                        </div>
+                        <p>{{ form.preferred_requirements|add_class:'hidden' }}</p>
+
+                        <p class="font-semibold mt-2">{{ form.benefits.label }}</p>
+                       <div id="editor4" class="job-summ w-full rounded shadow-lg dark:text-white border border-gray-200 dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700">
+                        </div>
+                        <p>{{ form.benefits|add_class:'hidden' }}</p>
+
+                         <p class="font-semibold mt-2">{{ form.salary_range.label }}</p>
+
+                        <p>{{ form.salary_range|add_class:'w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors' }}</p>
                         <p class="font-semibold" >{{ form.days_posted.label }}:</p>
-                        <p>{{ form.days_posted|add_class:'flex-1 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
+                        <p>{{ form.days_posted|add_class:'w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors' }}</p>
                         <p class="font-semibold" >{{ form.company_logo.label }}:</p>
-                        <p>{{ form.company_logo|add_class:'flex-1 h-10 py-2 appearance-none border border-transparent w-full mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}</p>
+                        <p>{{ form.company_logo|add_class:'w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors' }}</p>
 
                          <div class="text-center">
                             <input class="bg-violet-500 text-white mt-4 p-1 px-12 rounded font-semibold" type="submit" name="Update" value="Update" id="">
@@ -88,6 +99,23 @@
 
 {% block js %}
     <script>
+        function prefillData() {
+            var main_fields = document.getElementsByClassName('job-summ')
+
+            el1 = document.getElementById("id_job_summary").value
+            el2 = document.getElementById("id_minimum_requirements").value
+            el3 = document.getElementById("id_preferred_requirements").value
+            el4 = document.getElementById("id_benefits").value
+
+            var arr = [el1, el2, el3, el4]
+
+            for (i=0;i < main_fields.length;i++){
+                main_fields[i].innerHTML = arr[i]
+            }
+        }
+
+        prefillData()
+
         var delete_form = 'person-delete'
         function deleteFunction() {
             if(!confirm("Are you sure you want to delete?")){
@@ -96,13 +124,91 @@
              document.getElementById("person-delete").submit();
             }
         }
-
-        var editors = document.getElementsByClassName("django-ckeditor-widget");
-        console.log(editors)
-        for (var i=0; i < editors.length; i++){
-            editors[i].classList.add("w-full")
-        }
     </script>
-    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
-    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+     <script>
+    var img = document.getElementById('id_company_logo')
+    img.addEventListener("change", function (){
+      document.getElementById('img-name').textContent = "You uploaded: "  + img.value.replace('C:\\fakepath\\',' ')
+
+    })
+    </script>
+<!-- Include the Quill library -->
+<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+var toolbarOptions = [
+  ['bold', 'italic', 'underline'],        // toggled buttons
+  ['blockquote', 'code-block'],
+
+  [{ 'header': 1 }, { 'header': 2 }, { 'header': 3 }],               // custom button values
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+
+  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+  ['clean']                                         // remove formatting button
+];
+
+var quill1 = new Quill('#editor', {
+  theme: 'bubble',
+    modules: {
+    toolbar: toolbarOptions
+  },// Specify theme in configuration
+});
+var quill2 = new Quill('#editor2', {
+  theme: 'bubble',
+    modules: {
+    toolbar: toolbarOptions
+  },// Specify theme in configuration
+});
+var quill3 = new Quill('#editor3', {
+  theme: 'bubble',
+    modules: {
+    toolbar: toolbarOptions
+  },// Specify theme in configuration
+});
+var quill4 = new Quill('#editor4', {
+  theme: 'bubble',
+    modules: {
+    toolbar: toolbarOptions
+  },// Specify theme in configuration
+});
+</script>
+    <script>
+
+    const job_summary = document.querySelectorAll(".ql-editor")
+    job_summary[0].classList.add("text-base")
+    job_summary[1].classList.add("text-base")
+    job_summary[2].classList.add("text-base")
+    job_summary[3].classList.add("text-base")
+
+    job_summary[0].classList.add("font-iter")
+    job_summary[1].classList.add("font-iter")
+    job_summary[2].classList.add("font-iter")
+    job_summary[3].classList.add("font-iter")
+
+
+
+    job_summary[0].addEventListener('blur', function() {
+        element = document.getElementById("id_job_summary")
+        element.value = job_summary[0].innerHTML
+    })
+
+    job_summary[1].addEventListener('blur', function() {
+        element = document.getElementById("id_minimum_requirements")
+        element.value = job_summary[1].innerHTML
+     })
+
+    job_summary[2].addEventListener('blur', function() {
+        element = document.getElementById("id_preferred_requirements")
+        element.value = job_summary[2].innerHTML
+     })
+
+    job_summary[3].addEventListener('blur', function() {
+        element = document.getElementById("id_benefits")
+        element.value = job_summary[3].innerHTML
+     })
+
+    </script>
 {% endblock %}
