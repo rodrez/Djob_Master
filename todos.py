@@ -1,7 +1,7 @@
+# TODO: Fix Experience and Education
 # TODO: Fix all dark mode fields
 # TODO: Make zipcode start with (Need to create add more data)
 # TODO: Change the tags drop down to use js
-
 
 # TODO: Login with Facebook and Google popup
 # TODO: Login message

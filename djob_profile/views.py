@@ -165,15 +165,17 @@ class ExperienceFormView(LoginRequiredMixin, FormView):
         print(exp_nums)
 
         if exp_nums:
-            context['form'] = ExperienceFormSet()
-        context['form'] = ExperienceFormSet(queryset=Experience.objects.filter(user=self.request.user.id))
+            context['exp_formset'] = ExperienceFormSet()
+        context['exp_formset'] = ExperienceFormSet(queryset=Experience.objects.filter(user=self.request.user.id))
         return context
 
-    def form_valid(self, form):
-        """
-        Args:
-            form:
-        """
-        if form.is_valid():
-            form.save()
-        return super(ExperienceFormView, self).form_valid(form)
+    def post(self, *args, **kwargs):
+
+        formset = ExperienceFormSet(data=self.request.POST)
+
+        # Check if submitted forms are valid
+        if formset.is_valid():
+            formset.save()
+            return redirect(self.get_success_url())
+
+        return self.render_to_response({'exp_formset': formset})
