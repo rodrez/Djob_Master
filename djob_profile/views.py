@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, UpdateView, FormView
 
@@ -162,20 +162,41 @@ class ExperienceFormView(LoginRequiredMixin, FormView):
 
         context['profile'] = Profile.objects.get(id=self.request.user.get_profile())
         exp_nums = Experience.objects.filter(user_id=self.request.user.id).count()
-        print(exp_nums)
+        context["last_id"] = Experience.objects.latest('id').id
+
 
         if exp_nums:
             context['exp_formset'] = ExperienceFormSet()
         context['exp_formset'] = ExperienceFormSet(queryset=Experience.objects.filter(user=self.request.user.id))
         return context
 
-    def post(self, *args, **kwargs):
+    # def get(self, *args, **kwargs):
+    #     formset = ExperienceFormSet(queryset=Experience.objects.none())
+    #     return self.render_to_response({'exp_formset': formset})
 
-        formset = ExperienceFormSet(data=self.request.POST)
+    def form_valid(self, form):
+
+        """
+        Args:
+            form:
+        """
+        if self.request.method == 'POST':
+            formset = ExperienceFormSet(self.request.POST)
+            # formset.save()
+            print(formset.is_valid())
+                # do something with the formset.cleaned_data
+                # pass
+
+        if form.is_valid():
+            form.save()
+        return super(ExperienceFormView, self).form_valid(form)
+
+
 
         # Check if submitted forms are valid
-        if formset.is_valid():
-            formset.save()
-            return redirect(self.get_success_url())
-
-        return self.render_to_response({'exp_formset': formset})
+        # print(formset.is_valid())
+        # if formset.is_valid():
+        #     formset.save()
+        #     return redirect(self.get_success_url())
+        #
+        # return self.render_to_response({'exp_formset': formset})

@@ -7,10 +7,8 @@
     <list default="true" id="7ad34eb7-c9bb-4011-ba75-48eec992edeb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djob_data/jobs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/djob_data/jobs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/djob_profile/templates/djob_profile/experience_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/templates/djob_profile/experience_update.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/djob_profile/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/djob_profile/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todos.py" beforeDir="false" afterPath="$PROJECT_DIR$/todos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +178,9 @@
       <workItem from="1620342425004" duration="703000" />
       <workItem from="1620477264600" duration="13000" />
       <workItem from="1620603226213" duration="66000" />
-      <workItem from="1620686349886" duration="8329000" />
+      <workItem from="1620686349886" duration="8606000" />
+      <workItem from="1620771426454" duration="3529000" />
+      <workItem from="1620776372803" duration="14831000" />
     </task>
     <task id="LOCAL-00001" summary="Updated signout forms and delete modal">
       <created>1619581963911</created>

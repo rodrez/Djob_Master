@@ -35,7 +35,8 @@
 
                                 <div class="flex mb-4 items-center">
                                     <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-100" id="EXP">
-                                        Experiences</h2>
+                                        Experiences
+                                    </h2>
                                     <button class="hidden flex-no-shrink p-2 ml-4 mr-2">
                                         <svg
                                                 class="h-10 w-10"
@@ -75,32 +76,20 @@
                                 <div>
                                     <form id="form-container" method="POST">
                                         {% csrf_token %}
-                                        {{ exp_formset.management_form }}
-{% if exp_formset.errors %}
-    {% for field in exp_formset %}
-        {% for error in field.errors %}
-            <div class="bg-red-500 text-white p-2">
-                <strong>{{ error|escape }}</strong>
-            </div>
-        {% endfor %}
-     {% endfor %}
- {% for error in formset.non_field_errors %}
-    <div class="bg-red-500 text-white p-2">
-        <strong>{{ error|escape }}</strong>
-    </div>
-  {% endfor %}
-{% endif %}
-
+                                            {{ exp_formset.management_form }}
+                                            {{ exp_formset.error_messages }}
+                                            {{ exp_formset.non_form_errors }}
                                         {% for form in exp_formset %}
-
+                                            {{ form.non_field_errors }}
+                                            {{ form.errors }}
                                             <div class="expForms">
-                                            {{ form.id }}
+
                                                 {% for f in form %}
                                                     {% if f.name == "DELETE" %}
                                                         <p class="hidden text-red-600 font-semibold">{{ f.label }}</p>
                                                         {{ f|add_class:'hidden flex-1 appearance-none border border-transparent mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none mt-3 focus:ring-violet-600 focus:border-transparent' }}
                                                     {% elif f.name == 'id' %}
-                                                        {{ f|add_class:'' }}
+                                                        {{ f }}
                                                     {% elif f.name == 'user' %}
                                                         {{ f|add_class:'' }}
                                                     {% elif f.name == "job_description" %}
@@ -114,30 +103,29 @@
                                                         {{ f|add_class:'w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors' }}
                                                     {% endif %}
                                                 {% endfor %}
-                                                <button class="mt-2 bg-red-600 px-3 py-2 rounded" onclick="this.parentNode.parentNode.removeChild(this.parentNode)">Delete</button>
+                                                <button class="mt-2 bg-red-600 px-3 py-2 rounded" onclick="" >Delete</button>
 
                                             </div>
                                         {% endfor %}
-                                        <style>
-                                            #id_form-{{ forloop.counter0 }}-job_description {
-                                                width: 100%;
-                                                word-wrap: break-word;
-                                            }
-                                        </style>
-                                        <hr class="mt-4 mb-4">
-                                        {#                                            {% endfor %}#}
+
+{#                                        <hr class="mt-4 mb-4">#}
                                         <button id="add-exp-form"
-                                                class="font-semibold cursor-pointer bg-transparent text-white text-center py-2 rounded mt-4 bg-lightBlue-400 w-full "
-                                                type="submit" value="Add Experience">
+                                                class="font-semibold cursor-pointer bg-transparent text-white text-center py-2 rounded mt-4 bg-lightBlue-400 w-full ">
                                             Add Experience
+
                                         </button>
-                                        <button class="cursor-pointer font-semibold text-white text-center py-2 rounded mt-4 bg-violet-500 w-full"
+                                        <button id="update-btn" class="cursor-pointer font-semibold text-white text-center py-2 rounded mt-4 bg-violet-500 w-full"
                                                 type="submit" value="Update">
                                             Update
                                         </button>
                                     </form>
                                 </div>
-
+ <style>
+                                            #id_form-{{ forloop.counter0 }}-job_description {
+                                                width: 100%;
+                                                word-wrap: break-word;
+                                            }
+                                        </style>
 
                             </div>
                         </div>
@@ -148,17 +136,19 @@
     </main>
 
     <script>
+        let removeForm = () => {
+            this.parentNode.parentNode.removeChild(this.parentNode);
 
+        }
         let expForm = document.querySelectorAll(".expForms")
         let container = document.querySelector("#form-container")
         let addButton = document.querySelector("#add-exp-form")
         let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
 
         let formNum = expForm.length - 1
-        addButton.addEventListener('click', () =>{
-            addForm
-            quillAssignment()
-        })
+        let idValue = 0
+        addButton.addEventListener('click', addForm)
+
 
         function addForm(e) {
             e.preventDefault()
@@ -168,9 +158,28 @@
 
             formNum++
             newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
+
             container.insertBefore(newForm, addButton)
 
+            let last_form = document.getElementsByClassName('expForms')
+            console.log(last_form.length)
+            let form_inputs = last_form[last_form.length - 1].getElementsByTagName('input')
+            for (i = 0; i < form_inputs.length; i++){
+                if(form_inputs[i].id.includes('-id')){
+                    form_inputs[i].value = parseInt('{{ last_id }}') + 1
+                }
+                else {
+                    form_inputs[i].value = ''
+                }
+            }
+
+            let ql_editor = document.getElementsByClassName('ql-editor')
+            console.log(ql_editor.length)
+            let editor_inputs = ql_editor[ql_editor.length - 1].getElementsByTagName('p')
+            editor_inputs[0].textContent = ''
+
             totalForms.setAttribute('value', `${formNum + 1}`)
+            quillAssignment()
         }
 
         // Pass the Quill Text to the container
@@ -180,15 +189,17 @@
         for (let i=0; i < job_elements.length; i++){
            job_elements[i].textContent = prev_summary[i].value
         }
+        {#const updateFormsetValue = (currentIdx) => {#}
+        {#    let id_field = document.getElementById(`id_form-${currentIdx}-id`)#}
+        {#    idValue = id_field.value + 1#}
+        {#    console.log(id_field.value)#}
+        {# }#}
 
-        job_summary[3].addEventListener('blur', function() {
-           element = document.getElementById("id_benefits")
-           element.value = job_summary[3].innerHTML
-        })
+
     </script>
 
             <script>
-                {% comment %} AutoFills User based on request.user {% endcomment %}
+            // AutoFills User based on request.user
             // All the select elements
             const assignUser = () => {
                 let selects = document.getElementsByTagName('select');
@@ -200,7 +211,7 @@
                     selects[idx].selectedIndex = {{ request.user.id }}
                 }
             }
-            {% comment %} AutoFills User based on request.user {% endcomment %}
+            // AutoFills User based on request.user
                 function clearForm(e_id){
                     let elements = document.getElementById(e_id).elements;
 
@@ -210,16 +221,13 @@
                     }
         </script>
 
-
-{#        <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>#}
-{#        <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>#}
     <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
     <script>
     let toolbarOptions = [
       ['bold', 'italic', 'underline'],        // toggled buttons
       ['blockquote', 'code-block'],
 
-      [{ 'header': 1 }, { 'header': 2 }, { 'header': 3 }],               // custom button values
+      [{ 'header': 1 }, { 'header': 2 }, { 'header': 3 }],   // custom button values
       [{ 'list': 'ordered'}, { 'list': 'bullet' }],
       [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
       [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
@@ -228,15 +236,7 @@
       [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
 
       ['clean']                                         // remove formatting button
-    ];
-
-    const quillAssignment = () => {
-        updateEditorID()
-        for(let i=0; i < allEditors.length; i++){
-            addQuill(allEditors[i].id)
-        }
-    }
-
+    ]
 
     let addQuill = (id) => {
     new Quill(`#${id}`, {
@@ -244,7 +244,7 @@
         modules: {
         toolbar: toolbarOptions
       },// Specify theme in configuration
-     });
+     })
     }
     const updateEditorID = () => {
             let allDescriptions = document.getElementsByClassName('job-summ')
@@ -252,65 +252,17 @@
                 allDescriptions[i].id = 'editor' + i
             }
         }
-    updateEditorID()
-    let allEditors = document.getElementsByClassName('job-summ')
-    quillAssignment()
-    {#addQuill('editor0')#}
 
-    {#let quill2 = new Quill('#editor2', {#}
-    {#  theme: 'bubble',#}
-    {#    modules: {#}
-    {#    toolbar: toolbarOptions#}
-    {#  },// Specify theme in configuration#}
-    {# });#}
-    {#let quill3 = new Quill('#editor3', {#}
-    {#  theme: 'bubble',#}
-    {#    modules: {#}
-    {#    toolbar: toolbarOptions#}
-    {#  },// Specify theme in configuration#}
-    {# });#}
-    {#let quill4 = new Quill('#editor4', {#}
-    {#  theme: 'bubble',#}
-    {#    modules: {#}
-    {#    toolbar: toolbarOptions#}
-    {#  },// Specify theme in configuration#}
-    {# });#}
+    let allEditors = document.getElementsByClassName('job-summ')
+    const quillAssignment = () => {
+        for(let i = 0; i < allEditors.length; i++){
+            addQuill(allEditors[i].id)
+        }
+    }
+    // Must be called in order for quill to work
+    updateEditorID()
+    quillAssignment()
+
     </script>
-{#        <script>#}
-    {##}
-    {#    const job_summary = document.querySelectorAll(".ql-editor")#}
-    {#    job_summary[0].classList.add("text-base")#}
-    {#    job_summary[1].classList.add("text-base")#}
-    {#    job_summary[2].classList.add("text-base")#}
-    {#    job_summary[3].classList.add("text-base")#}
-    {##}
-    {#    job_summary[0].classList.add("font-iter")#}
-    {#    job_summary[1].classList.add("font-iter")#}
-    {#    job_summary[2].classList.add("font-iter")#}
-    {#    job_summary[3].classList.add("font-iter")#}
-    {##}
-    {##}
-    {##}
-    {#    job_summary[0].addEventListener('blur', function() {#}
-    {#        element = document.getElementById("id_job_summary")#}
-    {#        element.value = job_summary[0].innerHTML#}
-    {#    })#}
-    {##}
-    {#    job_summary[1].addEventListener('blur', function() {#}
-    {#        element = document.getElementById("id_minimum_requirements")#}
-    {#        element.value = job_summary[1].innerHTML#}
-    {#     })#}
-    {##}
-    {#    job_summary[2].addEventListener('blur', function() {#}
-    {#        element = document.getElementById("id_preferred_requirements")#}
-    {#        element.value = job_summary[2].innerHTML#}
-    {#     })#}
-    {##}
-    {#    job_summary[3].addEventListener('blur', function() {#}
-    {#        element = document.getElementById("id_benefits")#}
-    {#        element.value = job_summary[3].innerHTML#}
-    {#     })#}
-    {##}
-    {#    </script>#}
 
 {% endblock content %}
