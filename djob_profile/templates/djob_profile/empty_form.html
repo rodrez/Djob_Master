@@ -1,0 +1,26 @@
+{% load widget_tweaks %}
+
+<div id="empty_form" style="display:none">
+    <table class='no_error'>
+        {% for f in form.empty_form %}
+            {{ f.job_title|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}
+            {{ f.time_at_job|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent'}}
+            {{ f.job_location|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent'}}
+            {{ f.job_description|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}
+            {% if form.instance.pk %}{{ form.DELETE }}{% endif %}
+
+{#            {% if f.name == "DELETE" %}#}
+{#                {{ f.label }}#}
+{#                {{ f|add_class:'flex-1 appearance-none border border-transparent bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-violet-600 focus:border-transparent' }}#}
+{#            {% elif f.name == 'id' %}#}
+{#                {{ f|add_class:'hidden' }}#}
+{#            {% elif f.name == 'user' %}#}
+{#                {{ f|add_class:"hidden" }}#}
+{#            {% else %}#}
+{#                {{ f.label }}#}
+{#                {{ f|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}#}
+{#            {% endif %}#}
+            <br> <br>
+        {% endfor %}
+    </table>
+</div>

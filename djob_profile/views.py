@@ -1,5 +1,6 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, UpdateView, FormView
 
@@ -123,11 +124,10 @@ class EducationFormView(LoginRequiredMixin, FormView):
         context['profile'] = Profile.objects.get(id=self.request.user.pk)
         context['experience'] = ExperienceFormSet(queryset=Experience.objects.filter(user=self.request.user.id))
 
-        edu_nums = Education.objects.filter(user_id=self.request.user.id).count()
-
-        if edu_nums:
-            context['form'] = EducationFormSet()
-        context['form'] = EducationFormSet(queryset=Education.objects.filter(user=self.request.user.id))
+        if self.request.POST:
+            context['edu_formset'] = EducationFormSet(self.request.POST)
+        else:
+            context['edu_formset'] = EducationFormSet(queryset=Education.objects.filter(user=self.request.user.id))
         return context
 
     def form_valid(self, form):
@@ -136,12 +136,13 @@ class EducationFormView(LoginRequiredMixin, FormView):
         Args:
             form:
         """
-        print(form.model)
+        context = self.get_context_data()
+        formset = context['edu_formset']
+        print(form.deleted_forms)
 
-        if form.is_valid():
-            # form.data['user'] = self.request.user
-
-            form.save()
+        if formset.is_valid():
+            formset.save()
+            messages.success(self.request, 'Education successfully updated.')
         return super(EducationFormView, self).form_valid(form)
 
 
@@ -159,44 +160,24 @@ class ExperienceFormView(LoginRequiredMixin, FormView):
             **kwargs:
         """
         context = super(ExperienceFormView, self).get_context_data(**kwargs)
-
         context['profile'] = Profile.objects.get(id=self.request.user.get_profile())
-        exp_nums = Experience.objects.filter(user_id=self.request.user.id).count()
-        context["last_id"] = Experience.objects.latest('id').id
 
 
-        if exp_nums:
+        if self.request.POST:
+            context['exp_formset'] = ExperienceFormSet(self.request.POST)
+        else:
             context['exp_formset'] = ExperienceFormSet()
-        context['exp_formset'] = ExperienceFormSet(queryset=Experience.objects.filter(user=self.request.user.id))
         return context
 
-    # def get(self, *args, **kwargs):
-    #     formset = ExperienceFormSet(queryset=Experience.objects.none())
-    #     return self.render_to_response({'exp_formset': formset})
-
     def form_valid(self, form):
-
         """
         Args:
             form:
         """
-        if self.request.method == 'POST':
-            formset = ExperienceFormSet(self.request.POST)
-            # formset.save()
-            print(formset.is_valid())
-                # do something with the formset.cleaned_data
-                # pass
+        context = self.get_context_data()
+        formset = context['exp_formset']
 
-        if form.is_valid():
-            form.save()
+        if formset.is_valid():
+            formset.save()
+            messages.success(self.request, 'Experience successfully updated.')
         return super(ExperienceFormView, self).form_valid(form)
-
-
-
-        # Check if submitted forms are valid
-        # print(formset.is_valid())
-        # if formset.is_valid():
-        #     formset.save()
-        #     return redirect(self.get_success_url())
-        #
-        # return self.render_to_response({'exp_formset': formset})

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'djob_jobs.apps.DjobJobsConfig',
     'djob_data.apps.DjobDataConfig',
+    # 'random_tester.apps.RandomTesterConfig',
 
     # Third Party Apps
     'allauth',
@@ -63,6 +64,7 @@ INSTALLED_APPS = [
     'livereload',
     'sorl.thumbnail',
     'debug_toolbar',
+    'django_quill',
 ]
 
 MIDDLEWARE = [
@@ -202,3 +204,18 @@ if DEVELOPMENT_MODE is True:
 #     DATABASES = {
 #         "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
 #     }
+
+QUILL_CONFIGS = {
+    'default':{
+        'theme': 'snow',
+        'modules': {
+            'syntax': True,
+            'toolbar': [
+                [
+                    { 'list': 'ordered'}, { 'list': 'bullet' },
+                    'bold', 'italic', 'underline', 'blockquote',
+                ],
+            ]
+        }
+    }
+}

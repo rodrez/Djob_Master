@@ -14,7 +14,7 @@ class EducationForm(ModelForm):
     class Meta:
         model = Education
         fields = [
-            'institution', 'degree', 'grad_date'
+            'institution', 'degree', 'grad_date', 'id'
         ]
 
 
@@ -22,7 +22,7 @@ class ExperienceForm(ModelForm):
     class Meta:
         model = Experience
         fields = [
-            'job_title', 'job_description', 'job_location', 'time_at_job'
+            'job_title', 'job_description', 'job_location', 'time_at_job', 'id'
         ]
 
 

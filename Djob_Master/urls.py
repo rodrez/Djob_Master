@@ -28,6 +28,7 @@ urlpatterns = [
        path('account/', include('allauth.urls')),
        path('profile/', include('djob_profile.urls')),
        path('jobs/', include('djob_jobs.urls')),
+       # path('rts/', include('random_tester.urls')),
 
        # Ckeditor
        url(r'^ckeditor/', include('ckeditor_uploader.urls')),

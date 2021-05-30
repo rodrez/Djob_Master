@@ -1,7 +1,7 @@
 from ckeditor.fields import RichTextField
 from django.db import models
 from Djob_Master import settings
-
+from django_quill.fields import QuillField
 
 # Create your models here.
 class Profile(models.Model):
@@ -63,15 +63,7 @@ class Experience(models.Model):
     job_title = models.CharField(default='Default - Engineer', max_length=150, null=True, blank=True)
     time_at_job = models.CharField(default='Default - 1 year', max_length=150, null=True, blank=True)
     job_location = models.CharField(default='Default - Los Angeles', max_length=150, null=True, blank=True)
-    job_description = RichTextField(default="Analyze the needs of the user \n" \
-                                               "Design, test and develop the software to meet those needs \n"
-                                               "Recommend upgrades for existing systems and programs \n" \
-                                               "Develop separate elements of a software that work well in the program as a whole\n" \
-                                               "Create various diagrams, flowcharts and models that illustrate the type of code needed for programmers\n" \
-                                               "Ensure continued functionality of a program during maintenance and testing of software\n" \
-                                               "Document each aspect of a system or application as a reference for future upgrades and maintenance" \
-                                               "Revisit the development process to fix bugs or address client or consumer concerns\n",
-                                        null=True, blank=True)
+    job_description = QuillField()
 
     def __str__(self):
         return f'{self.user.username.capitalize()} Experience'

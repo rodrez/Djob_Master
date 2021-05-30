@@ -1,0 +1,10 @@
+div.form-row.field-content div.django-quill-widget-container {
+    display: inline-block;
+}
+.ql-snow .ql-stroke {
+  fill: none;
+  stroke: white;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}

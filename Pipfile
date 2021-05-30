@@ -21,6 +21,7 @@ dj-database-url = "*"
 beautifulsoup4 = "*"
 requests = "*"
 lxml = "*"
+django-quill-editor = "*"
 
 [dev-packages]
 

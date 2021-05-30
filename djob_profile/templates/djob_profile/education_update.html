@@ -3,7 +3,7 @@
 {% load static %}
 {% load humanize %}
 {% block content %}
-{% load widget_tweaks %}
+    {% load widget_tweaks %}
 
     <main class="flex-grow">
         <section class="relative">
@@ -61,8 +61,11 @@
 
                                 </div>
                                 <div class="hidden grid grid-cols-2 gap-4">
-                                    <p class="w-full font-medium text-grey-darkest flex items-center justify-left">Degree Obtained</p>
-                                    <button class="ml-auto flex font-medium items-center justify-center"> Institution - Date</button>
+                                    <p class="w-full font-medium text-grey-darkest flex items-center justify-left">
+                                        Degree Obtained</p>
+                                    <button class="ml-auto flex font-medium items-center justify-center"> Institution -
+                                        Date
+                                    </button>
 
                                 </div>
                                 <hr class="mt-4 mb-10">
@@ -70,111 +73,118 @@
                                 {% comment %} Education Loops {% endcomment %}
                                 <form action="" method="POST">
                                     {% csrf_token %}
-                                    {{ form.management_form }}
+                                    {{ edu_formset.management_form }}
 
-                                    {% for edu in form %}
-                                        <div id="form_set">
-                                        {% for f in edu %}
-{#                                            {{ f.id_for_label }}#}
-                                            {% if f.name == "DELETE" %}
-                                                {{ f.label }}
-                                                {{ f|add_class:'flex-1 appearance-none border border-transparent bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-violet-600 focus:border-transparent'}}
-                                            {% elif f.name == 'id'%}
-                                                {{ f|add_class:'hidden' }}
-                                            {% elif f.name == 'user'%}
-                                                {{ f|add_class:"hidden"}}
-                                            {% else %}
-                                                {{ f.label }}
-                                                {{ f|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent'}}
+                                    {% for edu in edu_formset %}
 
-                                            {% endif %}
-                                        <br> <br>
-                                            {% endfor %}
-                                        <hr class="mt-4 mb-4">
-                                        </div>
+                                                {{ edu.errors.as_ul }}
+{#                                            {{ edu_formset.error_messages }}#}
+
+                                            <div id="form_set " class="formset_row-{{ edu_formset.prefix }} mb-4">
+
+                                                    {% for hidden in form.hidden_fields %}
+                                                       {{ hidden }}
+                                                    {% endfor %}
+                                                    {{ edu.user.label }}
+                                                    {{ edu.user|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}
+
+                                                    {{ edu.id|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}
+
+                                                    {{ edu.institution.label }}
+                                                    {{ edu.institution|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}
+
+                                                    {{ edu.degree.label }}
+                                                    {{ edu.degree|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent' }}
+
+                                                    {{ edu.grad_date.label }}
+                                                    {{ edu.grad_date|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent mb-3' }}
+                                                    {% if edu.instance.pk %}{{ edu.DELETE|add_class:'border-2 block ' }}{% endif %}
+                                            </div>
+                                            <hr class="mt-4 mb-4">
+                                            <!-- Adding hidden fields solved the issue with id -->
+
+
                                     {% endfor %}
 
-                                        <button class="cursor-pointer font-semibold text-white text-center py-2 rounded mt-4 bg-violet-500 w-full" type="submit" value="Update">
-                                            Update
-                                        </button>
-                                    </form>
+                                    <button class="cursor-pointer font-semibold text-white text-center py-2 rounded mt-4 bg-violet-500 w-full"
+                                            type="submit" value="Update">
+                                        Update
+                                    </button>
+                                </form>
                             </div>
-                                <button class="font-semibold cursor-pointer bg-transparent text-white text-center py-2 rounded mt-4 bg-lightBlue-400 w-full " id="add_more" type="submit" value="Add Experience">
-                                    Add Experience
-                                </button>
-                            <div id="empty_form" style="display:none">
-                                <table class='no_error'>
-                                    {% for f in form.empty_form %}
-                                        {% if f.name == "DELETE" %}
-                                            {{ f.label }}
-                                            {{ f|add_class:'flex-1 appearance-none border border-transparent bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-violet-600 focus:border-transparent'}}
-                                        {% elif f.name == 'id'%}
-                                            {{ f|add_class:'hidden' }}
-                                        {% elif f.name == 'user'%}
-                                            {{ f|add_class:"hidden"}}
-                                        {% else %}
-                                            {{ f.label }}
-                                            {{ f|add_class:'flex-1 appearance-none border border-transparent w-full bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent'}}
-
-                                    {% endif %}
-                                <br> <br>
-
-                                        {% endfor %}
-                                </table>
-                            </div>
-
-                            </div>
-
                         </div>
-                    </section>
+                </section>
 
 
-                    {% comment %} Start Experiences {% endcomment %}
+                {% comment %} Start Experiences {% endcomment %}
 
-                        {% include 'djob_profile/profile_components/display_exp.html' %}
+                {% include 'djob_profile/profile_components/display_exp.html' %}
 
-                    {% comment %} End Experiences {% endcomment %}
+                {% comment %} End Experiences {% endcomment %}
             </div>
         </div>
         </div>
     </main>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+<script src="{% static 'js/formset.js' %}"></script>
+<script>
+
+
+      $('.formset_row-{{ edu_formset.prefix }}').formset({
+          addText: 'Add Experience',
+          prefix: '{{ edu_formset.prefix }}',
+          deleteText: 'Remove',
+          addCssClass: 'add-row bg-indigo-600 rounded px-4 py-2 mt-5 text-white',          // CSS class applied to the add link
+          deleteCssClass: 'delete-row bg-red-600 rounded px-4 py-2 mt-10 text-white',
+      });
+
+      let deleteBtnArr = (element_class) => {
+          btns = document.getElementsByClassName(element_class)
+          console.log(btns)
+      }
+
+      deleteBtnArr('delete-row')
+    // AutoFills User based on request.user
+    // All the select elements
+    function assignUser() {
+        var selects = document.getElementsByTagName('select');
+
+        // For loop to get all select options
+        for (idx = 0; idx < selects.length; idx++) {
+
+            // Assigns the options
+            selects[idx].selectedIndex = {{ request.user.id }}
+        }
+    }
+
+    {% comment %} AutoFills User based on request.user {% endcomment %}
+
+
+  const addBtn = document.getElementsByClassName('add-row')[0]
+  const showDelete = () => {
+      let deleteBtn = document.getElementsByClassName('delete-row')
+      for (let i = 0; i < deleteBtn.length; i++) {
+            deleteBtn[i].classList.remove('hidden')
+      }
+  }
+      showDelete()
+      assignUser()
+    addBtn.addEventListener('click', () => {
+           showDelete()
+           styleEditor()
+        assignUser()
+       })
+
+    function clearForm(e_id) {
+        var elements = document.getElementById(e_id).elements;
+
+        for (var i = 0; i < elements.length; i++) {
+            console.log(elements[i].value);
+        }
+    }
+</script>
 
 {% endblock content %}
-
-{% block js %}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-          integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-          crossorigin="anonymous"></script>
-
-
-    <script>
-            {% comment %} AutoFills User based on request.user {% endcomment %}
-        // All the select elements
-        function assignUser(){
-            var selects = document.getElementsByTagName('select');
-
-            // For loop to get all select options
-                for (idx = 0; idx < selects.length; idx++){
-
-                // Assigns the options
-                selects[idx].selectedIndex = {{ request.user.id }}
-            }
-        }
-        {% comment %} AutoFills User based on request.user {% endcomment %}
-
-            $('#add_more').click(function() {
-            var form_idx = $('#id_form-TOTAL_FORMS').val();
-            $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
-            $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
-            assignUser();
-        });
-            function clearForm(e_id){
-                var elements = document.getElementById(e_id).elements;
-
-                for (var i = 0; i < elements.length; i++) {
-                    console.log(elements[i].value);
-                    }
-                }
-        </script>
-{% endblock js %}

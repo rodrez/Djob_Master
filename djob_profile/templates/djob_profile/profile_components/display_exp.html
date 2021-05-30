@@ -70,12 +70,25 @@
                     <hr class="mt-2 border-2">
                     <p>{{ exp.job_location }} - {{ exp.time_at_job }}</p>
                     {% comment %} Experience Loops {% endcomment %}
-                    <p class="w-full font-medium text-grey-darkest flex items-center justify-left">
-                        {{ exp.job_description|safe }}
-                    </p>
-{#                    <hr class="mt-2">#}
+                    <div class="job_description">
+                        <p class="w-full font-medium text-grey-darkest flex items-center justify-left">
+                            {{ exp.job_description.html|safe }}
+                        </p>
+                    </div>
                 {% endfor %}
             </div>
         </div>
     </div>
 </section>
+<script>
+
+var job_exp = document.getElementsByClassName('job_description')
+
+for (var i = 0; i < job_exp.length; i++) {
+    list = job_exp[i].getElementsByTagName('ul')[0]
+    if (list) {
+        list.classList.add("list-disc");
+        list.classList.add("list-inside");
+    }
+}
+</script>

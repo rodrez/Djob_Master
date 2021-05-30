@@ -74,58 +74,56 @@
 
                                 </div>
                                 <div>
+                                {{ form.media }}
                                     <form id="form-container" method="POST">
                                         {% csrf_token %}
-                                            {{ exp_formset.management_form }}
-                                            {{ exp_formset.error_messages }}
-                                            {{ exp_formset.non_form_errors }}
+                                        {{ exp_formset.management_form }}
+                                        <div id="formset_container">
                                         {% for form in exp_formset %}
                                             {{ form.non_field_errors }}
                                             {{ form.errors }}
-                                            <div class="expForms">
+                                            <div class="expForms formset_row-{{ exp_formset.prefix }} mb-4" >
 
-                                                {% for f in form %}
-                                                    {% if f.name == "DELETE" %}
-                                                        <p class="hidden text-red-600 font-semibold">{{ f.label }}</p>
-                                                        {{ f|add_class:'hidden flex-1 appearance-none border border-transparent mb-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded text-base focus:outline-none mt-3 focus:ring-violet-600 focus:border-transparent' }}
-                                                    {% elif f.name == 'id' %}
-                                                        {{ f }}
-                                                    {% elif f.name == 'user' %}
-                                                        {{ f|add_class:'' }}
-                                                    {% elif f.name == "job_description" %}
-                                                        <p>{{ f.label }}</p><br>
-                                                        <div id=""
-                                                             class="job-summ w-full rounded shadow-lg dark:text-white border border-gray-200 dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700">
-                                                        </div>
-                                                        {{ f|add_class:'model-field hidden w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors' }}
-                                                    {% else %}
-                                                        <p>{{ f.label }}</p>
-                                                        {{ f|add_class:'w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors' }}
-                                                    {% endif %}
+                                                <p class="hidden">User</p>
+                                                {{ form.user|add_class:"hidden w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors" }}
+                                                <p>Title</p>
+                                                {{ form.job_title|add_class:"w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors" }}
+                                                <p>Time at Job</p>
+                                                {{ form.time_at_job|add_class:"w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors" }}
+                                                <p>Location</p>
+                                                {{ form.job_location|add_class:"w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors" }}
+                                                <p>Description</p>
+                                                {{ form.job_description|add_class:'model-field hidden' }}
+
+                                                {% if form.instance.pk %}{{ form.DELETE }}{% endif %}
+                                                {% for hidden in form.hidden_fields %}
+                                                   {{ hidden }}
                                                 {% endfor %}
-                                                <button class="mt-2 bg-red-600 px-3 py-2 rounded" onclick="" >Delete</button>
-
+                                                <button onclick="deleteForm(this)">R</button>
+                                                <hr class="mt-4 mb-4 border-2">
                                             </div>
+
+                                             <!-- Adding hidden fields solved the issue with id -->
+
                                         {% endfor %}
+                                        </div>
 
-{#                                        <hr class="mt-4 mb-4">#}
-                                        <button id="add-exp-form"
-                                                class="font-semibold cursor-pointer bg-transparent text-white text-center py-2 rounded mt-4 bg-lightBlue-400 w-full ">
-                                            Add Experience
+{#                                        {% include 'djob_profile/empty_form.html' %}#}
 
-                                        </button>
-                                        <button id="update-btn" class="cursor-pointer font-semibold text-white text-center py-2 rounded mt-4 bg-violet-500 w-full"
+                                        <button id="update-btn"
+                                                class="cursor-pointer font-semibold text-white text-center py-2 rounded mt-4 bg-violet-500 w-full"
                                                 type="submit" value="Update">
                                             Update
                                         </button>
+
                                     </form>
                                 </div>
- <style>
-                                            #id_form-{{ forloop.counter0 }}-job_description {
-                                                width: 100%;
-                                                word-wrap: break-word;
-                                            }
-                                        </style>
+                                <style>
+                                    #id_form-{{ forloop.counter0 }}-job_description {
+                                        width: 100%;
+                                        word-wrap: break-word;
+                                    }
+                                </style>
 
                             </div>
                         </div>
@@ -135,133 +133,93 @@
         </div>
     </main>
 
-    <script>
-        let removeForm = () => {
-            this.parentNode.parentNode.removeChild(this.parentNode);
-
-        }
-        let expForm = document.querySelectorAll(".expForms")
-        let container = document.querySelector("#form-container")
-        let addButton = document.querySelector("#add-exp-form")
-        let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
-
-        let formNum = expForm.length - 1
-        let idValue = 0
-        addButton.addEventListener('click', addForm)
 
 
-        function addForm(e) {
-            e.preventDefault()
+<script src="{% static 'js/formset.js' %}"></script>
+<script>
 
-            let newForm = expForm[0].cloneNode(true)
-            let formRegex = RegExp(`form-(\\d){1}-`, 'g')
+      $('.formset_row-{{ exp_formset.prefix }}').formset({
+          addText: 'Add Experience',
+          prefix: '{{ exp_formset.prefix }}',
+          deleteText: 'Remove',
+          addCssClass: 'add-row bg-indigo-600 rounded px-4 py-2 mt-5 text-white',          // CSS class applied to the add link
+          deleteCssClass: 'delete-row bg-red-600 rounded px-4 py-2 mt-10 text-white',
+      });
 
-            formNum++
-            newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
+      const addBtn = document.getElementsByClassName('add-row')[0]
 
-            container.insertBefore(newForm, addButton)
+      // do a querySelectorAll() and then call a function on each item
+     // the parent argument is optional (defaults to document)
+     function iterateQuerySelectorAll(className, fn, parent) {
+        parent = parent || document;
+        var items = parent.getElementsByClassName(className);
+        for (var i = 0; i < items.length; i++) {
+            items[i].id = `deleteButton${i}`
+            fn(items[i]);
 
-            let last_form = document.getElementsByClassName('expForms')
-            console.log(last_form.length)
-            let form_inputs = last_form[last_form.length - 1].getElementsByTagName('input')
-            for (i = 0; i < form_inputs.length; i++){
-                if(form_inputs[i].id.includes('-id')){
-                    form_inputs[i].value = parseInt('{{ last_id }}') + 1
-                }
-                else {
-                    form_inputs[i].value = ''
-                }
-            }
-
-            let ql_editor = document.getElementsByClassName('ql-editor')
-            console.log(ql_editor.length)
-            let editor_inputs = ql_editor[ql_editor.length - 1].getElementsByTagName('p')
-            editor_inputs[0].textContent = ''
-
-            totalForms.setAttribute('value', `${formNum + 1}`)
-            quillAssignment()
-        }
-
-        // Pass the Quill Text to the container
-        let job_elements = document.getElementsByClassName('job-summ')
-        let prev_summary = document.getElementsByClassName('model-field')
-
-        for (let i=0; i < job_elements.length; i++){
-           job_elements[i].textContent = prev_summary[i].value
-        }
-        {#const updateFormsetValue = (currentIdx) => {#}
-        {#    let id_field = document.getElementById(`id_form-${currentIdx}-id`)#}
-        {#    idValue = id_field.value + 1#}
-        {#    console.log(id_field.value)#}
-        {# }#}
-
-
-    </script>
-
-            <script>
-            // AutoFills User based on request.user
-            // All the select elements
-            const assignUser = () => {
-                let selects = document.getElementsByTagName('select');
-
-                // For loop to get all select options
-                    for (let idx = 0; idx < selects.length; idx++){
-
-                    // Assigns the options
-                    selects[idx].selectedIndex = {{ request.user.id }}
-                }
-            }
-            // AutoFills User based on request.user
-                function clearForm(e_id){
-                    let elements = document.getElementById(e_id).elements;
-
-                    for (let i = 0; i < elements.length; i++) {
-                        console.log(elements[i].value);
-                        }
-                    }
-        </script>
-
-    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script>
-    let toolbarOptions = [
-      ['bold', 'italic', 'underline'],        // toggled buttons
-      ['blockquote', 'code-block'],
-
-      [{ 'header': 1 }, { 'header': 2 }, { 'header': 3 }],   // custom button values
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-      [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-
-      [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-      ['clean']                                         // remove formatting button
-    ]
-
-    let addQuill = (id) => {
-    new Quill(`#${id}`, {
-      theme: 'bubble',
-        modules: {
-        toolbar: toolbarOptions
-      },// Specify theme in configuration
-     })
-    }
-    const updateEditorID = () => {
-            let allDescriptions = document.getElementsByClassName('job-summ')
-            for (let i = 0; i < allDescriptions.length; i++){
-                allDescriptions[i].id = 'editor' + i
-            }
-        }
-
-    let allEditors = document.getElementsByClassName('job-summ')
-    const quillAssignment = () => {
-        for(let i = 0; i < allEditors.length; i++){
-            addQuill(allEditors[i].id)
         }
     }
-    // Must be called in order for quill to work
-    updateEditorID()
-    quillAssignment()
+
+    // add an event handler to each item that matches a selector
+    // the parent argument is optional (defaults to document)
+    function addEventQuerySelectorAll(className, event, fn, parent) {
+        iterateQuerySelectorAll(className, function(item) {
+            item.addEventListener(event, fn);
+        }, parent);
+    }
+
+    addEventQuerySelectorAll("delete-row", "click", function() {
+
+        let formNum = this.id.slice(-1);
+        console.log(formNum)
+        let deleteInput = document.getElementById(`id_form-${parseInt(formNum)}-DELETE`)
+        deleteInput.type = 'checkbox'
+        deleteInput.checked = true
+    });
+
+
+      const showDelete = () => {
+          let deleteBtn = document.getElementsByClassName('delete-row')
+          for (let i = 0; i < deleteBtn.length; i++) {
+                deleteBtn[i].classList.remove('hidden')
+          }
+      }
+      showDelete()
+
+      const styleEditor = () => {
+          let el = document.getElementsByClassName('django-quill-widget-container')
+          for (let i = 0; i < el.length; i++) {
+              el[i].classList.add('shadow')
+          }
+      }
+      styleEditor()
+
+       addBtn.addEventListener('click', () => {
+           showDelete()
+           styleEditor()
+           clearDescription()
+       })
+
+        // AutoFills User based on request.user
+        // All the select elements
+        const assignUser = () => {
+            let selects = document.getElementsByTagName('select');
+
+            // For loop to get all select options
+            for (let idx = 0; idx < selects.length; idx++) {
+
+                // Assigns the options
+                selects[idx].selectedIndex = {{ request.user.id }}
+            }
+        }
+        // AutoClears Description
+        const clearDescription = () => {
+            let editors = document.getElementsByClassName('ql-editor')
+            editors[editors.length -1].innerHTML = ""
+      }
+
+
+
 
     </script>
 
