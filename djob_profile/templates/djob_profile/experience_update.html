@@ -2,9 +2,8 @@
 {% load pages_filters %}
 {% load static %}
 {% load humanize %}
+{% load widget_tweaks %}
 {% block content %}
-    {% load widget_tweaks %}
-    <link rel="stylesheet" href="//cdn.quilljs.com/1.3.6/quill.bubble.css">
 
     <main class="flex-grow">
         <section class="relative">
@@ -74,41 +73,49 @@
 
                                 </div>
                                 <div>
-                                {{ form.media }}
+                                    {{ form.media }}
                                     <form id="form-container" method="POST">
                                         {% csrf_token %}
                                         {{ exp_formset.management_form }}
                                         <div id="formset_container">
-                                        {% for form in exp_formset %}
-                                            {{ form.non_field_errors }}
-                                            {{ form.errors }}
-                                            <div class="expForms formset_row-{{ exp_formset.prefix }} mb-4" >
+                                            {% for form in exp_formset %}
+                                                {{ form.non_field_errors }}
+                                                {{ form.errors }}
+                                                <div id="exp-form-{{ forloop.counter0 }}"
+                                                     class="expForms formset_row-{{ exp_formset.prefix }} mb-4 hint">
 
-                                                <p class="hidden">User</p>
-                                                {{ form.user|add_class:"hidden w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors" }}
-                                                <p>Title</p>
-                                                {{ form.job_title|add_class:"w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors" }}
-                                                <p>Time at Job</p>
-                                                {{ form.time_at_job|add_class:"w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors" }}
-                                                <p>Location</p>
-                                                {{ form.job_location|add_class:"w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors" }}
-                                                <p>Description</p>
-                                                {{ form.job_description|add_class:'model-field hidden' }}
+                                                    <p class="hidden">User</p>
+                                                    {{ form.user|add_class:"hidden w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors" }}
+                                                    <p>Title</p>
+                                                    {{ form.job_title|add_class:"w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors" }}
+                                                    <p>Time at Job</p>
+                                                    {{ form.time_at_job|add_class:"w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors" }}
+                                                    <p>Location</p>
+                                                    {{ form.job_location|add_class:"w-full border py-2 border-gray-200 rounded hover:border-gray-300 shadow dark:text-white dark:bg-gray-600 dark:text-white dark:bg-opacity-25 dark:border-gray-700 focus:outline-none focus:border-violet-600 transition-colors" }}
+                                                    <p>Description</p>
+                                                    {{ form.job_description|add_class:'model-field' }}
 
-                                                {% if form.instance.pk %}{{ form.DELETE }}{% endif %}
-                                                {% for hidden in form.hidden_fields %}
-                                                   {{ hidden }}
-                                                {% endfor %}
-                                                <button onclick="deleteForm(this)">R</button>
-                                                <hr class="mt-4 mb-4 border-2">
-                                            </div>
+                                                    {% if form.instance.pk %}{{ form.DELETE|add_class:"hidden" }}{% endif %}
+                                                    {% for hidden in form.hidden_fields %}
+                                                        {{ hidden }}
+                                                    {% endfor %}
 
-                                             <!-- Adding hidden fields solved the issue with id -->
+                                                    <!-- TODO: Need to hide form after completion -->
+                                                    <button id="delete-button-{{ forloop.counter0 }}" type="button"
+                                                            class="bg-red-600 rounded px-4 py-2 mt-2 text-white"
+                                                            onclick="deleteForm('id_form-{{ forloop.counter0 }}-DELETE', 'delete-button-{{ forloop.counter0 }}')">
+                                                        Remove Exp
+                                                    </button>
+                                                    <hr class="mt-4 mb-4 border-2">
+                                                </div>
 
-                                        {% endfor %}
+
+                                                <!-- Adding hidden fields solved the issue with id -->
+
+                                            {% endfor %}
                                         </div>
 
-{#                                        {% include 'djob_profile/empty_form.html' %}#}
+                                        {#                                        {% include 'djob_profile/empty_form.html' %}#}
 
                                         <button id="update-btn"
                                                 class="cursor-pointer font-semibold text-white text-center py-2 rounded mt-4 bg-violet-500 w-full"
@@ -132,73 +139,83 @@
             </div>
         </div>
     </main>
+    <style>
+        div#hint {
+            background: gold;
+            color: orangered;
+            padding: .5em;
+            box-sizing: border-box;
+            overflow: hidden;
 
-
-
-<script src="{% static 'js/formset.js' %}"></script>
-<script>
-
-      $('.formset_row-{{ exp_formset.prefix }}').formset({
-          addText: 'Add Experience',
-          prefix: '{{ exp_formset.prefix }}',
-          deleteText: 'Remove',
-          addCssClass: 'add-row bg-indigo-600 rounded px-4 py-2 mt-5 text-white',          // CSS class applied to the add link
-          deleteCssClass: 'delete-row bg-red-600 rounded px-4 py-2 mt-10 text-white',
-      });
-
-      const addBtn = document.getElementsByClassName('add-row')[0]
-
-      // do a querySelectorAll() and then call a function on each item
-     // the parent argument is optional (defaults to document)
-     function iterateQuerySelectorAll(className, fn, parent) {
-        parent = parent || document;
-        var items = parent.getElementsByClassName(className);
-        for (var i = 0; i < items.length; i++) {
-            items[i].id = `deleteButton${i}`
-            fn(items[i]);
-
+            font-weight: bold;
+            transition: height 1s, width 1s, padding 1s, visibility 1s, opacity 0.5s ease-out;
         }
-    }
-
-    // add an event handler to each item that matches a selector
-    // the parent argument is optional (defaults to document)
-    function addEventQuerySelectorAll(className, event, fn, parent) {
-        iterateQuerySelectorAll(className, function(item) {
-            item.addEventListener(event, fn);
-        }, parent);
-    }
-
-    addEventQuerySelectorAll("delete-row", "click", function() {
-
-        let formNum = this.id.slice(-1);
-        console.log(formNum)
-        let deleteInput = document.getElementById(`id_form-${parseInt(formNum)}-DELETE`)
-        deleteInput.type = 'checkbox'
-        deleteInput.checked = true
-    });
+    </style>
 
 
-      const showDelete = () => {
-          let deleteBtn = document.getElementsByClassName('delete-row')
-          for (let i = 0; i < deleteBtn.length; i++) {
+    <script src="{% static 'js/formset.js' %}"></script>
+    <script>
+
+    </script>
+
+    <script>
+
+        $('.formset_row-{{ exp_formset.prefix }}').formset({
+            addText: 'Add Experience',
+            prefix: '{{ exp_formset.prefix }}',
+            deleteText: 'Remove',
+            addCssClass: 'add-row bg-indigo-600 rounded px-4 py-2 mt-5 text-white',          // CSS class applied to the add link
+            deleteCssClass: 'hidden',
+        });
+
+        const addBtn = document.getElementsByClassName('add-row')[0]
+
+        const deleteForm = (deleteID, deleteButton) => {
+            let deleteField = document.getElementById(deleteID)
+            deleteField.type = 'checkbox'
+            deleteField.checked = true
+            deleteField.className = 'hidden'
+
+            var deleteBtn = document.getElementById(deleteButton);
+            {#formContainer.classList.add('hidden')#}
+
+            var fade = deleteBtn.parentElement
+            var opacity = 0;
+            var intervalID = setInterval(function() {
+
+                if (opacity < 1.0) {
+                    opacity = opacity - 0.1
+                    fade.style.opacity = opacity;
+                } else {
+                    clearInterval(intervalID);
+                }
+            }, 200);
+        }
+
+
+
+
+        const showDelete = () => {
+            let deleteBtn = document.getElementsByClassName('delete-row')
+            for (let i = 0; i < deleteBtn.length; i++) {
                 deleteBtn[i].classList.remove('hidden')
-          }
-      }
-      showDelete()
+            }
+        }
+        showDelete()
 
-      const styleEditor = () => {
-          let el = document.getElementsByClassName('django-quill-widget-container')
-          for (let i = 0; i < el.length; i++) {
-              el[i].classList.add('shadow')
-          }
-      }
-      styleEditor()
+        const styleEditor = () => {
+            let el = document.getElementsByClassName('django-quill-widget-container')
+            for (let i = 0; i < el.length; i++) {
+                el[i].classList.add('shadow')
+            }
+        }
+        styleEditor()
 
-       addBtn.addEventListener('click', () => {
-           showDelete()
-           styleEditor()
-           clearDescription()
-       })
+        addBtn.addEventListener('click', () => {
+            showDelete()
+            styleEditor()
+            clearDescription()
+        })
 
         // AutoFills User based on request.user
         // All the select elements
@@ -209,16 +226,15 @@
             for (let idx = 0; idx < selects.length; idx++) {
 
                 // Assigns the options
-                selects[idx].selectedIndex = {{ request.user.id }}
+                selects[idx].selectedIndex =
+                {{ request.user.id }}
             }
         }
         // AutoClears Description
         const clearDescription = () => {
             let editors = document.getElementsByClassName('ql-editor')
-            editors[editors.length -1].innerHTML = ""
-      }
-
-
+            editors[editors.length - 1].innerHTML = ""
+        }
 
 
     </script>
