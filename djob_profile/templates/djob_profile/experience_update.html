@@ -4,6 +4,7 @@
 {% load humanize %}
 {% load widget_tweaks %}
 {% block content %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     <main class="flex-grow">
         <section class="relative">
@@ -95,15 +96,15 @@
                                                     <p>Description</p>
                                                     {{ form.job_description|add_class:'model-field' }}
 
-                                                    {% if form.instance.pk %}{{ form.DELETE|add_class:"hidden" }}{% endif %}
+                                                    {% if form.instance.pk %}
+                                                        {{ form.DELETE|add_class:"hidden" }}{% endif %}
                                                     {% for hidden in form.hidden_fields %}
                                                         {{ hidden }}
                                                     {% endfor %}
 
-                                                    <!-- TODO: Need to hide form after completion -->
                                                     <button id="delete-button-{{ forloop.counter0 }}" type="button"
                                                             class="bg-red-600 rounded px-4 py-2 mt-2 text-white"
-                                                            onclick="deleteForm('id_form-{{ forloop.counter0 }}-DELETE', 'delete-button-{{ forloop.counter0 }}')">
+                                                            onclick="deleteForm('id_form-{{ forloop.counter0 }}-DELETE', 'delete-button-{{ forloop.counter0 }}'); hideFormset(this)">
                                                         Remove Exp
                                                     </button>
                                                     <hr class="mt-4 mb-4 border-2">
@@ -111,11 +112,8 @@
 
 
                                                 <!-- Adding hidden fields solved the issue with id -->
-
                                             {% endfor %}
                                         </div>
-
-                                        {#                                        {% include 'djob_profile/empty_form.html' %}#}
 
                                         <button id="update-btn"
                                                 class="cursor-pointer font-semibold text-white text-center py-2 rounded mt-4 bg-violet-500 w-full"
@@ -125,12 +123,7 @@
 
                                     </form>
                                 </div>
-                                <style>
-                                    #id_form-{{ forloop.counter0 }}-job_description {
-                                        width: 100%;
-                                        word-wrap: break-word;
-                                    }
-                                </style>
+
 
                             </div>
                         </div>
@@ -139,20 +132,6 @@
             </div>
         </div>
     </main>
-    <style>
-        div#hint {
-            background: gold;
-            color: orangered;
-            padding: .5em;
-            box-sizing: border-box;
-            overflow: hidden;
-
-            font-weight: bold;
-            transition: height 1s, width 1s, padding 1s, visibility 1s, opacity 0.5s ease-out;
-        }
-    </style>
-
-
     <script src="{% static 'js/formset.js' %}"></script>
     <script>
 
@@ -180,20 +159,21 @@
             {#formContainer.classList.add('hidden')#}
 
             var fade = deleteBtn.parentElement
-            var opacity = 0;
-            var intervalID = setInterval(function() {
+            fade.className = "animate__animated animate__fadeOutLeft animate__faster";
 
-                if (opacity < 1.0) {
-                    opacity = opacity - 0.1
-                    fade.style.opacity = opacity;
-                } else {
-                    clearInterval(intervalID);
-                }
-            }, 200);
         }
 
+        const hideForm = (elem) => {
+            elem.parentElement.classList.toggle('hidden')
+        }
 
+        const delay = ms => new Promise(res => setTimeout(res, ms));
 
+        const hideFormset = async (elem) => {
+          await delay(700);
+          hideForm(elem)
+
+        };
 
         const showDelete = () => {
             let deleteBtn = document.getElementsByClassName('delete-row')
