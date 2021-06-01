@@ -102,11 +102,11 @@
                                                         {{ hidden }}
                                                     {% endfor %}
 
-                                                    <button id="delete-button-{{ forloop.counter0 }}" type="button"
-                                                            class="bg-red-600 rounded px-4 py-2 mt-2 text-white"
-                                                            onclick="deleteForm('id_form-{{ forloop.counter0 }}-DELETE', 'delete-button-{{ forloop.counter0 }}'); hideFormset(this)">
-                                                        Remove Exp
-                                                    </button>
+{#                                                    <button id="delete-button-{{ forloop.counter0 }}" type="button"#}
+{#                                                            class="bg-red-600 rounded px-4 py-2 mt-2 text-white"#}
+{#                                                            onclick="deleteForm('id_form-{{ forloop.counter0 }}-DELETE', 'delete-button-{{ forloop.counter0 }}'); hideFormset(this)">#}
+{#                                                        Remove Exp#}
+{#                                                    </button>#}
                                                     <hr class="mt-4 mb-4 border-2">
                                                 </div>
 
@@ -142,13 +142,15 @@
         $('.formset_row-{{ exp_formset.prefix }}').formset({
             addText: 'Add Experience',
             prefix: '{{ exp_formset.prefix }}',
-            deleteText: 'Remove',
+            deleteText: '',
             addCssClass: 'add-row bg-indigo-600 rounded px-4 py-2 mt-5 text-white',          // CSS class applied to the add link
             deleteCssClass: 'hidden',
         });
 
         const addBtn = document.getElementsByClassName('add-row')[0]
 
+
+        // ISSUE: Need to find a way to update the deleteBtn id and
         const deleteForm = (deleteID, deleteButton) => {
             let deleteField = document.getElementById(deleteID)
             deleteField.type = 'checkbox'
@@ -160,7 +162,6 @@
 
             var fade = deleteBtn.parentElement
             fade.className = "animate__animated animate__fadeOutLeft animate__faster";
-
         }
 
         const hideForm = (elem) => {
@@ -175,13 +176,8 @@
 
         };
 
-        const showDelete = () => {
-            let deleteBtn = document.getElementsByClassName('delete-row')
-            for (let i = 0; i < deleteBtn.length; i++) {
-                deleteBtn[i].classList.remove('hidden')
-            }
-        }
-        showDelete()
+        {# #}
+        {#showDelete()#}
 
         const styleEditor = () => {
             let el = document.getElementsByClassName('django-quill-widget-container')
@@ -192,7 +188,6 @@
         styleEditor()
 
         addBtn.addEventListener('click', () => {
-            showDelete()
             styleEditor()
             clearDescription()
         })
