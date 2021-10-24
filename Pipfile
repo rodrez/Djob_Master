@@ -28,6 +28,8 @@ drf-yasg = "*"
 black = "*"
 dj-rest-auth = {extras = ["with_social"], version = "*"}
 djangorestframework-simplejwt = "*"
+markdown = "*"
+pygments = "*"
 
 [dev-packages]
 
