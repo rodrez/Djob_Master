@@ -53,19 +53,45 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'djob_jobs.apps.DjobJobsConfig',
     'djob_data.apps.DjobDataConfig',
+    'apis.apps.ApisConfig',
     # 'random_tester.apps.RandomTesterConfig',
 
     # Third Party Apps
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'dj_rest_auth.registration',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.twitter',
     'widget_tweaks',
     'ckeditor',
     'livereload',
     'sorl.thumbnail',
     'debug_toolbar',
     'django_quill',
+
+    # API
+    'rest_framework',
+    'drf_yasg',
+    'dj_rest_auth'
+
+
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+    )
+}
+
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = 'djob-auth'
+JWT_AUTH_REFRESH_COOKIE = 'djob-refresh-token'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
