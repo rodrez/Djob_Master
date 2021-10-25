@@ -21,9 +21,15 @@ from django.urls import path, include
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from apis.views import MyObtainToken
 
 from Djob_Master import settings
 from apis.views import FacebookLogin, TwitterLogin
+from apis.custom_token import MyTokenObtainPairView
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -68,8 +74,11 @@ urlpatterns = [
     path('auth/', include('dj_rest_auth.urls')),
     path('auth/registration/', include('dj_rest_auth.registration.urls')),
     path('auth/facebook/', FacebookLogin.as_view(), name='fb_login'),
-    path('auth/twitter/', TwitterLogin.as_view(), name='twitter_login')
-
+    path('auth/twitter/', TwitterLogin.as_view(), name='twitter_login'),
+    path("api/v1/token_auth/", MyObtainToken.as_view()),
+    path("api/v1/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/v1/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/v1/custom-token/", MyTokenObtainPairView.as_view()),
 
 
 

@@ -9,6 +9,10 @@ from dj_rest_auth.registration.views import SocialLoginView
 from allauth.socialaccount.providers.twitter.views import TwitterOAuthAdapter
 from dj_rest_auth.social_serializers import TwitterLoginSerializer
 
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
+
 from .serializers import (
     JobSerializer,
     ProfileSerializer,
@@ -18,6 +22,26 @@ from .serializers import (
 )
 
 User = get_user_model()
+
+
+
+class MyObtainToken(ObtainAuthToken):
+    """Return User Info along with token"""
+
+    def post(self, request, *args, **kwargs):
+
+        response = super(MyObtainToken, self).post(request, *args, **kwargs)
+        token = Token.objects.get(key=response.data["token"])
+        return Response(
+            {
+                "token": token.key,
+                "id": token.user_id,
+                "email": token.user.email,
+                "first_name": token.user.first_name,
+                "last_name": token.user.last_name,
+            }
+        )
+
 
 
 class UserViewSet(viewsets.ModelViewSet):

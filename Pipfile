@@ -30,6 +30,7 @@ dj-rest-auth = {extras = ["with_social"], version = "*"}
 djangorestframework-simplejwt = "*"
 markdown = "*"
 pygments = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
